@@ -4,7 +4,7 @@ LCOM Project for group T&lt;m&gt;&lt;n&gt;G&lt;p&gt;&lt;q&gt;.
 
 Group members:
 
-1. &lt;first name&gt; &lt;family name&gt; (&lt;email address&gt;)
-2. &lt;first name&gt; &lt;family name&gt; (&lt;email address&gt;)
-3. &lt;first name&gt; &lt;family name&gt; (&lt;email address&gt;)
-4. &lt;first name&gt; &lt;family name&gt; (&lt;email address&gt;)
+1. Rafael Magalhães (up202206499@edu.fe.up.pt)
+2. Ricardo Oliveira (up202205353@edu.fe.up.pt)
+3. Tomas Esteves (up202205045@edu.fe.up.pt)
+4. Vitor Pereira (up202207715@edu.fe.up.pt)
