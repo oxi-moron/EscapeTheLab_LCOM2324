@@ -41,6 +41,7 @@ int(kbd_test_scan)() {
   message msg;
 
   uint8_t bit_no = KBD_HOOK_ID;
+  bool two_part = false;
 
   assert(subscribe_kbd_interrupts(&bit_no) == 0);
 
@@ -62,6 +63,13 @@ int(kbd_test_scan)() {
               if (codes[0] != 0xE0) {
                 kbd_print_scancode(!((codes[0] & MAKE_BREAK_BIT) >> 7), 1, codes);
               }
+              else {
+                  if (two_part) {
+                    kbd_print_scancode(!((codes[1] & MAKE_BREAK_BIT) >> 7), 2, codes);
+                    codes[0] = 0x00;
+                }
+                two_part = !two_part;
+              }
             }
           }
           break;
@@ -79,10 +87,31 @@ int(kbd_test_scan)() {
 }
 
 int(kbd_test_poll)() {
-  /* To be completed by the students */
-  printf("%s is not yet implemented!\n", __func__);
 
-  return 1;
+    uint8_t data = 0;
+    bool two_part = false;
+
+    while (data != ESC_BREAK_CODE) {
+        if (kbd_read_data(&data) == 0) {
+            codes[0] = data;
+            if (codes[0] != 0xE0) {
+                kbd_print_scancode(!((codes[0] & MAKE_BREAK_BIT) >> 7), 1, codes);
+            }
+            else {
+              if (two_part) {
+                kbd_print_scancode(!((codes[1] & MAKE_BREAK_BIT) >> 7), 2, codes);
+                codes[0] = 0x00;
+              }
+              two_part = !two_part;
+            }
+        }
+    } 
+
+    assert(reset_keyboard_int() == 0);
+
+    assert(kbd_print_no_sysinb(counter) == 0);
+
+  return 0;
 }
 
 int(kbd_test_timed_scan)(uint8_t n) {
