@@ -22,12 +22,14 @@
 #define READ_CMD_BYTE 0x20
 #define WRITE_CMD_BYTE 0x60
 
-#define WAIT_KBD 10
+#define WAIT_KBD 20000
 
 #define KBD_TO_ERR 0x40
 #define KBD_PAR_ERR 0x80
 #define KBD_AUX 0x20
 
 #define KBD_ENABLE_INT 0x01
+
+#define MAX_ATTEMPTS 10
 
 #endif

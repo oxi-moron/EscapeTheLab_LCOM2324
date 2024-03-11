@@ -4,7 +4,8 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <assert.h>
-#include <keyboard.h>
+#include "keyboard.h"
+#include "kbc.h"
 #include "i8042.h"
 
 extern int hook_id;

@@ -1,9 +1,11 @@
 #include <lcom/lcf.h>
 
-#include "i8042.h"
 #include <stdbool.h>
 #include <stdint.h>
 #include <assert.h>
+#include "keyboard.h"
+#include "kbc.h"
+#include "i8042.h"
 
 int hook_id = 0;
 uint8_t codes[2];
@@ -34,43 +36,9 @@ void (kbc_ih) () {
     assert(util_sys_inb(KBD_OUT_BUF, &codes[0]) == 0);
 }
 
-int (kbd_issue_command) (uint8_t cmd) {
-
-    uint8_t st, attempts = 3;
-    while(attempts) {
-        assert(util_sys_inb(KBD_STATUS_REG, &st) == 0);
-        if((st & KBD_IBF) == 0) {
-            assert(sys_outb(KBD_CMD_REG, cmd) == 0);
-            return 0;
-        }
-        attempts--;
-        tickdelay(WAIT_KBD);
-    }
-
-    return 1;
-}
-
-int (kbd_issue_command_arg) (uint8_t arg) {
-
-    uint8_t st;
-    uint8_t attempts = 3;
-
-    while(attempts) {
-        assert(util_sys_inb(KBD_STATUS_REG, &st) == 0);
-        if((st & KBD_IBF) == 0) {
-            sys_outb(KBD_ARG_REG, arg);
-            return 0;
-        }
-        attempts--;
-        tickdelay(WAIT_KBD);
-    }
-
-    return 1;
-}
-
 int (kbd_read_data) (uint8_t *data) {
 
-    uint8_t st, attempts = 3;
+    uint8_t st, attempts = MAX_ATTEMPTS;
     while(attempts) {
         util_sys_inb(KBD_STATUS_REG, &st);
         if(st & KBD_OBF) {
@@ -81,7 +49,7 @@ int (kbd_read_data) (uint8_t *data) {
                 return 1;
         }
         attempts--;
-        tickdelay(WAIT_KBD);
+        tickdelay(micros_to_ticks(WAIT_KBD));
     }
 
     return 1;
