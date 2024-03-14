@@ -5,12 +5,13 @@
 #include <stdint.h>
 #include <assert.h>
 #include "keyboard.h"
+#include "timer.h"
 #include "kbc.h"
 #include "i8042.h"
+#include "i8254.h"
 
-extern int hook_id;
 extern uint8_t codes[];
-extern uint32_t counter;
+extern uint32_t sysinb_counter, timer_counter;
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -41,7 +42,7 @@ int(kbd_test_scan)() {
   int ipc_status, r;
   message msg;
 
-  uint8_t bit_no = KBD_HOOK_ID;
+  uint8_t bit_no = KBD_BIT_NO;
   bool two_part = false;
 
   assert(subscribe_kbd_interrupts(&bit_no) == 0);
@@ -82,7 +83,7 @@ int(kbd_test_scan)() {
   }
 
   assert(unsubscribe_kbd_interrupts() == 0);
-  assert(kbd_print_no_sysinb(counter) == 0);
+  assert(kbd_print_no_sysinb(sysinb_counter) == 0);
 
   return 0;
 }
@@ -110,14 +111,64 @@ int(kbd_test_poll)() {
 
     assert(reset_keyboard_int() == 0);
 
-    assert(kbd_print_no_sysinb(counter) == 0);
+    assert(kbd_print_no_sysinb(sysinb_counter) == 0);
 
   return 0;
 }
 
 int(kbd_test_timed_scan)(uint8_t n) {
-  /* To be completed by the students */
-  printf("%s is not yet implemented!\n", __func__);
 
-  return 1;
+  uint8_t kbd_bit_no = KBD_BIT_NO;
+  uint8_t timer_bit_no = TIMER_BIT_NO;
+  int ipc_status, r;
+  message msg;
+  bool two_part = false;
+
+  timer_subscribe_int(&timer_bit_no);
+  subscribe_kbd_interrupts(&kbd_bit_no);
+
+  uint8_t cw;
+  uint32_t kbd_irq_set = BIT(kbd_bit_no);
+  uint32_t timer_irq_set = BIT(timer_bit_no);
+
+  while(codes[0] != ESC_BREAK_CODE && timer_counter < n * 60) {
+      if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
+          printf("driver_receive failed with: %d", r);
+          continue;
+      }
+      if (is_ipc_notify(ipc_status)) {
+          switch (_ENDPOINT_P(msg.m_source)) {
+              case HARDWARE:
+                  if (msg.m_notify.interrupts & kbd_irq_set) {
+                      assert(util_sys_inb(KBD_STATUS_REG, &cw) == 0);
+                      if (cw & KBD_OBF) {
+                          timer_counter = 0;
+                          kbc_ih();
+                          if (codes[0] != 0xE0) {
+                              kbd_print_scancode(!((codes[0] & MAKE_BREAK_BIT) >> 7), 1, codes);
+                          }
+                          else {
+                              if (two_part) {
+                                  kbd_print_scancode(!((codes[1] & MAKE_BREAK_BIT) >> 7), 2, codes);
+                                  codes[0] = 0x00;
+                              }
+                          }
+                          two_part = !two_part;
+                      }
+                  }
+                  if (msg.m_notify.interrupts & timer_irq_set) {
+                      timer_int_handler();
+                  }
+                  break;
+                  default:
+                    break;
+            }
+        } else {
+        }
+    }
+
+  timer_unsubscribe_int();
+  unsubscribe_kbd_interrupts();
+
+  return 0;
 }

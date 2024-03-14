@@ -7,14 +7,14 @@
 #include "kbc.h"
 #include "i8042.h"
 
-int hook_id = 0;
+int kbd_hook_id = 0;
 uint8_t codes[2];
 
 int (subscribe_kbd_interrupts) (uint8_t *bit_no) {
 
-  hook_id = *bit_no;
+  kbd_hook_id = *bit_no;
 
-  assert(sys_irqsetpolicy(KEYBOARD_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &hook_id) == 0);
+  assert(sys_irqsetpolicy(KEYBOARD_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &kbd_hook_id) == 0);
 
   return 0;
 
@@ -22,7 +22,7 @@ int (subscribe_kbd_interrupts) (uint8_t *bit_no) {
 
 int (unsubscribe_kbd_interrupts) () {
 
-  assert(sys_irqrmpolicy(&hook_id) == 0);
+  assert(sys_irqrmpolicy(&kbd_hook_id) == 0);
 
   return 0;
 

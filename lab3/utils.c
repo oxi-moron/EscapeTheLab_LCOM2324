@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include <assert.h>
 
-uint32_t counter;
+uint32_t sysinb_counter;
 
 int (util_sys_inb)(int port, uint8_t *value) {
 
@@ -15,7 +15,7 @@ int (util_sys_inb)(int port, uint8_t *value) {
   *value = new_val & 0x000000FF;
 
 #ifdef LAB3
-  counter++;
+  sysinb_counter++;
 #endif
 
   return 0;
