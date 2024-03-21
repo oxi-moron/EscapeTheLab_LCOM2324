@@ -6,9 +6,12 @@
 #include <assert.h>
 // Any header files included below this line should have been created by you
 #include "mouse.h"
+#include "timer.h"
+#include "i8254.h"
 
 extern bool packet_ready;
 extern struct packet pp;
+extern uint32_t counter;
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -81,9 +84,54 @@ int (mouse_test_packet)(uint32_t cnt) {
 }
 
 int (mouse_test_async)(uint8_t idle_time) {
-    /* To be completed */
-    printf("%s(%u): under construction\n", __func__, idle_time);
-    return 1;
+
+    uint8_t mouse_bit_no = MOUSE_BIT_NO, timer_bit_no = TIMER_BIT_NO;
+    assert(mouse_subscribe_int(&mouse_bit_no) == 0);
+    assert(timer_subscribe_int(&timer_bit_no) == 0);
+    assert(my_mouse_enable_data_reporting() == 0);
+
+    int ipc_status, r;
+    message msg;
+    uint32_t timer_irq = BIT(timer_bit_no), mouse_irq = BIT(mouse_bit_no);
+
+    uint32_t freq;
+    assert(timer_get_freq(&freq) == 0);
+    uint8_t cw;
+
+    while(counter < idle_time * freq) {
+        if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
+            printf("driver_receive failed with: %d", r);
+            continue;
+        }
+        if (is_ipc_notify(ipc_status)) {
+            switch (_ENDPOINT_P(msg.m_source)) {
+                case HARDWARE:
+                    if (msg.m_notify.interrupts & mouse_irq) {
+                        assert(util_sys_inb(KBD_STATUS_REG, &cw) == 0);
+                        if (cw & KBD_OBF) {
+                            mouse_ih();
+                            if (packet_ready) {
+                                mouse_print_packet(&pp);
+                                packet_ready = false;
+                                counter = 0;
+                            }
+                        }
+                    }
+                    if (msg.m_notify.interrupts & timer_irq) {
+                        timer_int_handler();
+                    }
+                    break;
+                default:
+                    break;
+            }
+        } else {
+        }
+    }
+
+    assert(mouse_disable_data_reporting() == 0);
+    assert(timer_unsubscribe_int() == 0);
+    assert(mouse_unsubscribe_int() == 0);
+    return 0;
 }
 
 int (mouse_test_gesture)(uint8_t x_len, uint8_t tolerance) {
