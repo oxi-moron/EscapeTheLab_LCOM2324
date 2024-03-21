@@ -4,7 +4,7 @@
 #include <lcom/lcf.h>
 
 int (kbd_issue_command_arg) (uint8_t arg);
-int (kbd_issue_command) (uint8_t cmd);
+int (kbd_issue_command) (uint8_t cmd, uint8_t port);
 int (kbd_read_data) (uint8_t *data);
 
 #endif

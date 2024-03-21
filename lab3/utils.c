@@ -1,5 +1,4 @@
 #include <lcom/lcf.h>
-#include <lcom/lab3.h>
 
 #include <stdint.h>
 #include <assert.h>

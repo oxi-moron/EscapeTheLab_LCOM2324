@@ -36,25 +36,6 @@ void (kbc_ih) () {
     assert(util_sys_inb(KBD_OUT_BUF, &codes[0]) == 0);
 }
 
-int (kbd_read_data) (uint8_t *data) {
-
-    uint8_t st, attempts = MAX_ATTEMPTS;
-    while(attempts) {
-        util_sys_inb(KBD_STATUS_REG, &st);
-        if(st & KBD_OBF) {
-            util_sys_inb(KBD_OUT_BUF, data);
-            if ((st & (KBD_PAR_ERR | KBD_TO_ERR | KBD_AUX)) == 0)
-                return 0;
-            else
-                return 1;
-        }
-        attempts--;
-        tickdelay(micros_to_ticks(WAIT_KBD));
-    }
-
-    return 1;
-}
-
 int (reset_keyboard_int) () {
 
     uint8_t cb;

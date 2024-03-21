@@ -124,8 +124,8 @@ int(kbd_test_timed_scan)(uint8_t n) {
   message msg;
   bool two_part = false;
 
-  timer_subscribe_int(&timer_bit_no);
-  subscribe_kbd_interrupts(&kbd_bit_no);
+  assert(timer_subscribe_int(&timer_bit_no) == 0);
+  assert(subscribe_kbd_interrupts(&kbd_bit_no) == 0);
 
   uint8_t cw;
   uint32_t kbd_irq_set = BIT(kbd_bit_no);
@@ -167,8 +167,8 @@ int(kbd_test_timed_scan)(uint8_t n) {
         }
     }
 
-  timer_unsubscribe_int();
-  unsubscribe_kbd_interrupts();
+  assert(timer_unsubscribe_int() == 0);
+  assert(unsubscribe_kbd_interrupts() == 0);
 
   return 0;
 }

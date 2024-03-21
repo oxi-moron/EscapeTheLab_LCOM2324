@@ -3,17 +3,16 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <assert.h>
-#include "keyboard.h"
 #include "kbc.h"
 #include "i8042.h"
 
-int (kbd_issue_command) (uint8_t cmd) {
+int (kbd_issue_command) (uint8_t cmd, uint8_t port) {
 
     uint8_t st, attempts = MAX_ATTEMPTS;
     while(attempts) {
         assert(util_sys_inb(KBD_STATUS_REG, &st) == 0);
         if((st & KBD_IBF) == 0) {
-            assert(sys_outb(KBD_CMD_REG, cmd) == 0);
+            assert(sys_outb(port, cmd) == 0);
             return 0;
         }
         attempts--;
@@ -48,7 +47,7 @@ int (kbd_read_data) (uint8_t *data) {
         util_sys_inb(KBD_STATUS_REG, &st);
         if(st & KBD_OBF) {
             util_sys_inb(KBD_OUT_BUF, data);
-            if ((st & (KBD_PAR_ERR | KBD_TO_ERR | KBD_AUX)) == 0)
+            if ((st & (KBD_PAR_ERR | KBD_TO_ERR | !KBD_AUX)) == 0)
                 return 0;
             else
                 return 1;
