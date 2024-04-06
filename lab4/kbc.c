@@ -47,10 +47,8 @@ int (kbd_read_data) (uint8_t *data) {
         util_sys_inb(KBD_STATUS_REG, &st);
         if(st & KBD_OBF) {
             util_sys_inb(KBD_OUT_BUF, data);
-            if ((st & (KBD_PAR_ERR | KBD_TO_ERR | !KBD_AUX)) == 0)
+            if ((st & (KBD_PAR_ERR | KBD_TO_ERR)) == 0)
                 return 0;
-            else
-                return 1;
         }
         attempts--;
         tickdelay(micros_to_ticks(WAIT_KBD));

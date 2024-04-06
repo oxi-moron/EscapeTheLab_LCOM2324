@@ -1,7 +1,3 @@
-//
-// Created by ricardo on 3/14/24.
-//
-
 #include <lcom/lcf.h>
 #include "mouse.h"
 #include "kbc.h"
@@ -11,6 +7,8 @@ int mouse_hook_id;
 struct packet pp;
 uint8_t byte_no = 0;
 bool packet_ready = false;
+
+int line_x = 0, line_y = 0;
 
 int (mouse_subscribe_int) (uint8_t* bit_no) {
 
@@ -63,6 +61,122 @@ void (mouse_ih) () {
             packet_ready = true;
             byte_no = 0;
     }
+}
+
+state_t (change_state) (state_t current_state, event_t current_event, uint8_t x_len) {
+    switch (current_state) {
+        case INIT:
+            if (current_event == L_DOWN) {
+                line_x = 0; line_y = 0;
+                return DRAW_UP;
+            }
+            break;
+        case DRAW_UP:
+            printf("\nline_x: %d ", line_x);
+            if (current_event == L_UP && validate_line_up(x_len)) {
+                line_x = 0; line_y = 0;
+                return VERTEX;
+            }
+            else if (current_event == ILLEGAL || (current_event == L_UP && !validate_line_up(x_len)))
+                return INIT;
+            else {
+                line_x += pp.delta_x;
+                line_y += pp.delta_y;
+                return DRAW_UP;
+            }
+            break;
+        case VERTEX:
+            if (current_event == R_DOWN)
+                return DRAW_DOWN;
+            else if (current_event == L_DOWN) {
+                line_x = 0; line_y = 0;
+                return DRAW_UP;
+            }
+            else if (current_event == ILLEGAL)
+                return INIT;
+            else return VERTEX;
+            break;
+        case DRAW_DOWN:
+            printf("\nline_x: %d ", line_x);
+            if (current_event == R_UP && validate_line_down(x_len)) {
+                return DONE;
+            }
+            else if (current_event == ILLEGAL || (current_event == R_UP && !validate_line_down(x_len)))
+                return INIT;
+            else {
+                line_x += pp.delta_x;
+                line_y += pp.delta_y;
+                return DRAW_DOWN;
+            }
+            break;
+        case DONE:
+            break;
+    }
+
+    return INIT;
+}
+
+event_t (evaluate_event) (event_t current_event, uint8_t tolerance) {
+    switch (current_event) {
+        case NEUTRAL:
+            if (pp.mb || abs(pp.delta_x) > tolerance || abs(pp.delta_y) > tolerance || (pp.rb && pp.lb))
+                return ILLEGAL;
+            else if (pp.rb) return R_DOWN;
+            else if (pp.lb) return L_DOWN;
+            break;
+        case L_DOWN:
+            if (pp.mb || (pp.rb && pp.lb) || !pp.lb)
+                return ILLEGAL;
+            else return MOVE_UP;
+            break;
+        case MOVE_UP:
+            if (pp.mb || pp.rb) return ILLEGAL;
+            else if (!pp.lb) return L_UP;
+            else return MOVE_UP;
+            break;
+        case L_UP:
+            if (pp.mb || abs(pp.delta_x) > tolerance || abs(pp.delta_y) > tolerance)
+                return ILLEGAL;
+            else if (pp.rb)
+                return R_DOWN;
+            else if (pp.lb)
+                return L_DOWN;
+            else
+                return NEUTRAL;
+        case R_DOWN:
+            if (pp.mb || (pp.rb && pp.lb) || !pp.rb)
+                return ILLEGAL;
+            else return MOVE_DOWN;
+            break;
+        case MOVE_DOWN:
+            if (pp.mb || pp.lb) return ILLEGAL;
+            else if (!pp.rb) return R_UP;
+            else return MOVE_DOWN;
+            break;
+        case R_UP:
+            if (pp.mb || abs(pp.delta_x) > tolerance || abs(pp.delta_y) > tolerance)
+                return ILLEGAL;
+            else if (pp.lb)
+                return L_DOWN;
+            else if (pp.rb)
+                return R_DOWN;
+            else
+                return NEUTRAL;
+            break;
+        case ILLEGAL:
+            if (pp.lb) return L_DOWN;
+            else return NEUTRAL;
+            break;
+    }
+    return NEUTRAL;
+}
+
+bool (validate_line_up) (uint8_t x_len) {
+    return (line_y / line_x >= 1 && line_x >= x_len);
+}
+
+bool (validate_line_down) (uint8_t x_len) {
+    return (line_y / line_x <= -1 && line_x >= x_len);
 }
 
 int (my_mouse_enable_data_reporting) () {

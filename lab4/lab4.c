@@ -12,6 +12,8 @@
 extern bool packet_ready;
 extern struct packet pp;
 extern uint32_t counter;
+state_t current_state = INIT;
+event_t current_event = NEUTRAL;
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -62,11 +64,6 @@ int (mouse_test_packet)(uint32_t cnt) {
                         assert(util_sys_inb(KBD_STATUS_REG, &cw) == 0);
                         if (cw & KBD_OBF) {
                             mouse_ih();
-                            if (packet_ready) {
-                                mouse_print_packet(&pp);
-                                packet_ready = false;
-                                cnt--;
-                            }
                         }
                     }
                     break;
@@ -74,6 +71,11 @@ int (mouse_test_packet)(uint32_t cnt) {
                     break;
             }
         } else {
+        }
+        if (packet_ready) {
+            mouse_print_packet(&pp);
+            packet_ready = false;
+            cnt--;
         }
     }
 
@@ -135,9 +137,48 @@ int (mouse_test_async)(uint8_t idle_time) {
 }
 
 int (mouse_test_gesture)(uint8_t x_len, uint8_t tolerance) {
-    /* To be completed */
-    printf("%s: under construction\n", __func__);
-    return 1;
+
+    uint8_t mouse_bit_no = MOUSE_BIT_NO;
+    if (mouse_subscribe_int(&mouse_bit_no) != 0) return 1;
+    if (my_mouse_enable_data_reporting() != 0) return 1;
+
+    int ipc_status, r;
+    message msg;
+
+    uint32_t irq_set = BIT(mouse_bit_no);
+    uint8_t cw;
+
+    while(current_state != DONE) {
+        if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
+            printf("driver_receive failed with: %d", r);
+            continue;
+        }
+        if (is_ipc_notify(ipc_status)) {
+            switch (_ENDPOINT_P(msg.m_source)) {
+                case HARDWARE:
+                    if (msg.m_notify.interrupts & irq_set) {
+                        assert(util_sys_inb(KBD_STATUS_REG, &cw) == 0);
+                        if (cw & KBD_OBF) {
+                            mouse_ih();
+                            if (packet_ready) {
+                                current_event = evaluate_event(current_event, tolerance);
+                                current_state = change_state(current_state, current_event, x_len);
+                                mouse_print_packet(&pp);
+                                packet_ready = false;
+                            }
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+        } else {
+        }
+    }
+
+    if (mouse_disable_data_reporting() != 0) return 1;
+    if (mouse_unsubscribe_int() != 0) return 1;
+    return 0;
 }
 
 int (mouse_test_remote)(uint16_t period, uint8_t cnt) {
