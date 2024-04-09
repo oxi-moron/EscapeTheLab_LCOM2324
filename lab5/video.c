@@ -1,10 +1,13 @@
 #include "video.h"
+#include "VBE.h"
 
 static char *video_mem;
 
 static unsigned h_res;
 static unsigned v_res;
 static unsigned bits_per_pixel;
+static uint8_t red_mask_size, blue_mask_size, green_mask_size;
+
 
 int (vg_set_mode) (uint16_t mode) {
     reg86_t reg86;
@@ -35,6 +38,10 @@ int (vg_map_vram) (uint16_t mode) {
     v_res = vbe_mode_info.YResolution;
     bits_per_pixel = vbe_mode_info.BitsPerPixel;
 
+    red_mask_size = vbe_mode_info.RedMaskSize;
+    green_mask_size = vbe_mode_info.GreenMaskSize;
+    blue_mask_size = vbe_mode_info.BlueMaskSize;
+
     int r;
     struct minix_mem_range mr;
 
@@ -58,7 +65,7 @@ int (vg_map_vram) (uint16_t mode) {
 int (vg_draw_pixel) (uint16_t x, uint16_t y, uint32_t color) {
 
     char* pixel = video_mem + (((h_res * x) + y) * (bits_per_pixel / 8));
-    *pixel = color;
+    if (memcpy(pixel, &color, bits_per_pixel / 8) == NULL) return 1;
 
     return 0;
 }
@@ -79,4 +86,38 @@ int (vg_draw_rectangle) (uint16_t x, uint16_t y, uint16_t width, uint16_t height
     }
 
     return 0;
+}
+
+int (vg_get_indexed_color) (uint32_t row, uint32_t column, uint32_t first, uint8_t step, uint8_t no_rectangles, uint32_t* color) {
+    *color = (first + (row * no_rectangles + column) * step) % (1 << bits_per_pixel);
+
+    return 0;
+}
+
+int (vg_get_direct_color) (uint32_t row, uint32_t column, uint32_t first, uint8_t step, uint32_t* color) {
+    uint32_t red = ((R(first) + column * step) % (1 << red_mask_size)) << (green_mask_size + blue_mask_size);
+    uint32_t green = ((G(first) + row * step) % (1 << green_mask_size)) << (blue_mask_size);
+    uint32_t blue = (B(first) + (column + row) * step) % (1 << blue_mask_size);
+    *color = (red | green | blue);
+
+    return 0;
+}
+
+int (vg_get_rectangle_dimensions) (uint8_t no_rectangles, uint16_t* width, uint16_t* height) {
+    *width = h_res / no_rectangles;
+    *height = v_res / no_rectangles;
+
+    return 0;
+}
+
+uint32_t R(uint32_t color) {
+    return (color << (bits_per_pixel - red_mask_size - green_mask_size - blue_mask_size)) >> (bits_per_pixel - red_mask_size);
+}
+
+uint32_t G(uint32_t color) {
+    return (color << (bits_per_pixel - green_mask_size - blue_mask_size)) >> (bits_per_pixel - green_mask_size);
+}
+
+uint32_t B(uint32_t color) {
+    return (color << (bits_per_pixel - blue_mask_size)) >> (bits_per_pixel - blue_mask_size);
 }
