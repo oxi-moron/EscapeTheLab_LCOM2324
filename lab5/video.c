@@ -64,7 +64,7 @@ int (vg_map_vram) (uint16_t mode) {
 
 int (vg_draw_pixel) (uint16_t x, uint16_t y, uint32_t color) {
 
-    char* pixel = video_mem + (((h_res * x) + y) * (bits_per_pixel / 8));
+    char* pixel = video_mem + (((h_res * y) + x) * (bits_per_pixel / 8));
     if (memcpy(pixel, &color, bits_per_pixel / 8) == NULL) return 1;
 
     return 0;
@@ -73,7 +73,7 @@ int (vg_draw_pixel) (uint16_t x, uint16_t y, uint32_t color) {
 int (vg_draw_hline) (uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
 
     for (int i = 0; i < len; i++) {
-        vg_draw_pixel(x, y + i, color);
+        vg_draw_pixel(x + i, y, color);
     }
 
     return 0;
@@ -82,7 +82,7 @@ int (vg_draw_hline) (uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
 int (vg_draw_rectangle) (uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color) {
 
     for (int i = 0; i < height; i++) {
-        vg_draw_hline(x + i, y, width, color);
+        vg_draw_hline(x, y + i, width, color);
     }
 
     return 0;

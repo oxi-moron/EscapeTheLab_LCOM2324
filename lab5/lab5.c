@@ -151,7 +151,7 @@ int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, ui
                 }
             }
 
-            if(vg_draw_rectangle(row * height, column * width, width, height, color) != 0) {
+            if(vg_draw_rectangle(column * width, row * height, width, height, color) != 0) {
                 printf("ERROR: %s", __func__);
                 return 1;
             }
