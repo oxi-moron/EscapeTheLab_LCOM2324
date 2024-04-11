@@ -12,6 +12,7 @@
 #include "video.h"
 #include "keyboard.h"
 #include "i8042.h"
+#include "i8254.h"
 #include "VBE.h"
 
 extern uint32_t counter;
@@ -201,19 +202,192 @@ int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, ui
 }
 
 int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
-  /* To be completed */
-  printf("%s(%8p, %u, %u): under construction\n", __func__, xpm, x, y);
+    if (vg_map_vram(INDEXED_MODE) != 0) {
+        printf("ERROR: %s", __func__ );
+        return 1;
+    }
 
-  return 1;
+    if (vg_set_mode(INDEXED_MODE) != 0) {
+        printf("ERROR: %s", __func__ );
+        return 1;
+    }
+
+    xpm_image_t img;
+    uint8_t *map;
+
+    map = xpm_load(xpm, XPM_INDEXED, &img);
+
+    if (vg_draw_xpm(x, y, img.width, img.size, map) != 0) {
+        printf("ERROR: %s", __func__ );
+        return 1;
+    }
+
+    int ipc_status, r;
+    message msg;
+
+    uint8_t bit_no = KBD_BIT_NO;
+
+    if(subscribe_kbd_interrupts(&bit_no) != 0) {
+        printf("ERROR: %s", __func__ );
+        return 1;
+    }
+
+    uint32_t irq_set = BIT(bit_no);
+    uint8_t cw;
+
+    while(codes[0] != ESC_BREAK_CODE) {
+        if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
+            printf("driver_receive failed with: %d", r);
+            continue;
+        }
+        if (is_ipc_notify(ipc_status)) {
+            switch (_ENDPOINT_P(msg.m_source)) {
+                case HARDWARE:
+                    if (msg.m_notify.interrupts & irq_set) {
+                        assert(util_sys_inb(KBD_STATUS_REG, &cw) == 0);
+                        if (cw & KBD_OBF) {
+                            kbc_ih();
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+        } else {
+        }
+    }
+
+    if (unsubscribe_kbd_interrupts() != 0) {
+        printf("ERROR: %s", __func__ );
+        return 1;
+    }
+
+
+    if(vg_exit() != 0) {
+        printf("ERROR: %s", __func__ );
+        return 1;
+    }
+    return 0;
 }
 
 int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint16_t yf,
                      int16_t speed, uint8_t fr_rate) {
-  /* To be completed */
-  printf("%s(%8p, %u, %u, %u, %u, %d, %u): under construction\n",
-         __func__, xpm, xi, yi, xf, yf, speed, fr_rate);
 
-  return 1;
+    if (xi != xf && yi != yf) return 1;
+
+    if (vg_map_vram(INDEXED_MODE) != 0) {
+        printf("ERROR: %s", __func__ );
+        return 1;
+    }
+
+    if (vg_set_mode(INDEXED_MODE) != 0) {
+        printf("ERROR: %s", __func__ );
+        return 1;
+    }
+
+    xpm_image_t img;
+    uint8_t *map;
+
+    map = xpm_load(xpm, XPM_INDEXED, &img);
+
+    int ipc_status, r;
+    message msg;
+
+    uint8_t kbd_bit_no = KBD_BIT_NO;
+    uint8_t timer_bit_no = TIMER_BIT_NO;
+
+    if(subscribe_kbd_interrupts(&kbd_bit_no) != 0) {
+        printf("ERROR: %s", __func__ );
+        return 1;
+    }
+
+    if (timer_subscribe_int(&timer_bit_no) != 0) {
+        printf("ERROR: %s", __func__ );
+        return 1;
+    }
+
+    uint32_t kbd_irq_set = BIT(kbd_bit_no);
+    uint32_t timer_irq_set = BIT(timer_bit_no);
+    uint8_t cw; uint32_t freq;
+
+    uint16_t x = xi, y = yi, cooldown = 0;
+
+    if (timer_get_freq(&freq) != 0) {
+        printf("ERROR: %s", __func__ );
+        return 1;
+    }
+
+    if (vg_draw_xpm(x, y, img.width, img.size, map) != 0) {
+        printf("ERROR: %s", __func__ );
+        return 1;
+    }
+
+    if (speed < 0) cooldown = abs(speed);
+
+    while(codes[0] != ESC_BREAK_CODE) {
+        if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
+            printf("driver_receive failed with: %d", r);
+            continue;
+        }
+        if (is_ipc_notify(ipc_status)) {
+            switch (_ENDPOINT_P(msg.m_source)) {
+                case HARDWARE:
+                    if (msg.m_notify.interrupts & kbd_irq_set) {
+                        assert(util_sys_inb(KBD_STATUS_REG, &cw) == 0);
+                        if (cw & KBD_OBF) {
+                            kbc_ih();
+                        }
+                    }
+                    if (msg.m_notify.interrupts & timer_irq_set) {
+                            timer_int_handler();
+                            if (counter == freq / fr_rate) {
+                                if (x != xf || y != yf) {
+                                    if (vg_draw_rectangle(x, y, img.width, img.height, 0) != 0) {
+                                        printf("ERROR: %s", __func__);
+                                        return 1;
+                                    }
+                                    if (speed < 0) {
+                                        cooldown--;
+                                        if (cooldown == 0) {
+                                            x += 1; y += 1;
+                                            cooldown = abs(speed);
+                                        }
+                                    } else {
+                                        x += speed; y += speed;
+                                    }
+                                    if (x > xf) x = xf; if (y > yf) y = yf;
+                                }
+                                if (vg_draw_xpm(x, y, img.width, img.size, map) != 0) {
+                                    printf("ERROR: %s", __func__);
+                                    return 1;
+                                }
+                                counter = 0;
+                            }
+                    }
+                    break;
+                default:
+                    break;
+            }
+        } else {
+        }
+    }
+
+    if (timer_unsubscribe_int() != 0) {
+        printf("ERROR: %s", __func__ );
+        return 1;
+    }
+
+    if (unsubscribe_kbd_interrupts() != 0) {
+        printf("ERROR: %s", __func__ );
+        return 1;
+    }
+
+
+    if(vg_exit() != 0) {
+        printf("ERROR: %s", __func__ );
+        return 1;
+    }
+    return 0;
 }
 
 int(video_test_controller)() {

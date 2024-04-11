@@ -110,6 +110,14 @@ int (vg_get_rectangle_dimensions) (uint8_t no_rectangles, uint16_t* width, uint1
     return 0;
 }
 
+int (vg_draw_xpm) (uint16_t x, uint16_t y, int16_t width, uint32_t size, uint8_t* pixmap) {
+    for (uint32_t i = 0; i < size; i++) {
+        vg_draw_pixel(x + i % width, y + i / width, pixmap[i]);
+    }
+
+    return 0;
+}
+
 uint32_t R(uint32_t color) {
     return (color << (bits_per_pixel - red_mask_size - green_mask_size - blue_mask_size)) >> (bits_per_pixel - red_mask_size);
 }
@@ -120,4 +128,19 @@ uint32_t G(uint32_t color) {
 
 uint32_t B(uint32_t color) {
     return (color << (bits_per_pixel - blue_mask_size)) >> (bits_per_pixel - blue_mask_size);
+}
+
+int calculate_next_pos(uint16_t x, uint16_t xf, uint16_t y, uint16_t yf, uint16_t* next_x, uint16_t* next_y, int16_t speed) {
+    if (speed < 0) {
+        *next_x = x + 1;
+        *next_y = y + 1;
+    } else {
+        *next_x = x + speed;
+        *next_y = y + speed;
+    }
+
+    if (*next_y > yf) *next_y = yf;
+    if (*next_x > xf) *next_x = xf;
+
+    return 0;
 }
