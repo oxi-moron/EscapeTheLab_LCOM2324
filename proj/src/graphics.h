@@ -8,8 +8,10 @@ struct point2D {
 };
 
 int (draw_current_frame) ();
-int (draw_player_camera) ();
 
-int (create_line) (struct point2D* line);
+int (draw_player_camera) ();
+int (draw_map) ();
+
+int (create_line) (struct point2D* line, double angle);
 
 #endif //G6_GRAPHICS_H

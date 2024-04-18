@@ -41,6 +41,7 @@ int (proj_main_loop) (int argc, char *argv[]) {
 
     if (vg_map_vram(DIR_MODE_800X600) != 0) {
         printf("ERROR: %s", __func__);
+        vg_exit();
         return 1;
     }
 
@@ -51,12 +52,19 @@ int (proj_main_loop) (int argc, char *argv[]) {
 
     if (timer_subscribe_int(&timer_bit_no) != 0) {
         printf("ERROR: %s", __func__);
+        vg_exit();
         return 1;
     }
 
     uint32_t timer_irq_set = BIT(timer_bit_no);
 
-    while(counter < 600) {
+    if (draw_current_frame() != 0) {
+        printf("ERROR: %s", __func__ );
+        vg_exit();
+        return 1;
+    };
+
+    while(counter < 180) {
         if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
             printf("driver_receive failed with: %d", r);
             continue;
@@ -66,10 +74,6 @@ int (proj_main_loop) (int argc, char *argv[]) {
                 case HARDWARE:
                     if (msg.m_notify.interrupts & timer_irq_set) {
                         timer_ih();
-                        if (draw_current_frame() != 0) {
-                            printf("ERROR: %s", __func__ );
-                            return 1;
-                        };
                     }
                     break;
                 default:
@@ -81,6 +85,7 @@ int (proj_main_loop) (int argc, char *argv[]) {
 
     if (timer_unsubscribe_int() != 0) {
         printf("ERROR: %s", __func__);
+        vg_exit();
         return 1;
     }
 

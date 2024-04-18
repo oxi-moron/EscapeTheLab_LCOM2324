@@ -8,7 +8,12 @@ static unsigned v_res;
 static unsigned bits_per_pixel;
 static uint8_t red_mask_size, blue_mask_size, green_mask_size;
 
+int (vg_get_resolution) (uint32_t* hres, uint32_t* vres) {
+    *hres = h_res;
+    *vres = v_res;
 
+    return 0;
+}
 int (vg_set_mode) (uint16_t mode) {
     reg86_t reg86;
     memset(&reg86, 0, sizeof(reg86));
@@ -65,13 +70,13 @@ int (vg_map_vram) (uint16_t mode) {
 
 int (vg_draw_pixel) (uint16_t x, uint16_t y, uint32_t color) {
 
-    char* pixel = video_mem + (((h_res * x) + y) * (bits_per_pixel / 8));
+    char* pixel = video_mem + (((h_res * y) + x) * (bits_per_pixel / 8));
     if (memcpy(pixel, &color, bits_per_pixel / 8) == NULL) return 1;
 
     return 0;
 }
 
-int (vg_draw_hline) (uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
+int (vg_draw_vline) (uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
 
     for (int i = 0; i < len; i++) {
         vg_draw_pixel(x, y + i, color);
@@ -80,10 +85,28 @@ int (vg_draw_hline) (uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
     return 0;
 }
 
+int (vg_draw_vline_colormap) (uint16_t x, uint16_t y, uint16_t len, uint32_t* color_map) {
+
+    for (uint32_t i = 0; i < len; i++) {
+        vg_draw_pixel(x, y + i, color_map[i % 16]);
+    }
+
+    return 0;
+}
+
+int (vg_draw_hline) (uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
+
+    for (int i = 0; i < len; i++) {
+        vg_draw_pixel(x + i, y, color);
+    }
+
+    return 0;
+}
+
 int (vg_draw_rectangle) (uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color) {
 
     for (int i = 0; i < height; i++) {
-        vg_draw_hline(x + i, y, width, color);
+        vg_draw_hline(x, y + i, width, color);
     }
 
     return 0;
@@ -111,13 +134,11 @@ int (vg_get_rectangle_dimensions) (uint8_t no_rectangles, uint16_t* width, uint1
     return 0;
 }
 
-// TODO: Implement in a different structure??
 int (vg_set_background_color) (uint32_t color) {
     vg_draw_rectangle(0, 0, h_res, v_res, color);
     return 0;
 }
 
-// TODO: Put in video utils
 uint32_t R(uint32_t color) {
     return (color << (bits_per_pixel - red_mask_size - green_mask_size - blue_mask_size)) >> (bits_per_pixel - red_mask_size);
 }

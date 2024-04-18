@@ -10,8 +10,8 @@ int (create_map) () {
             {1, 0, 0, 0, 0, 0, 0, 1},
             {1, 1, 1, 1, 1, 1, 1, 1}}; */
 
-    map_height = 8;
-    map_width = 8;
+    map_height = 16;
+    map_width = 10;
 
     return 0;
 }
