@@ -34,4 +34,7 @@
 #define TIMER_CTRL 0x43
 #define TIMER_0 0x40
 
+// Game Loop Macros
+#define FRAME_RATE 30
+
 #endif //G6_I8254_TIMER_H

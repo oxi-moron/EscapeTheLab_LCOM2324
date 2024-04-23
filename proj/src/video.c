@@ -10,12 +10,12 @@ static uint8_t red_mask_size, blue_mask_size, green_mask_size;
 
 int (vg_start) (uint16_t mode) {
     if (vg_set_mode(mode) != 0) {
-        printf("ERROR: %s", __func__);
+        printf("ERROR: %s\n", __func__);
         return 1;
     }
 
     if (vg_map_vram(mode) != 0) {
-        printf("ERROR: %s", __func__);
+        printf("ERROR: %s\n", __func__);
         vg_exit();
         return 1;
     }
@@ -38,7 +38,7 @@ int (vg_set_mode) (uint16_t mode) {
     reg86.bx = 1 << 14 | mode;
 
     if (sys_int86(&reg86) != OK) {
-        printf("ERROR: %s", __func__);
+        printf("ERROR: %s\n", __func__);
         return 1;
     }
 
@@ -51,7 +51,7 @@ int (vg_map_vram) (uint16_t mode) {
     vbe_mode_info_t vbe_mode_info;
 
     if (vbe_get_mode_info(mode, &vbe_mode_info) != 0) {
-        printf("ERROR: %s", __func__ );
+        printf("ERROR: %s\n", __func__ );
         return 1;
     }
 

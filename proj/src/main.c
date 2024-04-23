@@ -36,13 +36,13 @@ int main(int argc, char *argv[]) {
 
 int driver_setup() {
     if (vg_start(DIR_MODE_800X600) != 0) {
-        printf("ERROR: %s", __func__);
+        printf("ERROR: %s\n", __func__);
         return 1;
     }
     uint8_t timer_bit_no = TIMER_BIT_NO;
 
     if (timer_subscribe_int(&timer_bit_no) != 0) {
-        printf("ERROR: %s", __func__);
+        printf("ERROR: %s\n", __func__);
         return 1;
     }
 
@@ -51,12 +51,12 @@ int driver_setup() {
 
 int driver_cleanup() {
     if (timer_unsubscribe_int() != 0) {
-        printf("ERROR: %s", __func__);
+        printf("ERROR: %s\n", __func__);
         return 1;
     }
 
     if (vg_exit() != 0) {
-        printf("ERROR: %s", __func__);
+        printf("ERROR: %s\n", __func__);
         return 1;
     }
 
@@ -69,7 +69,13 @@ int (proj_main_loop) (int argc, char *argv[]) {
     player_construct(position, 0);
 
     if (driver_setup() != 0) {
-        printf("ERROR: %s", __func__);
+        printf("ERROR: %s\n", __func__);
+        vg_exit();
+        return 1;
+    }
+
+    if (graphics_construct() != 0) {
+        printf("ERROR: %s\n", __func__);
         vg_exit();
         return 1;
     }
@@ -79,9 +85,9 @@ int (proj_main_loop) (int argc, char *argv[]) {
 
     uint32_t timer_irq_set = BIT(TIMER_BIT_NO);
 
-    while(counter < 180) {
+    while(counter < 180) { // while (!esc) -> while (!RTC_INT)
         if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
-            printf("driver_receive failed with: %d", r);
+            printf("driver_receive failed with: %d\n", r);
             continue;
         }
         if (is_ipc_notify(ipc_status)) {
@@ -89,14 +95,14 @@ int (proj_main_loop) (int argc, char *argv[]) {
                 case HARDWARE:
                     if (msg.m_notify.interrupts & timer_irq_set) {
                         timer_ih();
-                        if (counter % 30 == 0) {
+                        if (counter % FRAME_RATE == 0) {
                             if (graphics_draw_current_frame() != 0) {
-                                printf("ERROR: %s", __func__ );
+                                printf("ERROR: %s\n", __func__ );
                                 vg_exit();
                                 return 1;
                             };
                             if (player_move(ROTATE_LEFT) != 0) {
-                                printf("ERROR: %s", __func__ );
+                                printf("ERROR: %s\n", __func__ );
                                 vg_exit();
                                 return 1;
                             }
@@ -111,10 +117,10 @@ int (proj_main_loop) (int argc, char *argv[]) {
     }
 
     if (driver_cleanup() != 0) {
-        printf("ERROR: %s", __func__);
+        printf("ERROR: %s\n", __func__);
         vg_exit();
         return 1;
     }
-    
+
     return 0;
 }

@@ -7,6 +7,9 @@ struct point2D {
     int x; int y;
 };
 
+static uint32_t width, height, map_width, map_height;
+
+int (graphics_construct) ();
 int (graphics_draw_current_frame) ();
 
 int (draw_player_camera) ();
