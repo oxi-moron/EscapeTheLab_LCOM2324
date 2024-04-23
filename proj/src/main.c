@@ -5,6 +5,8 @@
 #include "graphics.h"
 #include "timer.h"
 #include "i8254_timer.h"
+#include "player.h"
+#include "map.h"
 
 extern uint32_t counter;
 
@@ -32,14 +34,41 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-int (proj_main_loop) (int argc, char *argv[]) {
+int driver_setup() {
+    if (vg_start(DIR_MODE_800X600) != 0) {
+        printf("ERROR: %s", __func__);
+        return 1;
+    }
+    uint8_t timer_bit_no = TIMER_BIT_NO;
 
-    if (vg_set_mode(DIR_MODE_800X600) != 0) {
+    if (timer_subscribe_int(&timer_bit_no) != 0) {
         printf("ERROR: %s", __func__);
         return 1;
     }
 
-    if (vg_map_vram(DIR_MODE_800X600) != 0) {
+    return 0;
+}
+
+int driver_cleanup() {
+    if (timer_unsubscribe_int() != 0) {
+        printf("ERROR: %s", __func__);
+        return 1;
+    }
+
+    if (vg_exit() != 0) {
+        printf("ERROR: %s", __func__);
+        return 1;
+    }
+
+    return 0;
+}
+
+int (proj_main_loop) (int argc, char *argv[]) {
+
+    struct point2D position = {300, 300};
+    player_construct(position, 0);
+
+    if (driver_setup() != 0) {
         printf("ERROR: %s", __func__);
         vg_exit();
         return 1;
@@ -48,21 +77,7 @@ int (proj_main_loop) (int argc, char *argv[]) {
     int ipc_status, r;
     message msg;
 
-    uint8_t timer_bit_no = TIMER_BIT_NO;
-
-    if (timer_subscribe_int(&timer_bit_no) != 0) {
-        printf("ERROR: %s", __func__);
-        vg_exit();
-        return 1;
-    }
-
-    uint32_t timer_irq_set = BIT(timer_bit_no);
-
-    if (draw_current_frame() != 0) {
-        printf("ERROR: %s", __func__ );
-        vg_exit();
-        return 1;
-    };
+    uint32_t timer_irq_set = BIT(TIMER_BIT_NO);
 
     while(counter < 180) {
         if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
@@ -74,6 +89,18 @@ int (proj_main_loop) (int argc, char *argv[]) {
                 case HARDWARE:
                     if (msg.m_notify.interrupts & timer_irq_set) {
                         timer_ih();
+                        if (counter % 30 == 0) {
+                            if (graphics_draw_current_frame() != 0) {
+                                printf("ERROR: %s", __func__ );
+                                vg_exit();
+                                return 1;
+                            };
+                            if (player_move(ROTATE_LEFT) != 0) {
+                                printf("ERROR: %s", __func__ );
+                                vg_exit();
+                                return 1;
+                            }
+                        }
                     }
                     break;
                 default:
@@ -83,16 +110,11 @@ int (proj_main_loop) (int argc, char *argv[]) {
         }
     }
 
-    if (timer_unsubscribe_int() != 0) {
+    if (driver_cleanup() != 0) {
         printf("ERROR: %s", __func__);
         vg_exit();
         return 1;
     }
-
-    if (vg_exit() != 0) {
-        printf("ERROR: %s", __func__);
-        return 1;
-    }
-
+    
     return 0;
 }

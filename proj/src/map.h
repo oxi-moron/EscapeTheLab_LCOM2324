@@ -3,14 +3,11 @@
 
 #include <lcom/lcf.h>
 
-int (create_map) ();
+int (map_get_grid_pos) (uint32_t x, uint32_t y, uint8_t* pos);
+int (map_set_grid_pos) (uint32_t x, uint32_t y, uint8_t pos);
 
-int (get_grid_pos) (uint32_t x, uint32_t y, uint8_t* pos);
-int (set_grid_pos) (uint32_t x, uint32_t y, uint8_t pos);
+int (map_get_grid_dimensions) (uint32_t* width, uint32_t* height);
 
-int (get_grid_dimensions) (uint32_t* width, uint32_t* height);
-
-// TODO: delete for better structuring
 static uint8_t grid[10][16] = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                                {1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1},
                                {1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1},
@@ -20,7 +17,7 @@ static uint8_t grid[10][16] = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                                {1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                                {1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                               {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},};
+                               {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
 static uint32_t map_width = 16;
 static uint32_t map_height = 10;
 

@@ -1,19 +1,21 @@
 #include "graphics.h"
 #include "video.h"
 #include "map.h"
+#include "player.h"
 #include <math.h>
 
 // TODO: this is global for now
-int player_x = 330, player_y = 300;
-double player_angle = 60;
-uint32_t wall_colors[16] = {0xF7CAC9, 0xA2D5F2, 0xFFF79A, 0xD5C7BC, 0xC2B280, 0x98FF98,
-                            0xFFB6C1, 0xFFD700, 0x87CEEB,0xFFA07A, 0x77DD77, 0xF0E68C,
-                            0xE6E6FA, 0xFFE4B5, 0xEEE8AA, 0xD8BFD8};
+uint32_t wall_colors[16] = {
+        0x0000FF, 0x4169E1, 0x6495ED, 0x87CEEB,
+        0x87CEFA, 0xADD8E6, 0xB0E0E6, 0x1E90FF,
+        0x00BFFF, 0x7B68EE, 0x4682B4, 0x5F9EA0,
+        0x87CEFA, 0x00CED1, 0x40E0D0, 0x00FFFF
+};
 
 
-int (draw_current_frame) () {
+int (graphics_draw_current_frame) () {
 
-    if (vg_set_background_color(0x000000) != 0) {
+    if (set_background_color(0x000000) != 0) {
         printf("ERROR: %s", __func__ );
         return 1;
     }
@@ -27,6 +29,7 @@ int (draw_current_frame) () {
         printf("ERROR: %s", __func__ );
         return 1;
     }
+
     return 0;
 }
 
@@ -40,7 +43,7 @@ uint32_t get_color (double distance_to_wall) {
 }
 
 double get_ray_angle(int diff) {
-    return (player_angle - (double) 70 / 2 + ((double) (70 * diff) / 800));
+    return (player_get_angle() - (double) 70 / 2 + ((double) (70 * diff) / 800));
 }
 
 int (draw_player_camera) () {
@@ -50,7 +53,7 @@ int (draw_player_camera) () {
         printf("ERROR: %s", __func__ );
         return 1;
     }
-    if (get_grid_dimensions(&map_width, &map_height) != 0) {
+    if (map_get_grid_dimensions(&map_width, &map_height) != 0) {
         printf("ERROR: %s", __func__ );
         return 1;
     }
@@ -59,7 +62,7 @@ int (draw_player_camera) () {
 
     for (uint32_t i = 0; i < width; i++) {
         double ray_angle = get_ray_angle(i);
-        struct point2D* line = (struct point2D*)malloc(sizeof(struct point2D) * 256);
+        struct point2D* line = (struct point2D*)malloc(sizeof(struct point2D) * 512);
         int line_size = create_line(line, ray_angle);
         if (line_size <= 0) {
             printf("ERROR: %s", __func__ );
@@ -72,8 +75,8 @@ int (draw_player_camera) () {
         }
 
         struct point2D collision_point = line[line_size - 1];
-        double distance_to_wall = sqrt(pow(collision_point.x - player_x, 2) + pow(collision_point.y - player_y, 2));
-        distance_to_wall *= fabs(cos(to_radians(ray_angle - player_angle)));
+        double distance_to_wall = sqrt(pow(collision_point.x - player_get_position().x, 2) + pow(collision_point.y - player_get_position().y, 2));
+        distance_to_wall *= fabs(cos(to_radians(ray_angle - player_get_angle())));
         //uint32_t color = get_color(distance_to_wall);
 
         int wall_height = (int) ((height * cellsize) / distance_to_wall);
@@ -92,8 +95,8 @@ int (draw_player_camera) () {
 // TODO: index is sus, some values still hardcoded
 int (create_line) (struct point2D* line, double angle) {
     int index = 0;
-    int x1 = player_x;
-    int y1 = player_y;
+    int x1 = player_get_position().x;
+    int y1 = player_get_position().y;
     int distance = 1000;
     int x2 = (int) (x1 + distance * cos(to_radians(angle)));
     int y2 = (int) (y1 + distance * sin(to_radians(angle)));
@@ -104,9 +107,9 @@ int (create_line) (struct point2D* line, double angle) {
 
     int err = dx - dy;
 
-    while ((x1 != x2 || y1 != y2) && index < 256) {
+    while ((x1 != x2 || y1 != y2) && index < 512) {
         uint8_t pos;
-        if (get_grid_pos(x1 / 50, y1 / 60, &pos) != 0) {
+        if (map_get_grid_pos(x1 / 50, y1 / 60, &pos) != 0) {
             printf("ERROR: %s", __func__ );
             return -1;
         }
@@ -138,7 +141,7 @@ int (draw_map) () {
         printf("ERROR: %s", __func__ );
         return 1;
     }
-    if (get_grid_dimensions(&map_width, &map_height) != 0) {
+    if (map_get_grid_dimensions(&map_width, &map_height) != 0) {
         printf("ERROR: %s", __func__ );
         return 1;
     }
@@ -146,7 +149,7 @@ int (draw_map) () {
     for (uint32_t y = 0; y < map_height; y++) {
         for (uint32_t x = 0; x < map_width; x++) {
             uint8_t pos;
-            if (get_grid_pos(x, y, &pos) != 0) {
+            if (map_get_grid_pos(x, y, &pos) != 0) {
                 printf("ERROR: %s", __func__ );
                 return 1;
             }
@@ -160,3 +163,17 @@ int (draw_map) () {
     }
     return 0;
 }
+
+int (set_background_color) (uint32_t color) {
+    uint32_t h_res, v_res;
+    if (vg_get_resolution(&h_res, &v_res) != 0) {
+        printf("ERROR: %s", __func__ );
+        return 1;
+    }
+    if (vg_draw_rectangle(0, 0, h_res, v_res, color) != 0) {
+        printf("ERROR: %s", __func__ );
+        return 1;
+    }
+    return 0;
+}
+

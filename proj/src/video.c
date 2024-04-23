@@ -8,6 +8,21 @@ static unsigned v_res;
 static unsigned bits_per_pixel;
 static uint8_t red_mask_size, blue_mask_size, green_mask_size;
 
+int (vg_start) (uint16_t mode) {
+    if (vg_set_mode(mode) != 0) {
+        printf("ERROR: %s", __func__);
+        return 1;
+    }
+
+    if (vg_map_vram(mode) != 0) {
+        printf("ERROR: %s", __func__);
+        vg_exit();
+        return 1;
+    }
+
+    return 0;
+}
+
 int (vg_get_resolution) (uint32_t* hres, uint32_t* vres) {
     *hres = h_res;
     *vres = v_res;
@@ -131,11 +146,6 @@ int (vg_get_rectangle_dimensions) (uint8_t no_rectangles, uint16_t* width, uint1
     *width = h_res / no_rectangles;
     *height = v_res / no_rectangles;
 
-    return 0;
-}
-
-int (vg_set_background_color) (uint32_t color) {
-    vg_draw_rectangle(0, 0, h_res, v_res, color);
     return 0;
 }
 

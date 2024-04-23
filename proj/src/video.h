@@ -3,6 +3,7 @@
 
 #include <lcom/lcf.h>
 
+int (vg_start) (uint16_t mode);
 int (vg_set_mode) (uint16_t mode);
 int (vg_map_vram) (uint16_t mode);
 
@@ -14,8 +15,6 @@ int (vg_draw_vline) (uint16_t x, uint16_t y, uint16_t len, uint32_t color);
 int (vg_draw_rectangle) (uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color);
 
 int (vg_draw_vline_colormap) (uint16_t x, uint16_t y, uint16_t len, uint32_t* color_map);
-
-int (vg_set_background_color) (uint32_t color);
 
 int (vg_get_indexed_color) (uint32_t row, uint32_t column, uint32_t first, uint8_t step, uint8_t no_rectangles, uint32_t* color);
 int (vg_get_direct_color) (uint32_t row, uint32_t column, uint32_t first, uint8_t step, uint32_t* color);
