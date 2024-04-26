@@ -1,8 +1,13 @@
 # name of the program (Minix service)
 PROG=proj
 
+.PATH: ${.CURDIR}
+.PATH: ${.CURDIR}/drivers
+.PATH: ${.CURDIR}/game
+.PATH: ${.CURDIR}/images
+
 # source code files to be compiled
-SRCS = main.c timer.c utils.c video.c graphics.c map.c player.c
+SRCS = main.c timer.c utils.c video.c graphics.c map.c player.c rtc.c
 
 # additional compilation flags
 # "-Wall -Wextra -Werror -I . -std=c11 -Wno-unused-parameter" are already set

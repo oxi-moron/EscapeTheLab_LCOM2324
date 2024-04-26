@@ -1,14 +1,17 @@
 #include <lcom/lcf.h>
 
-#include "video.h"
-#include "VBE.h"
+#include "drivers/video.h"
+#include "drivers/VBE.h"
 #include "graphics.h"
-#include "timer.h"
-#include "i8254_timer.h"
-#include "player.h"
-#include "map.h"
+#include "drivers/timer.h"
+#include "drivers/i8254_timer.h"
+#include "game/player.h"
+#include "drivers/rtc.h"
+#include "drivers/rtc_macros.h"
+#include "game/map.h"
 
 extern uint32_t counter;
+extern bool game_in_progress;
 
 int main(int argc, char *argv[]) {
     // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -35,21 +38,41 @@ int main(int argc, char *argv[]) {
 }
 
 int driver_setup() {
-    if (vg_start(DIR_MODE_800X600) != 0) {
-        printf("ERROR: %s\n", __func__);
-        return 1;
-    }
-    uint8_t timer_bit_no = TIMER_BIT_NO;
+    uint8_t timer_bit_no = TIMER_BIT_NO, rtc_bit_no = RTC_BIT_NO;
 
     if (timer_subscribe_int(&timer_bit_no) != 0) {
         printf("ERROR: %s\n", __func__);
         return 1;
     }
 
+    if (rtc_subscribe_int(&rtc_bit_no) != 0) {
+        printf("ERROR: %s\n", __func__);
+        return 1;
+    }
+
+    if (timer_set_frequency(0, TIMER_FREQ / FRAME_RATE) != 0) {
+        printf("ERROR: %s\n", __func__);
+        return 1;
+    }
+
+    if (rtc_set_alarm() != 0) {
+        printf("ERROR: %s\n", __func__);
+        return 1;
+    }
+
+    if (vg_start(DIR_MODE_800X600) != 0) {
+        printf("ERROR: %s\n", __func__);
+        return 1;
+    }
     return 0;
 }
 
 int driver_cleanup() {
+    if (rtc_unsubscribe_int() != 0) {
+        printf("ERROR: %s\n", __func__);
+        return 1;
+    }
+
     if (timer_unsubscribe_int() != 0) {
         printf("ERROR: %s\n", __func__);
         return 1;
@@ -59,6 +82,7 @@ int driver_cleanup() {
         printf("ERROR: %s\n", __func__);
         return 1;
     }
+    vg_free_buffer();
 
     return 0;
 }
@@ -83,9 +107,9 @@ int (proj_main_loop) (int argc, char *argv[]) {
     int ipc_status, r;
     message msg;
 
-    uint32_t timer_irq_set = BIT(TIMER_BIT_NO);
+    uint32_t timer_irq_set = BIT(TIMER_BIT_NO), rtc_irq_set = BIT(RTC_BIT_NO);
 
-    while(counter < 180) { // while (!esc) -> while (!RTC_INT)
+    while(game_in_progress) { // while (!esc) -> while (!RTC_INT)
         if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
             printf("driver_receive failed with: %d\n", r);
             continue;
@@ -96,7 +120,7 @@ int (proj_main_loop) (int argc, char *argv[]) {
                     if (msg.m_notify.interrupts & timer_irq_set) {
                         timer_ih();
                         if (counter % FRAME_RATE == 0) {
-                            if (graphics_draw_current_frame() != 0) {
+                            /*if (graphics_draw_current_frame() != 0) {
                                 printf("ERROR: %s\n", __func__ );
                                 vg_exit();
                                 return 1;
@@ -105,8 +129,11 @@ int (proj_main_loop) (int argc, char *argv[]) {
                                 printf("ERROR: %s\n", __func__ );
                                 vg_exit();
                                 return 1;
-                            }
+                            } */
                         }
+                    }
+                    if (msg.m_notify.interrupts & rtc_irq_set) {
+                        rtc_ih();
                     }
                     break;
                 default:

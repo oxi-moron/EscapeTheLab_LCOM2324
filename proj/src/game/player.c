@@ -3,6 +3,9 @@
 void player_construct(struct point2D position, double angle) {
     player.position = position;
     player.angle = angle;
+    for (int i = 0; i < 4; i++) {
+        player.items[i].id = 0;
+    }
 }
 
 struct point2D player_get_position() {
@@ -24,6 +27,10 @@ int player_set_angle(double angle) {
     player.angle = angle;
 
     return 0;
+}
+
+struct Item* player_get_items() {
+    return player.items;
 }
 
 // TODO: Replace with macros

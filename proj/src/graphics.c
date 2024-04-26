@@ -1,17 +1,14 @@
 #include "graphics.h"
-#include "video.h"
-#include "map.h"
-#include "player.h"
-#include "graphics_macros.h"
-#include <math.h>
 
 // TODO: this is global for now
 uint32_t wall_colors[16] = {
-        0x0000FF, 0x4169E1, 0x6495ED, 0x87CEEB,
-        0x87CEFA, 0xADD8E6, 0xB0E0E6, 0x1E90FF,
-        0x00BFFF, 0x7B68EE, 0x4682B4, 0x5F9EA0,
-        0x87CEFA, 0x00CED1, 0x40E0D0, 0x00FFFF
+        0x000000, 0xff0000, 0x00ff00, 0x0000ff,
+        0x000000, 0xff0000, 0x00ff00, 0x0000ff,
+        0x000000, 0xff0000, 0x00ff00, 0x0000ff,
+        0x000000, 0xff0000, 0x00ff00, 0x0000ff
 };
+xpm_image_t items[1];
+xpm_image_t menu;
 
 int (graphics_construct) () {
     if (vg_get_resolution(&width, &height) != 0) {
@@ -22,7 +19,7 @@ int (graphics_construct) () {
         printf("ERROR: %s\n", __func__ );
         return 1;
     }
-
+    load_xpms();
     return 0;
 }
 
@@ -36,12 +33,15 @@ int (graphics_draw_current_frame) () {
         printf("ERROR: %s\n", __func__ );
         return 1;
     }
-
+    if (draw_item_bar() != 0) {
+        printf("ERROR: %s\n", __func__ );
+        return 1;
+    }
     if (draw_player_camera() != 0) {
         printf("ERROR: %s\n", __func__ );
         return 1;
     }
-
+    swap_buffer();
     return 0;
 }
 
@@ -81,6 +81,13 @@ int (draw_player_camera) () {
         if (draw_end >= (int)height) draw_end = height - 1;
 
         vg_draw_vline_colormap(width - i, draw_start, draw_end - draw_start, wall_colors);
+        /*uint8_t pos;
+        map_get_grid_pos((collision_point.x) * map_width / width, collision_point.y * map_height / height, &pos);
+        if (pos == 1) {
+            vg_draw_vline(width - i, draw_start, draw_end - draw_start, 0xFF0000);
+        } if (pos == 2) {
+            vg_draw_vline(width - i, draw_start, draw_end - draw_start, 0x00FF00);
+        }*/
         free(line);
     }
 
@@ -100,14 +107,16 @@ int (create_line) (struct point2D* line, double angle) {
 
     int err = dx - dy;
 
-    while ((x1 != x2 || y1 != y2) && index < LINE_SIZE) {
+    while ((x1 != x2 || y1 != y2) && index < LINE_SIZE - 1) {
         uint8_t pos;
         if (map_get_grid_pos(x1 * map_width / width, y1 * map_height / height, &pos) != 0) {
             printf("ERROR: %s\n", __func__ );
             return -1;
         }
 
-        if (pos == 1) {
+        if (pos == 1 || pos == 2) {
+            line[index].x = x1; line[index].y = y1;
+            index++;
             return index;
         }
 
@@ -155,3 +164,26 @@ int (set_background_color) (uint32_t color) {
     return 0;
 }
 
+void (load_xpms) () {
+    xpm_load(item, XPM_8_8_8, &items[0]);
+}
+
+int (draw_menu) () {
+    if (vg_draw_xpm(0, 0, menu.width, menu.size, menu.bytes) != 0) {
+        printf("ERROR: %s\n", __func__ );
+        return 1;
+    }
+    return 0;
+}
+
+int (draw_item_bar) () {
+    struct Item* player_items = player_get_items();
+    for (int i = 0; i < 4; i++) {
+        if (vg_draw_xpm(MINIMAP_WIDTH + ((width - MINIMAP_WIDTH) / 4 * i), height - MINIMAP_HEIGHT,
+                    items[player_items[i].id].width, items[player_items[i].id].size, items[player_items[i].id].bytes) != 0) {
+            printf("ERROR: %s\n", __func__ );
+            return 1;
+        }
+    }
+    return 0;
+}

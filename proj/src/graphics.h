@@ -7,6 +7,14 @@ struct point2D {
     int x; int y;
 };
 
+#include "drivers/video.h"
+#include "game/map.h"
+#include "game/player.h"
+#include "graphics_macros.h"
+#include <math.h>
+#include "images/color_pallette.xpm"
+#include "images/item.xpm"
+
 static uint32_t width, height, map_width, map_height;
 
 int (graphics_construct) ();
@@ -14,6 +22,10 @@ int (graphics_draw_current_frame) ();
 
 int (draw_player_camera) ();
 int (draw_map) ();
+
+void (load_xpms) ();
+int (draw_menu) ();
+int (draw_item_bar) ();
 
 int (create_line) (struct point2D* line, double angle);
 int (set_background_color) (uint32_t color);

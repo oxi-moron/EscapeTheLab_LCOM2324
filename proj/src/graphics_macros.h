@@ -12,4 +12,8 @@
 #define LINE_DISTANCE 1000
 #define PLAYER_FOV 70
 
+// Layout Macros
+#define MINIMAP_WIDTH 160
+#define MINIMAP_HEIGHT 120
+
 #endif //G6_GRAPHICS_MACROS_H
