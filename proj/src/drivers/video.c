@@ -57,7 +57,7 @@ int (vg_map_vram) (uint16_t mode) {
     struct minix_mem_range mr;
 
     unsigned int vram_base = vbe_mode_info.PhysBasePtr;
-    unsigned int vram_size = vmi.XResolution * vmi.YResolution * vmi.BitsPerPixel;
+    unsigned int vram_size = vmi.XResolution * vmi.YResolution * (vmi.BitsPerPixel / 8);
 
     mr.mr_base = (phys_bytes) vram_base;
     mr.mr_limit = mr.mr_base + vram_size;

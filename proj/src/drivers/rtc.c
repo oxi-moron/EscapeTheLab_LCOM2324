@@ -36,7 +36,7 @@ int (rtc_set_alarm) () {
         return 1;
     }
     reg_b |= RTC_AIE | RTC_SET | RTC_DM;
-    
+
     do {
         if (rtc_read_from_reg(RTC_REG_A, &reg_a) != 0) {
             printf("ERROR: %s\n", __func__);

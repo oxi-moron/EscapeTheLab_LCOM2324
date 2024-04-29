@@ -7,8 +7,9 @@ uint32_t wall_colors[16] = {
         0x000000, 0xff0000, 0x00ff00, 0x0000ff,
         0x000000, 0xff0000, 0x00ff00, 0x0000ff
 };
+
 xpm_image_t items[1];
-xpm_image_t menu;
+xpm_image_t menu, wall_texture;
 
 int (graphics_construct) () {
     if (vg_get_resolution(&width, &height) != 0) {
@@ -23,24 +24,23 @@ int (graphics_construct) () {
     return 0;
 }
 
-int (graphics_draw_current_frame) () {
-    if (set_background_color(BLACK) != 0) {
+int (graphics_draw_game) () {
+
+    clear_buffer();
+
+    if (graphics_draw_map() != 0) {
+        printf("ERROR: %s\n", __func__ );
+        return 1;
+    }
+    if (graphics_draw_item_bar() != 0) {
+        printf("ERROR: %s\n", __func__ );
+        return 1;
+    }
+    if (graphics_draw_player_camera() != 0) {
         printf("ERROR: %s\n", __func__ );
         return 1;
     }
 
-    if (draw_map() != 0) {
-        printf("ERROR: %s\n", __func__ );
-        return 1;
-    }
-    if (draw_item_bar() != 0) {
-        printf("ERROR: %s\n", __func__ );
-        return 1;
-    }
-    if (draw_player_camera() != 0) {
-        printf("ERROR: %s\n", __func__ );
-        return 1;
-    }
     swap_buffer();
     return 0;
 }
@@ -53,7 +53,7 @@ double get_ray_angle(int diff) {
     return (player_get_angle() - (double) PLAYER_FOV / 2 + ((double) (PLAYER_FOV * diff) / width));
 }
 
-int (draw_player_camera) () {
+int (graphics_draw_player_camera) () {
     int cellsize = height / map_height;
 
     for (uint32_t i = 0; i < width; i++) {
@@ -80,14 +80,16 @@ int (draw_player_camera) () {
         int16_t draw_end = wall_height / 2 + height / 2;
         if (draw_end >= (int)height) draw_end = height - 1;
 
-        vg_draw_vline_colormap(width - i, draw_start, draw_end - draw_start, wall_colors);
-        /*uint8_t pos;
-        map_get_grid_pos((collision_point.x) * map_width / width, collision_point.y * map_height / height, &pos);
-        if (pos == 1) {
-            vg_draw_vline(width - i, draw_start, draw_end - draw_start, 0xFF0000);
-        } if (pos == 2) {
-            vg_draw_vline(width - i, draw_start, draw_end - draw_start, 0x00FF00);
-        }*/
+        /*uint32_t colors[16];
+        for (int j = 0; j < 16; j++) {
+            uint32_t color = (wall_texture.bytes[(i % 16 + 16 * j) * 3 + 2] << 16)
+                    | (wall_texture.bytes[(i % 16 + 16 * j) * 3 + 1] << 8)
+                    | wall_texture.bytes[(i % 16 + 16 * j) * 3];
+            colors[j] = color;
+        }
+
+        vg_draw_vline_colormap(width - i, draw_start, draw_end - draw_start, colors);*/
+        vg_draw_vline(width - i, draw_start, draw_end - draw_start, 0xFFFFFF);
         free(line);
     }
 
@@ -137,7 +139,7 @@ int (create_line) (struct point2D* line, double angle) {
     return index;
 }
 
-int (draw_map) () {
+int (graphics_draw_map) () {
     for (uint32_t y = 0; y < map_height; y++) {
         for (uint32_t x = 0; x < map_width; x++) {
             uint8_t pos;
@@ -166,17 +168,26 @@ int (set_background_color) (uint32_t color) {
 
 void (load_xpms) () {
     xpm_load(item, XPM_8_8_8, &items[0]);
+    xpm_load(test_menu, XPM_8_8_8, &menu);
+    xpm_load(test_wall_texture, XPM_8_8_8, &wall_texture);
 }
 
-int (draw_menu) () {
+int (graphics_draw_menu) () {
+    if (set_background_color(BLACK) != 0) {
+        printf("ERROR: %s\n", __func__ );
+        return 1;
+    }
+
     if (vg_draw_xpm(0, 0, menu.width, menu.size, menu.bytes) != 0) {
         printf("ERROR: %s\n", __func__ );
         return 1;
     }
+
+    swap_buffer();
     return 0;
 }
 
-int (draw_item_bar) () {
+int (graphics_draw_item_bar) () {
     struct Item* player_items = player_get_items();
     for (int i = 0; i < 4; i++) {
         if (vg_draw_xpm(MINIMAP_WIDTH + ((width - MINIMAP_WIDTH) / 4 * i), height - MINIMAP_HEIGHT,

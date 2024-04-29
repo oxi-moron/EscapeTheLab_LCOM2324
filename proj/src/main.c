@@ -9,6 +9,7 @@
 #include "drivers/rtc.h"
 #include "drivers/rtc_macros.h"
 #include "game/map.h"
+#include "game/game_state.h"
 
 extern uint32_t counter;
 extern bool game_in_progress;
@@ -46,11 +47,6 @@ int driver_setup() {
     }
 
     if (rtc_subscribe_int(&rtc_bit_no) != 0) {
-        printf("ERROR: %s\n", __func__);
-        return 1;
-    }
-
-    if (timer_set_frequency(0, TIMER_FREQ / FRAME_RATE) != 0) {
         printf("ERROR: %s\n", __func__);
         return 1;
     }
@@ -109,7 +105,7 @@ int (proj_main_loop) (int argc, char *argv[]) {
 
     uint32_t timer_irq_set = BIT(TIMER_BIT_NO), rtc_irq_set = BIT(RTC_BIT_NO);
 
-    while(game_in_progress) { // while (!esc) -> while (!RTC_INT)
+    while(game_in_progress) {
         if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
             printf("driver_receive failed with: %d\n", r);
             continue;
@@ -119,17 +115,13 @@ int (proj_main_loop) (int argc, char *argv[]) {
                 case HARDWARE:
                     if (msg.m_notify.interrupts & timer_irq_set) {
                         timer_ih();
-                        if (counter % FRAME_RATE == 0) {
-                            /*if (graphics_draw_current_frame() != 0) {
+                        if (counter % (60 / FRAME_RATE) == 0) {
+                            printf("counter: %d\n", counter);
+                            if (state_process() != 0) {
                                 printf("ERROR: %s\n", __func__ );
                                 vg_exit();
                                 return 1;
-                            };
-                            if (player_move(ROTATE_LEFT) != 0) {
-                                printf("ERROR: %s\n", __func__ );
-                                vg_exit();
-                                return 1;
-                            } */
+                            }
                         }
                     }
                     if (msg.m_notify.interrupts & rtc_irq_set) {
