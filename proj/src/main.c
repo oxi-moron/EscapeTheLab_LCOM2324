@@ -56,6 +56,11 @@ int driver_setup() {
         return 1;
     }
 
+    if (timer_set_frequency(0, 20) != 0) {
+        printf("ERROR: %s\n", __func__);
+        return 1;
+    }
+
     if (vg_start(DIR_MODE_800X600) != 0) {
         printf("ERROR: %s\n", __func__);
         return 1;
@@ -115,8 +120,7 @@ int (proj_main_loop) (int argc, char *argv[]) {
                 case HARDWARE:
                     if (msg.m_notify.interrupts & timer_irq_set) {
                         timer_ih();
-                        if (counter % (60 / FRAME_RATE) == 0) {
-                            printf("counter: %d\n", counter);
+                        if (counter % (sys_hz() / FRAME_RATE) == 0) {
                             if (state_process() != 0) {
                                 printf("ERROR: %s\n", __func__ );
                                 vg_exit();

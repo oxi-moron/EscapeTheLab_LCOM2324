@@ -49,23 +49,11 @@ int (rtc_set_alarm) () {
         return 1;
     }
 
-    // rtc_get_time
-    if (rtc_read_from_reg(RTC_HOURS, &hours) != 0) {
+    if (rtc_get_time(&hours, &minutes, &seconds) != 0) {
         printf("ERROR: %s\n", __func__);
         return 1;
     }
 
-    if (rtc_read_from_reg(RTC_MINS, &minutes) != 0) {
-        printf("ERROR: %s\n", __func__);
-        return 1;
-    }
-
-    if (rtc_read_from_reg(RTC_SECS, &seconds) != 0) {
-        printf("ERROR: %s\n", __func__);
-        return 1;
-    }
-
-    // rtc_set_alarm
     if (rtc_write_to_reg(RTC_HOURS_ALARM, hours) != 0) {
         printf("ERROR: %s\n", __func__);
         return 1;
@@ -117,5 +105,24 @@ int (rtc_unsubscribe_int) () {
         printf("ERROR: %s\n", __func__);
         return 1;
     }
+    return 0;
+}
+
+int (rtc_get_time) (uint8_t* hours, uint8_t* minutes, uint8_t* seconds) {
+    if (rtc_read_from_reg(RTC_HOURS, hours) != 0) {
+        printf("ERROR: %s\n", __func__);
+        return 1;
+    }
+
+    if (rtc_read_from_reg(RTC_MINS, minutes) != 0) {
+        printf("ERROR: %s\n", __func__);
+        return 1;
+    }
+
+    if (rtc_read_from_reg(RTC_SECS, seconds) != 0) {
+        printf("ERROR: %s\n", __func__);
+        return 1;
+    }
+    
     return 0;
 }

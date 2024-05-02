@@ -1,15 +1,7 @@
 #include "graphics.h"
 
-// TODO: this is global for now
-uint32_t wall_colors[16] = {
-        0x000000, 0xff0000, 0x00ff00, 0x0000ff,
-        0x000000, 0xff0000, 0x00ff00, 0x0000ff,
-        0x000000, 0xff0000, 0x00ff00, 0x0000ff,
-        0x000000, 0xff0000, 0x00ff00, 0x0000ff
-};
-
 xpm_image_t items[1];
-xpm_image_t menu, wall_texture;
+xpm_image_t menu, wall_texture_pixmap;
 
 int (graphics_construct) () {
     if (vg_get_resolution(&width, &height) != 0) {
@@ -25,9 +17,10 @@ int (graphics_construct) () {
 }
 
 int (graphics_draw_game) () {
-
-    clear_buffer();
-
+    if (set_background_color(BLACK) != 0) {
+        printf("ERROR: %s\n", __func__ );
+        return 1;
+    }
     if (graphics_draw_map() != 0) {
         printf("ERROR: %s\n", __func__ );
         return 1;
@@ -80,16 +73,15 @@ int (graphics_draw_player_camera) () {
         int16_t draw_end = wall_height / 2 + height / 2;
         if (draw_end >= (int)height) draw_end = height - 1;
 
-        /*uint32_t colors[16];
+        uint32_t colors[16];
         for (int j = 0; j < 16; j++) {
-            uint32_t color = (wall_texture.bytes[(i % 16 + 16 * j) * 3 + 2] << 16)
-                    | (wall_texture.bytes[(i % 16 + 16 * j) * 3 + 1] << 8)
-                    | wall_texture.bytes[(i % 16 + 16 * j) * 3];
+            uint32_t color = (wall_texture_pixmap.bytes[(i % 16 + 16 * j) * 3 + 2] << 16)
+                    | (wall_texture_pixmap.bytes[(i % 16 + 16 * j) * 3 + 1] << 8)
+                    | wall_texture_pixmap.bytes[(i % 16 + 16 * j) * 3];
             colors[j] = color;
         }
 
-        vg_draw_vline_colormap(width - i, draw_start, draw_end - draw_start, colors);*/
-        vg_draw_vline(width - i, draw_start, draw_end - draw_start, 0xFFFFFF);
+        vg_draw_vline_colormap(width - i, draw_start, draw_end - draw_start, colors);
         free(line);
     }
 
@@ -169,7 +161,7 @@ int (set_background_color) (uint32_t color) {
 void (load_xpms) () {
     xpm_load(item, XPM_8_8_8, &items[0]);
     xpm_load(test_menu, XPM_8_8_8, &menu);
-    xpm_load(test_wall_texture, XPM_8_8_8, &wall_texture);
+    xpm_load(wall_texture, XPM_8_8_8, &wall_texture_pixmap);
 }
 
 int (graphics_draw_menu) () {

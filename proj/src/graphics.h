@@ -14,7 +14,7 @@ struct point2D {
 #include <math.h>
 #include "images/test_menu.xpm"
 #include "images/item.xpm"
-#include "images/test_wall_texture.xpm"
+#include "images/wall_texture.xpm"
 
 static uint32_t width, height, map_width, map_height;
 

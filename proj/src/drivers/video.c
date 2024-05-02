@@ -41,7 +41,6 @@ int (vg_set_mode) (uint16_t mode) {
     return 0;
 }
 
-// TODO: Split up into get info and map vram
 int (vg_map_vram) (uint16_t mode) {
 
     vbe_mode_info_t vbe_mode_info;
