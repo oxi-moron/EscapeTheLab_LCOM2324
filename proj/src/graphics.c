@@ -1,6 +1,6 @@
 #include "graphics.h"
 
-xpm_image_t items[1];
+xpm_image_t items[INVENTORY_SIZE];
 xpm_image_t menu, wall_texture_pixmap;
 
 int (graphics_construct) () {
@@ -38,13 +38,22 @@ int (graphics_draw_game) () {
     return 0;
 }
 
-double to_radians(double angle) {
-    return 2 * M_PI * angle * 1.0 / 360;
+int (graphics_draw_menu) () {
+    if (set_background_color(BLACK) != 0) {
+        printf("ERROR: %s\n", __func__ );
+        return 1;
+    }
+
+    if (vg_draw_xpm(0, 0, menu.width, menu.size, menu.bytes) != 0) {
+        printf("ERROR: %s\n", __func__ );
+        return 1;
+    }
+
+    swap_buffer();
+    return 0;
 }
 
-double get_ray_angle(int diff) {
-    return (player_get_angle() - (double) PLAYER_FOV / 2 + ((double) (PLAYER_FOV * diff) / width));
-}
+
 
 int (graphics_draw_player_camera) () {
     int cellsize = height / map_height;
@@ -59,8 +68,8 @@ int (graphics_draw_player_camera) () {
             return 1;
         }
 
-        for (int i = 0; i < line_size; i++) {
-            vg_draw_pixel(line[i].x / 5, (4 * height / 5) + (line[i].y / 5), RED);
+        for (int j = 0; j < line_size; j++) {
+            vg_draw_pixel(line[j].x / 5, (4 * height / 5) + (line[j].y / 5), RED);
         }
 
         struct point2D collision_point = line[line_size - 1];
@@ -85,6 +94,37 @@ int (graphics_draw_player_camera) () {
         free(line);
     }
 
+    return 0;
+}
+
+int (graphics_draw_item_bar) () {
+    enum items* player_items = player_get_items();
+    for (int i = 0; i < 4; i++) {
+        if (vg_draw_xpm(MINIMAP_WIDTH + ((width - MINIMAP_WIDTH) / 4 * i), height - MINIMAP_HEIGHT,
+                        items[player_items[i]].width, items[player_items[i]].size, items[player_items[i]].bytes) != 0) {
+            printf("ERROR: %s\n", __func__ );
+            return 1;
+        }
+    }
+    return 0;
+}
+
+int (graphics_draw_map) () {
+    for (uint32_t y = 0; y < map_height; y++) {
+        for (uint32_t x = 0; x < map_width; x++) {
+            uint8_t pos;
+            if (map_get_grid_pos(x, y, &pos) != 0) {
+                printf("ERROR: %s\n", __func__ );
+                return 1;
+            }
+            uint32_t color = pos == 1 ? GREEN : WHITE;
+            if (vg_draw_rectangle(x * (width / 5 / map_width), (4 * height / 5) + (y * (height / 5 / map_height))
+                    , (width / 5 / map_width), (height / 5 / map_height), color) != 0) {
+                printf("ERROR: %s\n", __func__ );
+                return 1;
+            }
+        }
+    }
     return 0;
 }
 
@@ -131,25 +171,6 @@ int (create_line) (struct point2D* line, double angle) {
     return index;
 }
 
-int (graphics_draw_map) () {
-    for (uint32_t y = 0; y < map_height; y++) {
-        for (uint32_t x = 0; x < map_width; x++) {
-            uint8_t pos;
-            if (map_get_grid_pos(x, y, &pos) != 0) {
-                printf("ERROR: %s\n", __func__ );
-                return 1;
-            }
-            uint32_t color = pos == 1 ? GREEN : WHITE;
-            if (vg_draw_rectangle(x * (width / 5 / map_width), (4 * height / 5) + (y * (height / 5 / map_height))
-                              , (width / 5 / map_width), (height / 5 / map_height), color) != 0) {
-                printf("ERROR: %s\n", __func__ );
-                return 1;
-            }
-        }
-    }
-    return 0;
-}
-
 int (set_background_color) (uint32_t color) {
     if (vg_draw_rectangle(0, 0, width, height, color) != 0) {
         printf("ERROR: %s\n", __func__ );
@@ -159,34 +180,15 @@ int (set_background_color) (uint32_t color) {
 }
 
 void (load_xpms) () {
-    xpm_load(item, XPM_8_8_8, &items[0]);
+    xpm_load(item, XPM_8_8_8, &items[ITEM1]);
     xpm_load(test_menu, XPM_8_8_8, &menu);
     xpm_load(wall_texture, XPM_8_8_8, &wall_texture_pixmap);
 }
 
-int (graphics_draw_menu) () {
-    if (set_background_color(BLACK) != 0) {
-        printf("ERROR: %s\n", __func__ );
-        return 1;
-    }
-
-    if (vg_draw_xpm(0, 0, menu.width, menu.size, menu.bytes) != 0) {
-        printf("ERROR: %s\n", __func__ );
-        return 1;
-    }
-
-    swap_buffer();
-    return 0;
+double (to_radians) (double angle) {
+    return 2 * M_PI * angle * 1.0 / 360;
 }
 
-int (graphics_draw_item_bar) () {
-    struct Item* player_items = player_get_items();
-    for (int i = 0; i < 4; i++) {
-        if (vg_draw_xpm(MINIMAP_WIDTH + ((width - MINIMAP_WIDTH) / 4 * i), height - MINIMAP_HEIGHT,
-                    items[player_items[i].id].width, items[player_items[i].id].size, items[player_items[i].id].bytes) != 0) {
-            printf("ERROR: %s\n", __func__ );
-            return 1;
-        }
-    }
-    return 0;
+double (get_ray_angle) (int diff) {
+    return (player_get_angle() - (double) PLAYER_FOV / 2 + ((double) (PLAYER_FOV * diff) / width));
 }

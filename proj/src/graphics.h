@@ -29,5 +29,7 @@ int (graphics_draw_item_bar) ();
 void (load_xpms) ();
 int (create_line) (struct point2D* line, double angle);
 int (set_background_color) (uint32_t color);
+double (get_ray_angle) (int diff);
+double (to_radians) (double angle);
 
 #endif //G6_GRAPHICS_H

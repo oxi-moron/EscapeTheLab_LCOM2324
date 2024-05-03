@@ -123,6 +123,6 @@ int (rtc_get_time) (uint8_t* hours, uint8_t* minutes, uint8_t* seconds) {
         printf("ERROR: %s\n", __func__);
         return 1;
     }
-    
+
     return 0;
 }

@@ -4,7 +4,7 @@ void player_construct(struct point2D position, double angle) {
     player.position = position;
     player.angle = angle;
     for (int i = 0; i < 4; i++) {
-        player.items[i].id = 0;
+        player.player_items[i] = ITEM1;
     }
 }
 
@@ -29,30 +29,29 @@ int player_set_angle(double angle) {
     return 0;
 }
 
-struct Item* player_get_items() {
-    return player.items;
+enum items* player_get_items() {
+    return player.player_items;
 }
 
-// TODO: Replace with macros
 int player_move(enum player_moves move) {
     switch(move) {
         case UP:
-            player.position.y += 10;
+            player.position.y += PLAYER_SPEED;
             break;
         case DOWN:
-            player.position.y -= 10;
+            player.position.y -= PLAYER_SPEED;
             break;
         case LEFT:
-            player.position.x -= 10;
+            player.position.x -= PLAYER_SPEED;
             break;
         case RIGHT:
-            player.position.x += 10;
+            player.position.x += PLAYER_SPEED;
             break;
         case ROTATE_LEFT:
-            player.angle = (int)(player.angle + 10) % 360;
+            player.angle = (int)(player.angle + PLAYER_SPEED) % 360;
             break;
         case ROTATE_RIGHT:
-            player.angle = player.angle - 10;
+            player.angle = player.angle - PLAYER_SPEED;
             if (player.angle < 0) player.angle += 360;
             break;
     }

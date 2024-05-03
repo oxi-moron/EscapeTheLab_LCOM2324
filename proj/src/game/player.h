@@ -4,16 +4,14 @@
 #include <lcom/lcf.h>
 
 #include "../graphics.h"
+#include "game_macros.h"
 
-// TODO: temporary
-struct Item {
-    int id;
-};
+enum items {ITEM1, ITEM2, ITEM3, ITEM4};
 
 struct Player {
     struct point2D position;
     double angle;
-    struct Item items[4];
+    enum items player_items[INVENTORY_SIZE];
 };
 
 enum player_moves {UP, DOWN, LEFT, RIGHT, ROTATE_LEFT, ROTATE_RIGHT};
@@ -27,7 +25,7 @@ double player_get_angle();
 
 int player_set_position(struct point2D position);
 int player_set_angle(double angle);
-struct Item* player_get_items();
+enum items* player_get_items();
 
 int player_move(enum player_moves move);
 
