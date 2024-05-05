@@ -1,8 +1,8 @@
 #include "player.h"
 
-void player_construct(struct point2D position, double angle) {
-    player.position = position;
-    player.angle = angle;
+void player_construct() {
+    player.position = (struct point2D){300, 300};
+    player.angle = 0;
     for (int i = 0; i < 4; i++) {
         player.player_items[i] = ITEM1;
     }
@@ -16,9 +16,9 @@ double player_get_angle() {
     return player.angle;
 }
 
-// TODO: Sanitize inputs
 int player_set_position(struct point2D position) {
-    player.position = position;
+    if (position.x < 800 && position.y < 600)
+        player.position = position;
 
     return 0;
 }
@@ -36,16 +36,20 @@ enum items* player_get_items() {
 int player_move(enum player_moves move) {
     switch(move) {
         case UP:
-            player.position.y += PLAYER_SPEED;
+            player.position.y -= (int) (PLAYER_SPEED * sin(player.angle));
+            player.position.x += (int) (PLAYER_SPEED * cos(player.angle));
             break;
         case DOWN:
-            player.position.y -= PLAYER_SPEED;
+            player.position.y += (int) (PLAYER_SPEED * sin(player.angle));
+            player.position.x -= (int) (PLAYER_SPEED * cos(player.angle));
             break;
         case LEFT:
-            player.position.x -= PLAYER_SPEED;
+            player.position.y -= (int) (PLAYER_SPEED * cos(player.angle));
+            player.position.x -= (int) (PLAYER_SPEED * sin(player.angle));
             break;
         case RIGHT:
-            player.position.x += PLAYER_SPEED;
+            player.position.y += (int) (PLAYER_SPEED * cos(player.angle));
+            player.position.x += (int) (PLAYER_SPEED * sin(player.angle));
             break;
         case ROTATE_LEFT:
             player.angle = (int)(player.angle + PLAYER_SPEED) % 360;

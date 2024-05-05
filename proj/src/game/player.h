@@ -18,7 +18,7 @@ enum player_moves {UP, DOWN, LEFT, RIGHT, ROTATE_LEFT, ROTATE_RIGHT};
 
 static struct Player player;
 
-void player_construct(struct point2D position, double angle);
+void player_construct();
 
 struct point2D player_get_position();
 double player_get_angle();

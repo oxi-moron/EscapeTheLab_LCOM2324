@@ -2,15 +2,16 @@
 #define G6_GAME_STATE_H
 
 #include <lcom/lcf.h>
+#include "player.h"
 
 enum game_state_t {MENU, GAME};
 
-static enum game_state_t game_state = MENU;
+static enum game_state_t game_state = GAME;
 
-int state_process();
-
+int game_setup();
 
 int state_draw_frame();
-int state_move_player();
+int state_kbd_event(uint8_t scancode);
+int state_mouse_event(struct packet pp);
 
 #endif //G6_GAME_STATE_H

@@ -22,7 +22,7 @@ int (graphics_construct) ();
 int (graphics_draw_game) ();
 int (graphics_draw_menu) ();
 
-
+// TODO: declare static
 int (graphics_draw_player_camera) ();
 int (graphics_draw_map) ();
 int (graphics_draw_item_bar) ();
