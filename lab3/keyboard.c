@@ -5,7 +5,7 @@
 #include <assert.h>
 #include "keyboard.h"
 #include "kbc.h"
-#include "i8042.h"
+#include "i8024.h"
 
 int kbd_hook_id = 0;
 uint8_t codes[2];

@@ -7,7 +7,7 @@
 #include "keyboard.h"
 #include "timer.h"
 #include "kbc.h"
-#include "i8042.h"
+#include "i8024.h"
 #include "i8254.h"
 
 extern uint8_t codes[];

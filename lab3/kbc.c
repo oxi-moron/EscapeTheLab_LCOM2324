@@ -5,7 +5,7 @@
 #include <assert.h>
 #include "keyboard.h"
 #include "kbc.h"
-#include "i8042.h"
+#include "i8024.h"
 
 int (kbd_issue_command) (uint8_t cmd) {
 

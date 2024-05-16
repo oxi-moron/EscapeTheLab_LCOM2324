@@ -7,7 +7,7 @@ extern int currentByte;
 extern bool game_in_progress;
 
 int driver_setup() {
-    uint8_t timer_bit_no = TIMER_BIT_NO, rtc_bit_no = RTC_BIT_NO
+    uint8_t timer_bit_no = TIMER_BIT_NO // rtc_bit_no = RTC_BIT_NO
     , kbc_bit_no = KBD_BIT_NO, mouse_bit_no = MOUSE_BIT_NO;
 
     if (timer_subscribe_int(&timer_bit_no) != 0) {
@@ -15,11 +15,12 @@ int driver_setup() {
         return 1;
     }
 
+    /*
     if (rtc_subscribe_int(&rtc_bit_no) != 0) {
         printf("ERROR: %s\n", __func__);
         return 1;
     }
-
+    */
     if (keyboard_subscribe_int(&kbc_bit_no) != 0) {
         printf("ERROR: %s\n", __func__);
         return 1;
@@ -30,10 +31,10 @@ int driver_setup() {
         return 1;
     }
 
-    if (rtc_set_alarm() != 0) {
+    /* if (rtc_set_alarm() != 0) {
         printf("ERROR: %s\n", __func__);
         return 1;
-    }
+    } */
 
     writeCommand(0xF4);
 
@@ -61,10 +62,10 @@ int driver_cleanup() {
         return 1;
     }
 
-    if (rtc_unsubscribe_int() != 0) {
+    /* if (rtc_unsubscribe_int() != 0) {
         printf("ERROR: %s\n", __func__);
         return 1;
-    }
+    } */
 
     if (timer_unsubscribe_int() != 0) {
         printf("ERROR: %s\n", __func__);
@@ -84,7 +85,7 @@ int main_event_loop() {
     int ipc_status, r;
     message msg;
 
-    uint32_t timer_irq_set = BIT(TIMER_BIT_NO), rtc_irq_set = BIT(RTC_BIT_NO),
+    uint32_t timer_irq_set = BIT(TIMER_BIT_NO), // rtc_irq_set = BIT(RTC_BIT_NO),
             irq_set_kbc = BIT(KBD_BIT_NO), irq_set_mouse = BIT(MOUSE_BIT_NO);
 
     while(game_in_progress && scancode != ESC_BREAK_CODE) {
@@ -101,9 +102,9 @@ int main_event_loop() {
                                 return 1;
                             }
                     }
-                    if (msg.m_notify.interrupts & rtc_irq_set) {
+                    /* if (msg.m_notify.interrupts & rtc_irq_set) {
                         rtc_ih();
-                    }
+                    } */
                     if (msg.m_notify.interrupts & irq_set_kbc) {
                         kbc_ih();
                         state_kbd_event(scancode);
