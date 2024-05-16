@@ -1,5 +1,5 @@
 #include "game_state.h"
-#include "../graphics.h"
+#include "graphics.h"
 
 int game_setup() {
     player_construct();
@@ -80,6 +80,7 @@ int state_mouse_event(struct packet pp) {
             }
             break;
         case MENU:
+            cursor_move(pp.delta_x, pp.delta_y);
             break;
     }
 

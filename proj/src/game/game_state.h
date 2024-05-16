@@ -3,10 +3,11 @@
 
 #include <lcom/lcf.h>
 #include "player.h"
+#include "cursor.h"
 
 enum game_state_t {MENU, GAME};
 
-static enum game_state_t game_state = GAME;
+static enum game_state_t game_state = MENU;
 
 int game_setup();
 

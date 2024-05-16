@@ -1,17 +1,5 @@
 #include <lcom/lcf.h>
 
-#include "drivers/video.h"
-#include "drivers/VBE.h"
-#include "graphics.h"
-#include "drivers/timer.h"
-#include "drivers/i8254_timer.h"
-#include "drivers/i8024_kbc.h"
-#include "drivers/kbc.h"
-#include "drivers/mouse.h"
-#include "game/player.h"
-#include "drivers/rtc.h"
-#include "drivers/rtc_macros.h"
-#include "game/map.h"
 #include "game/game_state.h"
 #include "drivers/driver_handler.h"
 

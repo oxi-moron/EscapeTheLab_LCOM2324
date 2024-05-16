@@ -3,7 +3,7 @@
 
 #include <lcom/lcf.h>
 
-#include "../graphics.h"
+#include "graphics.h"
 #include "game_macros.h"
 
 enum items {ITEM1, ITEM2, ITEM3, ITEM4};
