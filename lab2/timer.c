@@ -38,6 +38,8 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
     return 1;
   }
 
+  if (freq < 20 || freq > TIMER_FREQ) return 1;
+
   uint16_t div = TIMER_FREQ / freq;
   uint8_t lsb;
   uint8_t msb;
