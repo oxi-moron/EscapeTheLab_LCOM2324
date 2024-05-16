@@ -88,7 +88,7 @@ int main_event_loop() {
     uint32_t timer_irq_set = BIT(TIMER_BIT_NO), // rtc_irq_set = BIT(RTC_BIT_NO),
             irq_set_kbc = BIT(KBD_BIT_NO), irq_set_mouse = BIT(MOUSE_BIT_NO);
 
-    while(game_in_progress && scancode != ESC_BREAK_CODE) {
+    while(game_in_progress) {
         if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
             printf("driver_receive failed with: %d\n", r);
             continue;
@@ -97,10 +97,13 @@ int main_event_loop() {
             switch (_ENDPOINT_P(msg.m_source)) {
                 case HARDWARE:
                     if (msg.m_notify.interrupts & timer_irq_set) {
+                        timer_ih();
+                        if (counter % (60 / FRAME_RATE) == 0) {
                             if (state_draw_frame() != 0) {
                                 printf("ERROR: %s\n", __func__);
                                 return 1;
                             }
+                        }
                     }
                     /* if (msg.m_notify.interrupts & rtc_irq_set) {
                         rtc_ih();
@@ -113,6 +116,7 @@ int main_event_loop() {
                         mouse_ih();
                         if (currentByte == 3) {
                             currentByte = 0;
+                            mouse_print_packet(&mousePacket);
                             if (state_mouse_event(mousePacket) != 0) {
                                 printf("ERROR: %s\n", __func__);
                                 return 1;

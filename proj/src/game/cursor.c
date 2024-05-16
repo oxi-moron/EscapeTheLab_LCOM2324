@@ -7,7 +7,7 @@ void cursor_get_position(uint16_t* x_pos, uint16_t* y_pos) {
 
 void cursor_move(int x_delta, int y_delta) {
     x += x_delta;
-    y += y_delta;
+    y -= y_delta;
 
     if (x > 799 - 28) x = 799 - 28; if (y > 599 - 28) y = 599 - 28; 
 }
