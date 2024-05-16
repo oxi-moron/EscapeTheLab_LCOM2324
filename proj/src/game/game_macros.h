@@ -1,0 +1,7 @@
+#ifndef G6_GAME_MACROS_H
+#define G6_GAME_MACROS_H
+
+# define INVENTORY_SIZE 4
+#define PLAYER_SPEED 10
+
+#endif //G6_GAME_MACROS_H
