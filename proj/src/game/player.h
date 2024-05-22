@@ -6,6 +6,7 @@
 #include "graphics.h"
 #include "game_macros.h"
 
+// TODO: game items
 enum items {ITEM1, ITEM2, ITEM3, ITEM4};
 
 struct Player {

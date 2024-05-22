@@ -83,10 +83,6 @@ int (graphics_draw_player_camera) () {
             return 1;
         }
 
-        for (int j = 0; j < line_size; j++) {
-            vg_draw_pixel(line[j].x / 5, (4 * height / 5) + (line[j].y / 5), RED);
-        }
-
         struct point2D collision_point = line[line_size - 1];
         double distance_to_wall = sqrt(pow(collision_point.x - player_get_position().x, 2) + pow(collision_point.y - player_get_position().y, 2));
         distance_to_wall *= fabs(cos(to_radians(ray_angle - player_get_angle())));
@@ -139,6 +135,13 @@ int (graphics_draw_map) () {
                 return 1;
             }
         }
+    }
+
+    struct point2D player = player_get_position();
+    if (vg_draw_rectangle(player.x * MINIMAP_WIDTH / width, (height - MINIMAP_HEIGHT) + player.y * MINIMAP_HEIGHT / height,
+                          5, 5, 0xFF0000) != 0) {
+        printf("ERROR: %s\n", __func__ );
+        return 1;
     }
     return 0;
 }
