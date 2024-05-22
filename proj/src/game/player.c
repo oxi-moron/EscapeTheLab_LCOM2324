@@ -3,6 +3,7 @@
 void player_construct() {
     player.position = (struct point2D){300, 300};
     player.angle = 0;
+    // TODO: for testing purposes
     for (int i = 0; i < 4; i++) {
         player.player_items[i] = ITEM1;
     }

@@ -124,7 +124,8 @@ int (vg_draw_rectangle) (uint16_t x, uint16_t y, uint16_t width, uint16_t height
 int (vg_draw_xpm) (uint16_t x, uint16_t y, int16_t width, uint32_t size, uint8_t* pixmap) {
     for (uint32_t i = 0; i < size / 3; i++) {
         uint32_t color = (pixmap[i * 3 + 2] << 16) | (pixmap[i * 3 + 1] << 8) | pixmap[i * 3];
-        vg_draw_pixel(x + i % width, y + i / width, color);
+        if (x + i % width < vmi.XResolution && y + i / width < vmi.YResolution)
+            vg_draw_pixel(x + i % width, y + i / width, color);
     }
 
     return 0;

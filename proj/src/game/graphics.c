@@ -22,15 +22,15 @@ int (graphics_draw_game) () {
         printf("ERROR: %s\n", __func__ );
         return 1;
     }
+    if (graphics_draw_player_camera() != 0) {
+        printf("ERROR: %s\n", __func__ );
+        return 1;
+    }
     if (graphics_draw_map() != 0) {
         printf("ERROR: %s\n", __func__ );
         return 1;
     }
     if (graphics_draw_item_bar() != 0) {
-        printf("ERROR: %s\n", __func__ );
-        return 1;
-    }
-    if (graphics_draw_player_camera() != 0) {
         printf("ERROR: %s\n", __func__ );
         return 1;
     }
@@ -114,8 +114,8 @@ int (graphics_draw_player_camera) () {
 
 int (graphics_draw_item_bar) () {
     enum items* player_items = player_get_items();
-    for (int i = 0; i < 4; i++) {
-        if (vg_draw_xpm(MINIMAP_WIDTH + ((width - MINIMAP_WIDTH) / 4 * i), height - MINIMAP_HEIGHT,
+    for (int i = 0; i < INVENTORY_SIZE; i++) {
+        if (vg_draw_xpm(MINIMAP_WIDTH + (((width - MINIMAP_WIDTH) / INVENTORY_SIZE) * i), height - MINIMAP_HEIGHT / 2,
                         items[player_items[i]].width, items[player_items[i]].size, items[player_items[i]].bytes) != 0) {
             printf("ERROR: %s\n", __func__ );
             return 1;
