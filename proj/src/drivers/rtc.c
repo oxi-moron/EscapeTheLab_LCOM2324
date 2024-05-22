@@ -1,7 +1,6 @@
 #include "rtc.h"
 #include "rtc_macros.h"
 
-bool game_in_progress = true;
 int rtc_hook_id = 0;
 
 int (rtc_write_to_reg) (uint32_t reg, uint32_t data) {
@@ -76,7 +75,7 @@ void (rtc_ih) () {
     uint8_t reg_c;
     rtc_read_from_reg(RTC_REG_C, &reg_c);
 
-    if (reg_c & RTC_AF) game_in_progress = false;
+    // if (reg_c & RTC_AF) ; end game
 }
 
 int (rtc_subscribe_int) (uint8_t* bit_no) {

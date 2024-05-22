@@ -5,7 +5,7 @@
 #include "player.h"
 #include "cursor.h"
 
-enum game_state_t {MENU, GAME};
+enum game_state_t {MENU, GAME, PAUSE};
 
 static enum game_state_t game_state = MENU;
 

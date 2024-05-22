@@ -18,12 +18,14 @@ struct point2D {
 #include "../images/item.xpm"
 #include "../images/wall_texture.xpm"
 #include "../images/cursor.xpm"
+#include "../images/test_pause_menu.xpm"
 
 static uint32_t width, height, map_width, map_height;
 
 int (graphics_construct) ();
 int (graphics_draw_game) ();
 int (graphics_draw_menu) ();
+int (graphics_draw_pause_menu) ();
 
 // TODO: declare static
 int (graphics_draw_player_camera) ();

@@ -1,6 +1,8 @@
 #include "game_state.h"
 #include "graphics.h"
 
+bool game_in_progress = true;
+
 int game_setup() {
     player_construct();
     if (graphics_construct() != 0) {
@@ -24,6 +26,11 @@ int state_draw_frame() {
                 return -1;
             }
             break;
+        case PAUSE:
+            if (graphics_draw_pause_menu() != 0) {
+                printf("ERROR: %s\n", __func__ );
+                return -1;
+            }
     }
     return 0;
 }
@@ -37,26 +44,31 @@ int state_kbd_event(uint8_t scancode) {
                     return -1;
                 }
             }
-            if (scancode == 0x1e) {
+            else if (scancode == 0x1e) {
                 if (player_move(LEFT) != 0) {
                     printf("ERROR: %s\n", __func__ );
                     return -1;
                 }
             }
-            if (scancode == 0x1f) {
+            else if (scancode == 0x1f) {
                 if (player_move(DOWN) != 0) {
                     printf("ERROR: %s\n", __func__ );
                     return -1;
                 }
             }
-            if (scancode == 0x20) {
+            else if (scancode == 0x20) {
                 if (player_move(RIGHT) != 0) {
                     printf("ERROR: %s\n", __func__ );
                     return -1;
                 }
             }
+            else if (scancode == 0x01) {
+                game_state = PAUSE;
+            }
             break;
         case MENU:
+            break;
+        case PAUSE:
             break;
     }
 
@@ -81,6 +93,21 @@ int state_mouse_event(struct packet pp) {
             break;
         case MENU:
             cursor_move(pp.delta_x, pp.delta_y);
+            if (pp.lb) {
+                uint16_t x, y;
+                cursor_get_position(&x, &y);
+                if (300 <= x && x <= 520 && y >= 220 && y <= 270) game_state = GAME;
+                else if (300 <= x && x <= 520 && y >= 330 && y <= 380) game_in_progress = false;
+            }
+            break;
+        case PAUSE:
+            cursor_move(pp.delta_x, pp.delta_y);
+            if (pp.lb) {
+                uint16_t x, y;
+                cursor_get_position(&x, &y);
+                if (300 <= x && x <= 520 && y >= 220 && y <= 270) game_state = GAME;
+                else if (300 <= x && x <= 520 && y >= 330 && y <= 380) game_state = MENU;
+            }
             break;
     }
 
