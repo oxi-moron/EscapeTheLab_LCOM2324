@@ -138,6 +138,10 @@ int state_mouse_event(struct packet pp) {
 int (state_rtc_event) () {
     // TODO: send to you lost screen?
     if (game_state == GAME) {
+        if (clock_reset_timer() != 0) {
+            printf("ERROR: %s\n", __func__ );
+            return -1;
+        }
         game_state = MENU;
     }
 
