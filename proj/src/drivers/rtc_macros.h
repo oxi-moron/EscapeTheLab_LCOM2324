@@ -30,7 +30,9 @@
 
 // Register Specific Macros
 #define RTC_UIP BIT(7)
+#define RTC_24H BIT(1)
 #define RTC_AIE BIT(5)
+#define RTC_AID 0xDF
 #define RTC_AF BIT(5)
 #define RTC_DM BIT(2)
 #define RTC_SET BIT(7)

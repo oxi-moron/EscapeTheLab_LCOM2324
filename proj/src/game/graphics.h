@@ -19,6 +19,7 @@ struct point2D {
 #include "../images/wall_texture.xpm"
 #include "../images/cursor.xpm"
 #include "../images/test_pause_menu.xpm"
+#include "../images/brick.xpm"
 
 static uint32_t width, height, map_width, map_height;
 
@@ -33,7 +34,7 @@ int (graphics_draw_map) ();
 int (graphics_draw_item_bar) ();
 int (graphics_draw_cursor) ();
 void (load_xpms) ();
-int (create_line) (struct point2D* line, double angle);
+int (create_line) (struct point2D* line, double angle, uint8_t* delimiter);
 int (set_background_color) (uint32_t color);
 double (get_ray_angle) (int diff);
 double (to_radians) (double angle);

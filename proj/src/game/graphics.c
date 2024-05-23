@@ -2,7 +2,7 @@
 #include "cursor.h"
 
 xpm_image_t items[INVENTORY_SIZE];
-xpm_image_t menu_xpm, wall_texture_pixmap, cursor_xpm, pause_menu_xpm;
+xpm_image_t menu_xpm, wall_texture_xpm, cursor_xpm, pause_menu_xpm, door_texture_xpm;
 
 int (graphics_construct) () {
     if (vg_get_resolution(&width, &height) != 0) {
@@ -74,9 +74,10 @@ int (graphics_draw_player_camera) () {
     int cellsize = height / map_height;
 
     for (uint32_t i = 0; i < width; i++) {
+        uint8_t delimiter;
         double ray_angle = get_ray_angle(i);
         struct point2D* line = (struct point2D*)malloc(sizeof(struct point2D) * LINE_SIZE);
-        int line_size = create_line(line, ray_angle);
+        int line_size = create_line(line, ray_angle, &delimiter);
         if (line_size <= 0) {
             printf("ERROR: %s\n", __func__ );
             free(line);
@@ -93,15 +94,27 @@ int (graphics_draw_player_camera) () {
         int16_t draw_end = wall_height / 2 + height / 2;
         if (draw_end >= (int)height) draw_end = height - 1;
 
-        uint32_t colors[16];
-        for (int j = 0; j < 16; j++) {
-            uint32_t color = (wall_texture_pixmap.bytes[(i % 16 + 16 * j) * 3 + 2] << 16)
-                    | (wall_texture_pixmap.bytes[(i % 16 + 16 * j) * 3 + 1] << 8)
-                    | wall_texture_pixmap.bytes[(i % 16 + 16 * j) * 3];
-            colors[j] = color;
+        if (line_size == LINE_SIZE - 1) {
+            vg_draw_vline(width - i, draw_start, draw_end - draw_start, 0x000000);
+        } else {
+            uint32_t colors[16];
+            if (delimiter == 1) {
+                for (int j = 0; j < 16; j++) {
+                    uint32_t color = (wall_texture_xpm.bytes[(i % 16 + 16 * j) * 3 + 2] << 16)
+                                     | (wall_texture_xpm.bytes[(i % 16 + 16 * j) * 3 + 1] << 8)
+                                     | wall_texture_xpm.bytes[(i % 16 + 16 * j) * 3];
+                    colors[j] = color;
+                }
+            } else if (delimiter == 2) {
+                for (int j = 0; j < 16; j++) {
+                    uint32_t color = (door_texture_xpm.bytes[(i % 16 + 16 * j) * 3 + 2] << 16)
+                                     | (door_texture_xpm.bytes[(i % 16 + 16 * j) * 3 + 1] << 8)
+                                     | door_texture_xpm.bytes[(i % 16 + 16 * j) * 3];
+                    colors[j] = color;
+                }
+            }
+            vg_draw_vline_colormap(width - i, draw_start, draw_end - draw_start, colors);
         }
-
-        vg_draw_vline_colormap(width - i, draw_start, draw_end - draw_start, colors);
         free(line);
     }
 
@@ -158,7 +171,7 @@ int (graphics_draw_cursor) () {
     return 0;
 }
 
-int (create_line) (struct point2D* line, double angle) {
+int (create_line) (struct point2D* line, double angle, uint8_t* delimiter) {
     int index = 0;
     int x1 = player_get_position().x;
     int y1 = player_get_position().y;
@@ -181,6 +194,7 @@ int (create_line) (struct point2D* line, double angle) {
         if (pos == 1 || pos == 2) {
             line[index].x = x1; line[index].y = y1;
             index++;
+            *delimiter = pos;
             return index;
         }
 
@@ -212,9 +226,10 @@ int (set_background_color) (uint32_t color) {
 void (load_xpms) () {
     xpm_load(item, XPM_8_8_8, &items[ITEM1]);
     xpm_load(test_menu, XPM_8_8_8, &menu_xpm);
-    xpm_load(wall_texture, XPM_8_8_8, &wall_texture_pixmap);
+    xpm_load(wall_texture, XPM_8_8_8, &wall_texture_xpm);
     xpm_load(cursor, XPM_8_8_8, &cursor_xpm);
     xpm_load(pause_menu, XPM_8_8_8, &pause_menu_xpm);
+    xpm_load(brick_wall, XPM_8_8_8, &door_texture_xpm);
 }
 
 double (to_radians) (double angle) {

@@ -1,5 +1,4 @@
 #include "game_state.h"
-#include "graphics.h"
 
 bool game_in_progress = true;
 
@@ -64,6 +63,10 @@ int state_kbd_event(uint8_t scancode) {
             }
             else if (scancode == 0x01) {
                 game_state = PAUSE;
+                if (clock_stop_timer() != 0) {
+                    printf("ERROR: %s\n", __func__ );
+                    return -1;
+                }
             }
             break;
         case MENU:
@@ -96,7 +99,13 @@ int state_mouse_event(struct packet pp) {
             if (pp.lb) {
                 uint16_t x, y;
                 cursor_get_position(&x, &y);
-                if (300 <= x && x <= 520 && y >= 220 && y <= 270) game_state = GAME;
+                if (300 <= x && x <= 520 && y >= 220 && y <= 270) {
+                    if (clock_start_timer() != 0) {
+                        printf("ERROR: %s\n", __func__ );
+                        return -1;
+                    }
+                    game_state = GAME;
+                }
                 else if (300 <= x && x <= 520 && y >= 330 && y <= 380) game_in_progress = false;
             }
             break;
@@ -105,10 +114,31 @@ int state_mouse_event(struct packet pp) {
             if (pp.lb) {
                 uint16_t x, y;
                 cursor_get_position(&x, &y);
-                if (300 <= x && x <= 520 && y >= 220 && y <= 270) game_state = GAME;
-                else if (300 <= x && x <= 520 && y >= 330 && y <= 380) game_state = MENU;
+                if (300 <= x && x <= 520 && y >= 220 && y <= 270) {
+                    if (clock_start_timer() != 0) {
+                        printf("ERROR: %s\n", __func__ );
+                        return -1;
+                    }
+                    game_state = GAME;
+                }
+                else if (300 <= x && x <= 520 && y >= 330 && y <= 380) {
+                    if (clock_reset_timer() != 0) {
+                        printf("ERROR: %s\n", __func__ );
+                        return -1;
+                    }
+                    game_state = MENU;
+                }
             }
             break;
+    }
+
+    return 0;
+}
+
+int (state_rtc_event) () {
+    // TODO: send to you lost screen?
+    if (game_state == GAME) {
+        game_state = MENU;
     }
 
     return 0;

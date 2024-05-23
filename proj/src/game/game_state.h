@@ -4,6 +4,8 @@
 #include <lcom/lcf.h>
 #include "player.h"
 #include "cursor.h"
+#include "graphics.h"
+#include "clock.h"
 
 enum game_state_t {MENU, GAME, PAUSE};
 
@@ -14,5 +16,6 @@ int game_setup();
 int state_draw_frame();
 int state_kbd_event(uint8_t scancode);
 int state_mouse_event(struct packet pp);
+int (state_rtc_event) ();
 
 #endif //G6_GAME_STATE_H
