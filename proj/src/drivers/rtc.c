@@ -85,22 +85,6 @@ int (rtc_set_alarm) (uint8_t alarm_hours, uint8_t alarm_minutes, uint8_t alarm_s
         return 1;
     }
 
-    if (rtc_read_from_reg(RTC_HOURS_ALARM, &hours) != 0) {
-        printf("ERROR: %s\n", __func__);
-        return 1;
-    }
-
-    if (rtc_read_from_reg(RTC_MINS_ALARM, &minutes) != 0) {
-        printf("ERROR: %s\n", __func__);
-        return 1;
-    }
-
-    if (rtc_read_from_reg(RTC_SECS_ALARM, &seconds) != 0) {
-        printf("ERROR: %s\n", __func__);
-        return 1;
-    }
-
-    printf("alarm set for %d:%d:%d\n", hours, minutes, seconds);
     return 0;
 }
 

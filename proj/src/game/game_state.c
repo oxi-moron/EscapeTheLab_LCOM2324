@@ -8,6 +8,10 @@ int game_setup() {
         printf("ERROR: %s\n", __func__ );
         return -1;
     }
+    if (map_load(0) != 0) {
+        printf("ERROR: %s\n", __func__ );
+        return -1;
+    }
     return 0;
 }
 
@@ -27,6 +31,15 @@ int state_draw_frame() {
             break;
         case PAUSE:
             if (graphics_draw_pause_menu() != 0) {
+                printf("ERROR: %s\n", __func__ );
+                return -1;
+            }
+        case INTERCOM:
+            break;
+        case VICTORY:
+            break;
+        case DEFEAT:
+            if (graphics_draw_defeat_screen() != 0) {
                 printf("ERROR: %s\n", __func__ );
                 return -1;
             }
@@ -68,10 +81,31 @@ int state_kbd_event(uint8_t scancode) {
                     return -1;
                 }
             }
+            else if (scancode == 0x19) {
+                game_state = INTERCOM;
+            }
+            break;
+        case INTERCOM:
+            if (scancode == 0x01) {
+                game_state = PAUSE;
+                if (clock_stop_timer() != 0) {
+                    printf("ERROR: %s\n", __func__ );
+                    return -1;
+                }
+            } else {
+                if (intercom_send_letter(scancode) != 0) {
+                    printf("ERROR: %s\n", __func__ );
+                    return -1;
+                }
+            }
             break;
         case MENU:
             break;
         case PAUSE:
+            break;
+        case DEFEAT:
+            break;
+        case VICTORY:
             break;
     }
 
@@ -104,6 +138,10 @@ int state_mouse_event(struct packet pp) {
                         printf("ERROR: %s\n", __func__ );
                         return -1;
                     }
+                    if (map_load(map_no) != 0) {
+                        printf("ERROR: %s\n", __func__ );
+                        return -1;
+                    }
                     game_state = GAME;
                 }
                 else if (300 <= x && x <= 520 && y >= 330 && y <= 380) game_in_progress = false;
@@ -130,6 +168,30 @@ int state_mouse_event(struct packet pp) {
                 }
             }
             break;
+        case INTERCOM:
+            break;
+        case DEFEAT:
+            cursor_move(pp.delta_x, pp.delta_y);
+            if (pp.lb) {
+                uint16_t x, y;
+                cursor_get_position(&x, &y);
+                if (300 <= x && x <= 520 && y >= 220 && y <= 270) {
+                    if (clock_start_timer() != 0) {
+                        printf("ERROR: %s\n", __func__ );
+                        return -1;
+                    }
+                    game_state = GAME;
+                }
+                else if (300 <= x && x <= 520 && y >= 330 && y <= 380) {
+                    if (clock_reset_timer() != 0) {
+                        printf("ERROR: %s\n", __func__ );
+                        return -1;
+                    }
+                    game_state = MENU;
+                }
+            }
+        case VICTORY:
+            break;
     }
 
     return 0;
@@ -142,7 +204,7 @@ int (state_rtc_event) () {
             printf("ERROR: %s\n", __func__ );
             return -1;
         }
-        game_state = MENU;
+        game_state = DEFEAT;
     }
 
     return 0;

@@ -8,6 +8,8 @@
 #include "video.h"
 #include "timer.h"
 #include "mouse.h"
+#include "serial_port.h"
+#include "uart_macros.h"
 #include "i8024_kbc.h"
 #include "i8254_timer.h"
 #include "rtc_macros.h"

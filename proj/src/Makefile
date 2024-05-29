@@ -7,7 +7,7 @@ PROG=proj
 .PATH: ${.CURDIR}/images
 
 # source code files to be compiled
-SRCS = main.c timer.c utils.c video.c graphics.c map.c player.c rtc.c game_state.c kbc.c mouse.c driver_handler.c cursor.c clock.c
+SRCS = main.c timer.c utils.c video.c graphics.c map.c player.c rtc.c game_state.c kbc.c mouse.c driver_handler.c cursor.c clock.c serial_port.c intercom.c
 
 # additional compilation flags
 # "-Wall -Wextra -Werror -I . -std=c11 -Wno-unused-parameter" are already set

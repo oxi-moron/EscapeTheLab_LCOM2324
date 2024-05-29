@@ -6,7 +6,6 @@ int (clock_start_timer) () {
         return 1;
     }
 
-    printf("clock_start_timer: %d:%d:%d\n", start_hours, start_minutes, start_seconds);
     if (rtc_set_alarm(remaining_hours, remaining_minutes, remaining_seconds) != 0) {
         printf("ERROR: %s\n", __func__);
         return 1;

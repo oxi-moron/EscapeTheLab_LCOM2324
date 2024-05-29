@@ -6,10 +6,12 @@
 #include "cursor.h"
 #include "graphics.h"
 #include "clock.h"
+#include "intercom.h"
 
-enum game_state_t {MENU, GAME, PAUSE};
+enum game_state_t {MENU, GAME, PAUSE, INTERCOM, DEFEAT, VICTORY};
 
 static enum game_state_t game_state = MENU;
+static uint8_t map_no = 0;
 
 int game_setup();
 

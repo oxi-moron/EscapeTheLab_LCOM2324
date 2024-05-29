@@ -27,6 +27,7 @@ int (graphics_construct) ();
 int (graphics_draw_game) ();
 int (graphics_draw_menu) ();
 int (graphics_draw_pause_menu) ();
+int (graphics_draw_defeat_screen) ();
 
 // TODO: declare static
 int (graphics_draw_player_camera) ();

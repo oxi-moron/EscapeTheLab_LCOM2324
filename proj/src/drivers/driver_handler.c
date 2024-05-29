@@ -33,6 +33,16 @@ int driver_setup() {
 
     writeCommand(0xF4);
 
+    if (uart_config(COM1) != 0) {
+        printf("ERROR: %s\n", __func__);
+        return 1;
+    }
+
+    if (uart_config(COM2) != 0) {
+        printf("ERROR: %s\n", __func__);
+        return 1;
+    }
+
     if (vg_start(DIR_MODE_800X600) != 0) {
         printf("ERROR: %s\n", __func__);
         return 1;
