@@ -74,3 +74,8 @@ bool player_crossed_door() {
 
     return pos == 2;
 }
+
+void player_reset_position() {
+    player.position.x = 75;
+    player.position.y = 550;
+}
