@@ -2,7 +2,7 @@
 #include "cursor.h"
 
 static xpm_image_t items[INVENTORY_SIZE];
-static xpm_image_t menu_xpm, wall_texture_xpm, cursor_xpm, pause_menu_xpm, door_texture_xpm, defeat_xpm;
+static xpm_image_t menu_xpm, wall_texture_xpm, cursor_xpm, pause_menu_xpm, door_texture_xpm, defeat_xpm, victory_xpm;
 
 int (graphics_construct) () {
     if (vg_get_resolution(&width, &height) != 0) {
@@ -71,6 +71,21 @@ int (graphics_draw_pause_menu) () {
 
 int (graphics_draw_defeat_screen) () {
     if (vg_draw_xpm(0, 0, defeat_xpm.width, defeat_xpm.size, defeat_xpm.bytes) != 0) {
+        printf("ERROR: %s\n", __func__ );
+        return 1;
+    }
+
+    if (graphics_draw_cursor() != 0) {
+        printf("ERROR: %s\n", __func__ );
+        return 1;
+    }
+
+    swap_buffer();
+    return 0;
+}
+
+int (graphics_draw_victory_screen) () {
+    if (vg_draw_xpm(0, 0, victory_xpm.width, victory_xpm.size, victory_xpm.bytes) != 0) {
         printf("ERROR: %s\n", __func__ );
         return 1;
     }
@@ -239,13 +254,15 @@ int (set_background_color) (uint32_t color) {
 }
 
 void (load_xpms) () {
-    xpm_load(item, XPM_8_8_8, &items[ITEM1]);
+    // TODO: Replace XPMs
+    xpm_load(item, XPM_8_8_8, &items[EMPTY]);
     xpm_load(test_menu, XPM_8_8_8, &menu_xpm);
     xpm_load(wall_texture, XPM_8_8_8, &wall_texture_xpm);
     xpm_load(cursor, XPM_8_8_8, &cursor_xpm);
     xpm_load(pause_menu, XPM_8_8_8, &pause_menu_xpm);
     xpm_load(brick_wall, XPM_8_8_8, &door_texture_xpm);
     xpm_load(pause_menu, XPM_8_8_8, &defeat_xpm);
+    xpm_load(pause_menu, XPM_8_8_8, &victory_xpm);
 }
 
 double (to_radians) (double angle) {

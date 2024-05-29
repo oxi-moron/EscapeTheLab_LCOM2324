@@ -7,7 +7,7 @@
 #include "game_macros.h"
 
 // TODO: game items
-enum items {ITEM1, ITEM2, ITEM3, ITEM4};
+enum items {EMPTY, ITEM1, ITEM2, ITEM3, ITEM4};
 
 struct Player {
     struct point2D position;
@@ -27,6 +27,8 @@ double player_get_angle();
 int player_set_position(struct point2D position);
 int player_set_angle(double angle);
 enum items* player_get_items();
+void player_reset_items();
+bool player_crossed_door();
 
 int player_move(enum player_moves move);
 

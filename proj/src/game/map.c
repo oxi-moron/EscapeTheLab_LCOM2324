@@ -60,5 +60,10 @@ int (map_load) (uint8_t map_no) {
             break;
     }
 
+    if (player_set_position((struct point2D) {75, 550}) != 0) {
+        printf("ERROR: %s\n", __func__);
+        return 1;
+    }
+
     return 0;
 }

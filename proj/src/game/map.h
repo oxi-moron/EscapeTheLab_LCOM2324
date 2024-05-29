@@ -3,6 +3,8 @@
 
 #include <lcom/lcf.h>
 
+#include "player.h"
+
 int (map_get_grid_pos) (uint32_t x, uint32_t y, uint8_t* pos);
 int (map_set_grid_pos) (uint32_t x, uint32_t y, uint8_t pos);
 
