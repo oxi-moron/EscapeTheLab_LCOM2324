@@ -31,6 +31,7 @@ int (graphics_draw_pause_menu) ();
 int (graphics_draw_defeat_screen) ();
 int (graphics_draw_victory_screen) ();
 int (graphics_draw_intercom) ();
+int (graphics_draw_player_select) ();
 
 // TODO: declare static
 int (graphics_draw_player_camera) ();

@@ -37,3 +37,9 @@ void (intercom_get_letters) (uint8_t* letters) {
         letters[i] = word[i];
     }
 }
+
+void (intercom_reset) () {
+    for (int i = 0; i < 4; i++) {
+        word[i] = 0;
+    }
+}

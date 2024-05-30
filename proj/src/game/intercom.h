@@ -14,5 +14,6 @@ static int current_index = 0;
 int (intercom_send_letter) (uint8_t player_no, uint8_t scancode);
 void (intercom_get_letters) (uint8_t* letters);
 bool intercom_password_entered();
+void (intercom_reset) ();
 
 #endif //G6_INTERCOM_H

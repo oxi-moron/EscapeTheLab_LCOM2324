@@ -2,7 +2,8 @@
 #include "cursor.h"
 
 static xpm_image_t items[INVENTORY_SIZE];
-static xpm_image_t menu_xpm, wall_texture_xpm, cursor_xpm, pause_menu_xpm, door_texture_xpm, defeat_xpm, victory_xpm;
+static xpm_image_t menu_xpm, wall_texture_xpm, cursor_xpm, pause_menu_xpm, door_texture_xpm, defeat_xpm, victory_xpm,
+        player_select_xpm;
 
 int (graphics_construct) () {
     if (vg_get_resolution(&width, &height) != 0) {
@@ -108,7 +109,23 @@ int (graphics_draw_intercom) () {
     uint8_t letters[4];
     intercom_get_letters(letters);
     for (int i = 0; i < 4; i++) {
-        if (letters[i] == 0x17) vg_draw_xpm(50 * i, 100, items[EMPTY].width, items[EMPTY].size, items[EMPTY].bytes);
+        if (letters[i] <= 0x17 && letters[i] > 0x13)
+            vg_draw_xpm(50 * i, 100, items[EMPTY].width, items[EMPTY].size, items[EMPTY].bytes);
+    }
+
+    swap_buffer();
+    return 0;
+}
+
+int (graphics_draw_player_select) () {
+    if (vg_draw_xpm(0, 0, player_select_xpm.width, player_select_xpm.size, player_select_xpm.bytes) != 0) {
+        printf("ERROR: %s\n", __func__ );
+        return 1;
+    }
+
+    if (graphics_draw_cursor() != 0) {
+        printf("ERROR: %s\n", __func__ );
+        return 1;
     }
 
     swap_buffer();
@@ -278,6 +295,7 @@ void (load_xpms) () {
     xpm_load(brick_wall, XPM_8_8_8, &door_texture_xpm);
     xpm_load(pause_menu, XPM_8_8_8, &defeat_xpm);
     xpm_load(pause_menu, XPM_8_8_8, &victory_xpm);
+    xpm_load(pause_menu, XPM_8_8_8, &player_select_xpm);
 }
 
 double (to_radians) (double angle) {

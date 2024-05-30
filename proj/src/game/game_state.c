@@ -53,6 +53,11 @@ int state_draw_frame() {
                 return -1;
             }
             break;
+        case PLAYER_SELECT:
+            if (graphics_draw_player_select() != 0) {
+                printf("ERROR: %s\n", __func__ );
+                return -1;
+            }
     }
     return 0;
 }
@@ -91,19 +96,11 @@ int state_kbd_event(uint8_t scancode) {
                     return -1;
                 }
             }
-            else if (scancode == 0x19) {
-                player_no = 1;
-                game_state = INTERCOM;
-            }
-            else if (scancode == 0x18) {
-                player_no = 2;
-                game_state = INTERCOM;
-            }
             if (player_crossed_door()) {
                 map_no += 1;
                 // TODO: change numbers
                 if (map_no == 2)
-                    game_state = VICTORY;
+                    game_state = INTERCOM;
                 else {
                     map_load(map_no);
                     player_reset_position();
@@ -135,6 +132,8 @@ int state_kbd_event(uint8_t scancode) {
             break;
         case VICTORY:
             break;
+        case PLAYER_SELECT:
+            break;
     }
 
     return 0;
@@ -162,11 +161,7 @@ int state_mouse_event(struct packet pp) {
                 uint16_t x, y;
                 cursor_get_position(&x, &y);
                 if (300 <= x && x <= 520 && y >= 220 && y <= 270) {
-                    if (clock_start_timer() != 0) {
-                        printf("ERROR: %s\n", __func__ );
-                        return -1;
-                    }
-                    game_state = GAME;
+                    game_state = PLAYER_SELECT;
                 }
                 else if (300 <= x && x <= 520 && y >= 330 && y <= 380) game_in_progress = false;
             }
@@ -195,6 +190,7 @@ int state_mouse_event(struct packet pp) {
                     }
                     player_reset_position();
                     player_reset_items();
+                    intercom_reset();
                     game_state = MENU;
                 }
             }
@@ -222,7 +218,8 @@ int state_mouse_event(struct packet pp) {
                     }
                     player_reset_position();
                     player_reset_items();
-                    game_state = GAME;
+                    intercom_reset();
+                    game_state = PLAYER_SELECT;
                 }
                 else if (300 <= x && x <= 520 && y >= 330 && y <= 380) {
                     if (clock_reset_timer() != 0) {
@@ -260,7 +257,8 @@ int state_mouse_event(struct packet pp) {
                     }
                     player_reset_position();
                     player_reset_items();
-                    game_state = GAME;
+                    intercom_reset();
+                    game_state = PLAYER_SELECT;
                 }
                 else if (300 <= x && x <= 520 && y >= 330 && y <= 380) {
                     if (clock_reset_timer() != 0) {
@@ -278,6 +276,19 @@ int state_mouse_event(struct packet pp) {
                 }
             }
             break;
+        case PLAYER_SELECT:
+            cursor_move(pp.delta_x, pp.delta_y);
+            if (pp.lb) {
+                uint16_t x, y;
+                cursor_get_position(&x, &y);
+                if (x < 400) player_no = 1;
+                else player_no = 2;
+                if (clock_start_timer() != 0) {
+                    printf("ERROR: %s\n", __func__ );
+                    return -1;
+                }
+                game_state = GAME;
+            }
     }
 
     return 0;

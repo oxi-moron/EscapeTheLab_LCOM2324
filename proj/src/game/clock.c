@@ -39,7 +39,7 @@ int (clock_stop_timer) () {
 
 int (clock_reset_timer) () {
     remaining_hours = 0;
-    remaining_minutes = 1;
+    remaining_minutes = 10;
     remaining_seconds = 0;
 
     return 0;

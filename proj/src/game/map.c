@@ -21,7 +21,7 @@ int (map_set_grid_pos) (uint32_t x, uint32_t y, uint8_t pos) {
         return 1;
     }
 
-    grid[y][x] = pos;
+    grid[y / ][x] = pos;
 
     return 0;
 }
@@ -33,7 +33,7 @@ int (map_get_grid_dimensions) (uint32_t* width, uint32_t* height) {
     return 0;
 }
 
-
+// TODO: better way to load maps?
 int (map_load) (uint8_t map_no) {
     switch (map_no) {
         case 0:

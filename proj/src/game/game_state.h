@@ -8,7 +8,7 @@
 #include "clock.h"
 #include "intercom.h"
 
-enum game_state_t {MENU, GAME, PAUSE, INTERCOM, DEFEAT, VICTORY};
+enum game_state_t {MENU, PLAYER_SELECT, GAME, PAUSE, INTERCOM, DEFEAT, VICTORY};
 
 static enum game_state_t game_state = MENU;
 static uint8_t map_no = 0;
