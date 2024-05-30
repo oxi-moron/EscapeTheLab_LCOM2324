@@ -12,6 +12,7 @@ struct point2D {
 #include "player.h"
 #include "graphics_macros.h"
 #include "cursor.h"
+#include "intercom.h"
 #include <math.h>
 
 #include "../images/test_menu.xpm"
@@ -29,6 +30,7 @@ int (graphics_draw_menu) ();
 int (graphics_draw_pause_menu) ();
 int (graphics_draw_defeat_screen) ();
 int (graphics_draw_victory_screen) ();
+int (graphics_draw_intercom) ();
 
 // TODO: declare static
 int (graphics_draw_player_camera) ();

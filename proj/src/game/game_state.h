@@ -12,6 +12,7 @@ enum game_state_t {MENU, GAME, PAUSE, INTERCOM, DEFEAT, VICTORY};
 
 static enum game_state_t game_state = MENU;
 static uint8_t map_no = 0;
+static uint8_t player_no = 0;
 
 int game_setup();
 

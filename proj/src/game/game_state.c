@@ -34,7 +34,12 @@ int state_draw_frame() {
                 printf("ERROR: %s\n", __func__ );
                 return -1;
             }
+            break;
         case INTERCOM:
+            if (graphics_draw_intercom() != 0) {
+                printf("ERROR: %s\n", __func__ );
+                return -1;
+            }
             break;
         case VICTORY:
             if (graphics_draw_victory_screen() != 0) {
@@ -87,6 +92,11 @@ int state_kbd_event(uint8_t scancode) {
                 }
             }
             else if (scancode == 0x19) {
+                player_no = 1;
+                game_state = INTERCOM;
+            }
+            else if (scancode == 0x18) {
+                player_no = 2;
                 game_state = INTERCOM;
             }
             if (player_crossed_door()) {
@@ -101,14 +111,14 @@ int state_kbd_event(uint8_t scancode) {
             }
             break;
         case INTERCOM:
-            if (scancode == 0x01) {
-                game_state = PAUSE;
+            if (scancode == 0x19) {
+                game_state = GAME;
                 if (clock_stop_timer() != 0) {
                     printf("ERROR: %s\n", __func__ );
                     return -1;
                 }
-            } else {
-                if (intercom_send_letter(scancode) != 0) {
+            } else if ((scancode & 0x80) == 0) {
+                if (intercom_send_letter(player_no, scancode) != 0) {
                     printf("ERROR: %s\n", __func__ );
                     return -1;
                 }
@@ -271,7 +281,6 @@ int state_mouse_event(struct packet pp) {
 }
 
 int (state_rtc_event) () {
-    // TODO: send to you lost screen?
     if (game_state == GAME) {
         if (clock_reset_timer() != 0) {
             printf("ERROR: %s\n", __func__ );

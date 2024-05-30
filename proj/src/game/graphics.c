@@ -99,6 +99,22 @@ int (graphics_draw_victory_screen) () {
     return 0;
 }
 
+int (graphics_draw_intercom) () {
+    if (set_background_color(BLACK) != 0) {
+        printf("ERROR: %s\n", __func__ );
+        return 1;
+    }
+
+    uint8_t letters[4];
+    intercom_get_letters(letters);
+    for (int i = 0; i < 4; i++) {
+        if (letters[i] == 0) vg_draw_xpm(50 * i, 100, items[EMPTY].width, items[EMPTY].size, items[EMPTY].bytes);
+        else vg_draw_xpm(50 * i, 150, items[EMPTY].width, items[EMPTY].size, items[EMPTY].bytes);
+    }
+
+    swap_buffer();
+    return 0;
+}
 
 int (graphics_draw_player_camera) () {
     int cellsize = height / map_height;

@@ -3,8 +3,6 @@
 #include "game/game_state.h"
 #include "drivers/driver_handler.h"
 
-int player_no = 0;
-
 int main(int argc, char *argv[]) {
     // sets the language of LCF messages (can be either EN-US or PT-PT)
     lcf_set_language("EN-US");
@@ -30,7 +28,6 @@ int main(int argc, char *argv[]) {
 }
 
 int (proj_main_loop) (int argc, char *argv[]) {
-    player_no = atoi(argv[1]);
     driver_setup();
     game_setup();
 
