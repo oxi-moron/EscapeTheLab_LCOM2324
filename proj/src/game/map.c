@@ -21,7 +21,7 @@ int (map_set_grid_pos) (uint32_t x, uint32_t y, uint8_t pos) {
         return 1;
     }
 
-    grid[y / ][x] = pos;
+    grid[y][x] = pos;
 
     return 0;
 }

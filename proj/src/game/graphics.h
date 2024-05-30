@@ -21,6 +21,12 @@ struct point2D {
 #include "../images/cursor.xpm"
 #include "../images/test_pause_menu.xpm"
 #include "../images/brick.xpm"
+#include "../images/player_select.xpm"
+#include "../images/door_texture.xpm"
+#include "../images/letter_L.xpm"
+#include "../images/letter_C.xpm"
+#include "../images/letter_O.xpm"
+#include "../images/letter_M.xpm"
 
 static uint32_t width, height, map_width, map_height;
 

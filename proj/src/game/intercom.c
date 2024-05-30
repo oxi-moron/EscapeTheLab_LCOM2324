@@ -38,6 +38,12 @@ void (intercom_get_letters) (uint8_t* letters) {
     }
 }
 
+void (intercom_get_password) (uint8_t* pw) {
+    for (int i = 0; i < 4; i++) {
+        pw[i] = password[i];
+    }
+}
+
 void (intercom_reset) () {
     for (int i = 0; i < 4; i++) {
         word[i] = 0;

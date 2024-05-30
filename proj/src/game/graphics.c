@@ -1,6 +1,7 @@
 #include "graphics.h"
 #include "cursor.h"
 
+static xpm_image_t password_xpm[4];
 static xpm_image_t items[INVENTORY_SIZE];
 static xpm_image_t menu_xpm, wall_texture_xpm, cursor_xpm, pause_menu_xpm, door_texture_xpm, defeat_xpm, victory_xpm,
         player_select_xpm;
@@ -107,10 +108,12 @@ int (graphics_draw_intercom) () {
     }
 
     uint8_t letters[4];
+    uint8_t password[4];
     intercom_get_letters(letters);
+    intercom_get_password(password);
     for (int i = 0; i < 4; i++) {
-        if (letters[i] <= 0x17 && letters[i] > 0x13)
-            vg_draw_xpm(50 * i, 100, items[EMPTY].width, items[EMPTY].size, items[EMPTY].bytes);
+        if (letters[i] == password[i])
+            vg_draw_xpm(125 + 150 * i, 250, password_xpm[i].width, password_xpm[i].size, password_xpm[i].bytes);
     }
 
     swap_buffer();
@@ -289,13 +292,17 @@ void (load_xpms) () {
     // TODO: Replace XPMs
     xpm_load(item, XPM_8_8_8, &items[EMPTY]);
     xpm_load(test_menu, XPM_8_8_8, &menu_xpm);
-    xpm_load(wall_texture, XPM_8_8_8, &wall_texture_xpm);
+    xpm_load(brick_wall, XPM_8_8_8, &wall_texture_xpm);
     xpm_load(cursor, XPM_8_8_8, &cursor_xpm);
     xpm_load(pause_menu, XPM_8_8_8, &pause_menu_xpm);
-    xpm_load(brick_wall, XPM_8_8_8, &door_texture_xpm);
+    xpm_load(door_texture, XPM_8_8_8, &door_texture_xpm);
     xpm_load(pause_menu, XPM_8_8_8, &defeat_xpm);
     xpm_load(pause_menu, XPM_8_8_8, &victory_xpm);
-    xpm_load(pause_menu, XPM_8_8_8, &player_select_xpm);
+    xpm_load(player_select, XPM_8_8_8, &player_select_xpm);
+    xpm_load(letter_L, XPM_8_8_8, &password_xpm[0]);
+    xpm_load(letter_C, XPM_8_8_8, &password_xpm[1]);
+    xpm_load(letter_O, XPM_8_8_8, &password_xpm[2]);
+    xpm_load(letter_M, XPM_8_8_8, &password_xpm[3]);
 }
 
 double (to_radians) (double angle) {
