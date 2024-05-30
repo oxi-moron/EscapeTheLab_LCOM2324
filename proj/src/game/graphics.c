@@ -108,8 +108,7 @@ int (graphics_draw_intercom) () {
     uint8_t letters[4];
     intercom_get_letters(letters);
     for (int i = 0; i < 4; i++) {
-        if (letters[i] == 0) vg_draw_xpm(50 * i, 100, items[EMPTY].width, items[EMPTY].size, items[EMPTY].bytes);
-        else vg_draw_xpm(50 * i, 150, items[EMPTY].width, items[EMPTY].size, items[EMPTY].bytes);
+        if (letters[i] == 0x17) vg_draw_xpm(50 * i, 100, items[EMPTY].width, items[EMPTY].size, items[EMPTY].bytes);
     }
 
     swap_buffer();

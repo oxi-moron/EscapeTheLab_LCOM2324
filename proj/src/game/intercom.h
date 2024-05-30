@@ -8,9 +8,11 @@
 
 
 static uint8_t word[4] = {0, 0, 0, 0};
+static uint8_t password[4] = {0x17, 0x16, 0x15, 0x14};
 static int current_index = 0;
 
 int (intercom_send_letter) (uint8_t player_no, uint8_t scancode);
 void (intercom_get_letters) (uint8_t* letters);
+bool intercom_password_entered();
 
 #endif //G6_INTERCOM_H

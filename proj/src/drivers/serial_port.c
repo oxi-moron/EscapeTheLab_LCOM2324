@@ -34,7 +34,7 @@ int uart_receive_data(uint16_t com_address, uint8_t* data) {
     }
 
     while (!(lsr_data & RECEIVER_READY)) {
-        tickdelay(micros_to_ticks(20000));
+        tickdelay(micros_to_ticks(WAIT_UART));
         if (util_sys_inb(com_address + LSR, &lsr_data) != 0) {
             printf("ERROR: %s\n", __func__);
             return 1;

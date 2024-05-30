@@ -111,6 +111,9 @@ int state_kbd_event(uint8_t scancode) {
             }
             break;
         case INTERCOM:
+            if (intercom_password_entered()) {
+                game_state = VICTORY;
+            }
             if (scancode == 0x19) {
                 game_state = GAME;
                 if (clock_stop_timer() != 0) {
