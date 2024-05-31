@@ -34,22 +34,23 @@ enum items* player_get_items() {
 }
 
 int player_move(enum player_moves move) {
+    int new_x = player.position.x, new_y = player.position.y;
     switch(move) {
         case UP:
-            player.position.y -= (int) (PLAYER_SPEED * sin(to_radians(player.angle)));
-            player.position.x += (int) (PLAYER_SPEED * cos(to_radians(player.angle)));
+            new_y -= (int) (PLAYER_SPEED * sin(to_radians(player.angle)));
+            new_x += (int) (PLAYER_SPEED * cos(to_radians(player.angle)));
             break;
         case DOWN:
-            player.position.y += (int) (PLAYER_SPEED * sin(to_radians(player.angle)));
-            player.position.x -= (int) (PLAYER_SPEED * cos(to_radians(player.angle)));
+            new_y += (int) (PLAYER_SPEED * sin(to_radians(player.angle)));
+            new_x -= (int) (PLAYER_SPEED * cos(to_radians(player.angle)));
             break;
         case LEFT:
-            player.position.y -= (int) (PLAYER_SPEED * cos(to_radians(player.angle)));
-            player.position.x -= (int) (PLAYER_SPEED * sin(to_radians(player.angle)));
+            new_y -= (int) (PLAYER_SPEED * cos(to_radians(player.angle)));
+            new_x -= (int) (PLAYER_SPEED * sin(to_radians(player.angle)));
             break;
         case RIGHT:
-            player.position.y += (int) (PLAYER_SPEED * cos(to_radians(player.angle)));
-            player.position.x += (int) (PLAYER_SPEED * sin(to_radians(player.angle)));
+            new_y += (int) (PLAYER_SPEED * cos(to_radians(player.angle)));
+            new_x += (int) (PLAYER_SPEED * sin(to_radians(player.angle)));
             break;
         case ROTATE_LEFT:
             player.angle = (int)(player.angle + PLAYER_SPEED) % 360;
@@ -58,6 +59,12 @@ int player_move(enum player_moves move) {
             player.angle = player.angle - PLAYER_SPEED;
             if (player.angle < 0) player.angle += 360;
             break;
+    }
+    uint8_t cell;
+    map_get_grid_pos(new_x * 16 / 800 , new_y * 20 / 600, &cell);
+    if (cell != 1) {
+      player.position.x = new_x;
+      player.position.y = new_y;
     }
     return 0;
 }
