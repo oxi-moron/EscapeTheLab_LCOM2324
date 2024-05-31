@@ -36,20 +36,20 @@ enum items* player_get_items() {
 int player_move(enum player_moves move) {
     switch(move) {
         case UP:
-            player.position.y -= (int) (PLAYER_SPEED * sin(player.angle));
-            player.position.x += (int) (PLAYER_SPEED * cos(player.angle));
+            player.position.y -= (int) (PLAYER_SPEED * sin(to_radians(player.angle)));
+            player.position.x += (int) (PLAYER_SPEED * cos(to_radians(player.angle)));
             break;
         case DOWN:
-            player.position.y += (int) (PLAYER_SPEED * sin(player.angle));
-            player.position.x -= (int) (PLAYER_SPEED * cos(player.angle));
+            player.position.y += (int) (PLAYER_SPEED * sin(to_radians(player.angle)));
+            player.position.x -= (int) (PLAYER_SPEED * cos(to_radians(player.angle)));
             break;
         case LEFT:
-            player.position.y -= (int) (PLAYER_SPEED * cos(player.angle));
-            player.position.x -= (int) (PLAYER_SPEED * sin(player.angle));
+            player.position.y -= (int) (PLAYER_SPEED * cos(to_radians(player.angle)));
+            player.position.x -= (int) (PLAYER_SPEED * sin(to_radians(player.angle)));
             break;
         case RIGHT:
-            player.position.y += (int) (PLAYER_SPEED * cos(player.angle));
-            player.position.x += (int) (PLAYER_SPEED * sin(player.angle));
+            player.position.y += (int) (PLAYER_SPEED * cos(to_radians(player.angle)));
+            player.position.x += (int) (PLAYER_SPEED * sin(to_radians(player.angle)));
             break;
         case ROTATE_LEFT:
             player.angle = (int)(player.angle + PLAYER_SPEED) % 360;
