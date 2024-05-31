@@ -1,10 +1,10 @@
 #include "player.h"
 
 void player_construct() {
-    player.position = (struct point2D){300, 300};
+    player.position = (struct point2D){75, 550};
     player.angle = 0;
     for (int i = 0; i < 4; i++) {
-        player.player_items[i] = ITEM1;
+        player.player_items[i] = EMPTY;
     }
 }
 
@@ -60,4 +60,22 @@ int player_move(enum player_moves move) {
             break;
     }
     return 0;
+}
+
+void player_reset_items() {
+    for (int i = 0; i < INVENTORY_SIZE; i++) {
+        player.player_items[i] = EMPTY;
+    }
+}
+
+bool player_crossed_door() {
+    uint8_t pos = 0;
+    map_get_grid_pos(player.position.x * 16 / 800, player.position.y * 20 / 600 , &pos);
+
+    return pos == 2;
+}
+
+void player_reset_position() {
+    player.position.x = 75;
+    player.position.y = 550;
 }
