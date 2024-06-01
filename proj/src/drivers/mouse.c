@@ -18,12 +18,12 @@ int (mouse_unsubscribe_int)() {
 void (mouse_ih)() {
     uint8_t res;
     uint8_t status;
-    int n = 10;
+    int n = MAX_ATTEMPTS;
 
     while (n != 0) {
-        if (util_sys_inb(0x64, &status) != 0) return;
+        if (util_sys_inb(KBD_STATUS_REG, &status) != 0) return;
         if ((status & 0x01) == 1) {
-            if (util_sys_inb(0x60, &res) != 0) return;
+            if (util_sys_inb(KBD_OUT_BUF, &res) != 0) return;
             if (currentByte == 0 && ((res & 0x08) == 0x08)) {
                 mousePacket.bytes[currentByte] = res;
                 mousePacket.rb = (res & 0x02) >> 1;
@@ -47,20 +47,20 @@ void (mouse_ih)() {
             }
         }
         n--;
-        tickdelay(micros_to_ticks(20000));
+        tickdelay(micros_to_ticks(WAIT_KBD));
     }
 }
 
 int writeCommand(uint8_t command) {
     uint8_t res;
-    int n = 10;
+    int n = MAX_ATTEMPTS;
 
     while (n != 0) {
-        if (writeToKBC(0x64, 0xD4) != 0) return 1;
-        if (writeToKBC(0x60, command) != 0) return 1;
-        if (util_sys_inb(0x60, &res) != 0) return 1;
-        if (res == 0xFA) return 0;
-        if (res == 0xFC) {
+        if (writeToKBC(KBD_CMD_REG, WRITE_TO_MOUSE) != 0) return 1;
+        if (writeToKBC(KBD_ARG_REG, command) != 0) return 1;
+        if (util_sys_inb(KBD_OUT_BUF, &res) != 0) return 1;
+        if (res == ACK) return 0;
+        if (res == ERROR) {
             printf("Error code: %x", res);
             return 1;
         }
@@ -71,16 +71,16 @@ int writeCommand(uint8_t command) {
 
 int (writeToKBC)(uint8_t port, uint8_t command) {
     uint8_t status;
-    int n = 10;
+    int n = MAX_ATTEMPTS;
 
     while (n != 0) {
-        if (util_sys_inb(0x64, &status) != 0) return 1;
+        if (util_sys_inb(KBD_STATUS_REG, &status) != 0) return 1;
         if ((status & 0x02) == 0) {
             if (sys_outb(port, command) != 0) return 1;
             return 0;
         }
         n--;
-        tickdelay(micros_to_ticks(20000));
+        tickdelay(micros_to_ticks(WAIT_KBD));
     }
     return 1;
 }

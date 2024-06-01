@@ -31,7 +31,7 @@ int driver_setup() {
         return 1;
     }
 
-    writeCommand(0xF4);
+    writeCommand(ENABLE_DATA);
 
     if (uart_config(COM1) != 0) {
         printf("ERROR: %s\n", __func__);
@@ -52,7 +52,7 @@ int driver_setup() {
 
 int driver_cleanup() {
 
-    writeCommand(0xF5);
+    writeCommand(DISABLE_DATA);
 
     if (mouse_unsubscribe_int() != 0) {
         printf("ERROR: %s\n", __func__);
@@ -109,7 +109,7 @@ int main_event_loop() {
                     }
                     if (msg.m_notify.interrupts & timer_irq_set) {
                         timer_ih();
-                        if (counter % (60 / FRAME_RATE) == 0) {
+                        if (counter % (TIMER_FREQ / FRAME_RATE) == 0) {
                             if (state_draw_frame() != 0) {
                                 printf("ERROR: %s\n", __func__);
                                 return 1;
@@ -122,7 +122,7 @@ int main_event_loop() {
                     }
                     if (msg.m_notify.interrupts & irq_set_mouse) {
                         mouse_ih();
-                        if (currentByte == 3) {
+                        if (currentByte == PACKET_SIZE) {
                             currentByte = 0;
                             if (state_mouse_event(mousePacket) != 0) {
                                 printf("ERROR: %s\n", __func__);
