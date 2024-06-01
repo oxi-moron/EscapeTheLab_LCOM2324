@@ -1,7 +1,7 @@
 #include "graphics.h"
 #include "cursor.h"
 
-static xpm_image_t password_xpm[4];
+static xpm_image_t password_xpm[PASSWORD_SIZE];
 static xpm_image_t items[INVENTORY_SIZE];
 static xpm_image_t menu_xpm, wall_texture_xpm, cursor_xpm, pause_menu_xpm, door_texture_xpm, defeat_xpm, victory_xpm,
         player_select_xpm;
@@ -107,8 +107,8 @@ int (graphics_draw_intercom) () {
         return 1;
     }
 
-    uint8_t letters[4];
-    uint8_t password[4];
+    uint8_t letters[PASSWORD_SIZE];
+    uint8_t password[PASSWORD_SIZE];
     intercom_get_letters(letters);
     intercom_get_password(password);
     for (int i = 0; i < 4; i++) {
@@ -160,7 +160,7 @@ int (graphics_draw_player_camera) () {
         if (draw_end >= (int)height) draw_end = height - 1;
 
         if (line_size == LINE_SIZE - 1) {
-            vg_draw_vline(width - i, draw_start, draw_end - draw_start, 0x000000);
+            vg_draw_vline(width - i, draw_start, draw_end - draw_start, BLACK);
         } else {
             uint32_t colors[16];
             if (delimiter == 1) {

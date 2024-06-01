@@ -9,5 +9,5 @@ void cursor_move(int x_delta, int y_delta) {
     x += x_delta;
     y -= y_delta;
 
-    if (x > 799 - 28) x = 799 - 28; if (y > 599 - 28) y = 599 - 28; 
+    if (x > CURSOR_X_LIMIT) x = CURSOR_X_LIMIT; if (y > CURSOR_Y_LIMIT) y = CURSOR_Y_LIMIT;
 }

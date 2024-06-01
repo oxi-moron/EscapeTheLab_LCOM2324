@@ -65,31 +65,31 @@ int state_draw_frame() {
 int state_kbd_event(uint8_t scancode) {
     switch (game_state) {
         case GAME:
-            if (scancode == 0x11) {
+            if (scancode == W_SCANCODE) {
                 if (player_move(UP) != 0) {
                     printf("ERROR: %s\n", __func__ );
                     return -1;
                 }
             }
-            else if (scancode == 0x1e) {
+            else if (scancode == A_SCANCODE) {
                 if (player_move(LEFT) != 0) {
                     printf("ERROR: %s\n", __func__ );
                     return -1;
                 }
             }
-            else if (scancode == 0x1f) {
+            else if (scancode == S_SCANCODE) {
                 if (player_move(DOWN) != 0) {
                     printf("ERROR: %s\n", __func__ );
                     return -1;
                 }
             }
-            else if (scancode == 0x20) {
+            else if (scancode == D_SCANCODE) {
                 if (player_move(RIGHT) != 0) {
                     printf("ERROR: %s\n", __func__ );
                     return -1;
                 }
             }
-            else if (scancode == 0x01) {
+            else if (scancode == ESC_SCANCODE) {
                 game_state = PAUSE;
                 if (clock_stop_timer() != 0) {
                     printf("ERROR: %s\n", __func__ );
@@ -98,8 +98,7 @@ int state_kbd_event(uint8_t scancode) {
             }
             if (player_crossed_door()) {
                 map_no += 1;
-                // TODO: change numbers
-                if (map_no == 2)
+                if (map_no == FINAL_MAP)
                     game_state = INTERCOM;
                 else {
                     map_load(map_no);
@@ -111,7 +110,7 @@ int state_kbd_event(uint8_t scancode) {
             if (intercom_password_entered()) {
                 game_state = VICTORY;
             }
-            if (scancode == 0x19) {
+            if (scancode == ESC_SCANCODE) {
                 game_state = GAME;
                 if (clock_stop_timer() != 0) {
                     printf("ERROR: %s\n", __func__ );
@@ -250,7 +249,7 @@ int state_mouse_event(struct packet pp) {
                         printf("ERROR: %s\n", __func__ );
                         return -1;
                     }
-                    map_no = 0;
+                    map_no = START_MAP;
                     if (map_load(map_no) != 0) {
                         printf("ERROR: %s\n", __func__);
                         return 1;
@@ -265,7 +264,7 @@ int state_mouse_event(struct packet pp) {
                         printf("ERROR: %s\n", __func__ );
                         return -1;
                     }
-                    map_no = 0;
+                    map_no = START_MAP;
                     if (map_load(map_no) != 0) {
                         printf("ERROR: %s\n", __func__);
                         return 1;

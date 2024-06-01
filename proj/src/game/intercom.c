@@ -10,7 +10,7 @@ int (intercom_send_letter) (uint8_t player_no, uint8_t scancode) {
             return 1;
         }
         if (word[current_index] == password[current_index]) {
-            current_index = (current_index + 1) % 4;
+            current_index = (current_index + 1) % PASSWORD_SIZE;
         }
     } else {
         if (uart_send_data(COM2, scancode) != 0) {
@@ -21,7 +21,7 @@ int (intercom_send_letter) (uint8_t player_no, uint8_t scancode) {
             return 1;
         }
         if (word[current_index] == password[current_index]) {
-            current_index = (current_index + 1) % 4;
+            current_index = (current_index + 1) % PASSWORD_SIZE;
         }
     }
 
@@ -33,19 +33,19 @@ bool intercom_password_entered() {
 }
 
 void (intercom_get_letters) (uint8_t* letters) {
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < PASSWORD_SIZE; i++) {
         letters[i] = word[i];
     }
 }
 
 void (intercom_get_password) (uint8_t* pw) {
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < PASSWORD_SIZE; i++) {
         pw[i] = password[i];
     }
 }
 
 void (intercom_reset) () {
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < PASSWORD_SIZE; i++) {
         word[i] = 0;
     }
 }
