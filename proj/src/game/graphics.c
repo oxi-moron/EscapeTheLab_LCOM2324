@@ -251,7 +251,7 @@ int (create_line) (struct point2D* line, double angle, uint8_t* delimiter) {
 
     while ((x1 != x2 || y1 != y2) && index < LINE_SIZE - 1) {
         uint8_t pos;
-        if (map_get_grid_pos(x1 * map_width / width, y1 * map_height / height, &pos) != 0) {
+        if (map_get_grid_pos(x1 * 32 / 800, y1 * 24 / 600, &pos) != 0) {
             printf("ERROR: %s\n", __func__ );
             return -1;
         }

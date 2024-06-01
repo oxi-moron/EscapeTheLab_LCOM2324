@@ -61,10 +61,11 @@ int player_move(enum player_moves move) {
             break;
     }
     uint8_t cell;
-    map_get_grid_pos(new_x * 16 / 800 , new_y * 20 / 600, &cell);
+    map_get_grid_pos(new_x * 32 / 800 , new_y * 24 / 600, &cell);
     if (cell != 1) {
       player.position.x = new_x;
       player.position.y = new_y;
+      printf("(%d, %d)\n", player.position.x, player.position.y);
     }
     return 0;
 }
@@ -77,7 +78,7 @@ void player_reset_items() {
 
 bool player_crossed_door() {
     uint8_t pos = 0;
-    map_get_grid_pos(player.position.x * 16 / 800, player.position.y * 20 / 600 , &pos);
+    map_get_grid_pos(player.position.x * 32 / 800, player.position.y * 24 / 600 , &pos);
 
     return pos == 2;
 }
