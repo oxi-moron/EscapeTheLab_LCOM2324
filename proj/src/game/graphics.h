@@ -81,6 +81,18 @@ int (graphics_draw_player_select) ();
 
 // TODO: declare static
 /**
+ * @brief Draws the floor of the game.
+ * @return
+ */
+int (graphics_draw_floor) ();
+
+/**
+ * @brief Draws the ceiling of the game.
+ * @return 0 if successful, non-zero otherwise.
+ */
+int (graphics_draw_ceiling) ();
+
+/**
  * @brief Draws the players camera angle.
  * @return 0 if successful, non-zero otherwise.
  */
