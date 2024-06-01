@@ -62,7 +62,7 @@ int player_move(enum player_moves move) {
     }
     uint8_t cell;
     map_get_grid_pos(new_x * 32 / 800 , new_y * 24 / 600, &cell);
-    if (cell != 1) {
+    if (cell != 1 && cell != 3) {
       player.position.x = new_x;
       player.position.y = new_y;
       printf("(%d, %d)\n", player.position.x, player.position.y);
@@ -79,7 +79,6 @@ void player_reset_items() {
 bool player_crossed_door() {
     uint8_t pos = 0;
     map_get_grid_pos(player.position.x * 32 / 800, player.position.y * 24 / 600 , &pos);
-
     return pos == 2;
 }
 

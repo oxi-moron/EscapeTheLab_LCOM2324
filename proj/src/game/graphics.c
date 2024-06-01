@@ -24,6 +24,10 @@ int (graphics_draw_game) () {
         printf("ERROR: %s\n", __func__ );
         return 1;
     }
+
+    graphics_draw_floor();
+    graphics_draw_ceiling();
+
     if (graphics_draw_player_camera() != 0) {
         printf("ERROR: %s\n", __func__ );
         return 1;
@@ -135,6 +139,30 @@ int (graphics_draw_player_select) () {
     return 0;
 }
 
+int (graphics_draw_floor) () {
+  uint32_t color_map[4] = {0x345461, 0x497282, 0x7496a3, 0x1f3e4a};
+  int n = 0;
+  for (int i = 0; i < 800; i++) {
+    for (int j = 300; j < 600; j++) {
+      vg_draw_pixel(i, j, color_map[n % 3]);
+      n++;
+    }
+  }
+  return 0;
+}
+
+int (graphics_draw_ceiling) () {
+  uint32_t color_map[4] = {0xb5b5b3, 0x70706d, 0xababab, 0xffffff};
+  int n = 0;
+  for (int i = 0; i < 800; i++) {
+    for (int j = 0; j < 300; j++) {
+      vg_draw_pixel(i, j, color_map[n % 4]);
+      n++;
+    }
+  }
+  return 0;
+}
+
 int (graphics_draw_player_camera) () {
     int cellsize = height / map_height;
 
@@ -163,7 +191,7 @@ int (graphics_draw_player_camera) () {
             vg_draw_vline(width - i, draw_start, draw_end - draw_start, 0x000000);
         } else {
             uint32_t colors[16];
-            if (delimiter == 1) {
+            if (delimiter == 1 || delimiter == 3) {
                 for (int j = 0; j < 16; j++) {
                     uint32_t color = (wall_texture_xpm.bytes[(i % 16 + 16 * j) * 3 + 2] << 16)
                                      | (wall_texture_xpm.bytes[(i % 16 + 16 * j) * 3 + 1] << 8)
@@ -179,10 +207,19 @@ int (graphics_draw_player_camera) () {
                 }
             }
             vg_draw_vline_colormap(width - i, draw_start, draw_end - draw_start, colors);
+
+            if (delimiter == 3) {
+              wall_height = (int) ((height * cellsize / 2) / distance_to_wall);
+              draw_start = -wall_height / 2 + height / 2;
+              if (draw_start < 0) draw_start = 0;
+              draw_end = wall_height / 2 + height / 2;
+              if (draw_end >= (int)height) draw_end = height - 1;
+
+              vg_draw_vline(width - i, draw_start, draw_end - draw_start, 0x141c17);
+            }
         }
         free(line);
     }
-
     return 0;
 }
 
@@ -206,7 +243,19 @@ int (graphics_draw_map) () {
                 printf("ERROR: %s\n", __func__ );
                 return 1;
             }
-            uint32_t color = pos == 1 ? GREEN : WHITE;
+
+            uint32_t color;
+
+            if (pos == 1) {
+              color = 0x000000;
+            } else if (pos == 2) {
+              color = 0xff0000;
+            } else if (pos == 3) {
+              color = 0xffff00;
+            } else {
+              color = 0x0000ff;
+            }
+
             if (vg_draw_rectangle(x * (width / 5 / map_width), (4 * height / 5) + (y * (height / 5 / map_height))
                     , (width / 5 / map_width), (height / 5 / map_height), color) != 0) {
                 printf("ERROR: %s\n", __func__ );
@@ -256,7 +305,7 @@ int (create_line) (struct point2D* line, double angle, uint8_t* delimiter) {
             return -1;
         }
 
-        if (pos == 1 || pos == 2) {
+        if (pos == 1 || pos == 2 || pos == 3) {
             line[index].x = x1; line[index].y = y1;
             index++;
             *delimiter = pos;

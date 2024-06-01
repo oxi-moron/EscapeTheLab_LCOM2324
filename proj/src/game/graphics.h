@@ -40,6 +40,8 @@ int (graphics_draw_intercom) ();
 int (graphics_draw_player_select) ();
 
 // TODO: declare static
+int (graphics_draw_floor) ();
+int (graphics_draw_ceiling) ();
 int (graphics_draw_player_camera) ();
 int (graphics_draw_map) ();
 int (graphics_draw_item_bar) ();
