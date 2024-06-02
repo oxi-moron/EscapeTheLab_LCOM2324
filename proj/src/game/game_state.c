@@ -90,11 +90,30 @@ int state_kbd_event(uint8_t scancode) {
                 }
             }
             else if (scancode == E_SCANCODE) {
+              struct point2D t[10];
+              int size;
+              struct point2D exit;
               switch (map_no) {
                 case 0:
                   if (sqrt(pow(player_get_position().x - (16 * 25), 2) + pow(player_get_position().y - (6 * 25), 2)) <= 60) {
                     map_set_grid_pos(16, 6, 4);
                     map_set_grid_pos(15, 6, 16);
+                  }
+                  break;
+                case 4:
+                  break;
+                default:
+                  size = map_get_terminal_positions(&t[0]);
+                  map_get_door_position(&exit);
+                  for (int i = 0; i < size; i++) {
+                    if (sqrt(pow(player_get_position().x - (t[i].x * 25), 2) + pow(player_get_position().y - (t[i].y * 25), 2)) <= 60) {
+                      map_set_grid_pos(t[i].x, t[i].y, 4);
+                      size--;
+                      break;
+                    }
+                  }
+                  if (size == 0) {
+                    map_set_grid_pos(exit.x, exit.y, 16);
                   }
                   break;
               }

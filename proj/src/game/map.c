@@ -210,17 +210,29 @@ int (map_get_start_pos) (uint32_t* x, uint32_t*y, uint32_t* angle, uint8_t map_n
   return 0;
 }
 
-int (map_get_terminal_positions) (struct point2D* terminals, int map_no) {
-  switch (map_no) {
-    case 1:
-      terminals = (struct point2D[6]) {(struct point2D) {27, 1}, (struct point2D) {0, 10}, (struct point2D) {9, 11}, (struct point2D) {21, 15}, (struct point2D) {2, 21}, (struct point2D) {21, 23}};
-    case 2:
-      terminals = (struct point2D[8]) {(struct point2D) {12, 0}, (struct point2D) {25, 0}, (struct point2D) {29, 5}, (struct point2D) {7, 9}, (struct point2D) {15, 15}, (struct point2D) {1, 18}, (struct point2D) {10, 18}, (struct point2D) {23, 23}};
-    case 3:
-      terminals = (struct point2D[8]) {(struct point2D) {17, 0}, (struct point2D) {27, 3}, (struct point2D) {12, 6}, (struct point2D) {3, 11}, (struct point2D) {15, 16}, (struct point2D) {8, 17}, (struct point2D) {22, 22}};
-    default:
-      terminals = NULL;
-      break;
+int (map_get_terminal_positions) (struct point2D terminals[]) {
+  int i = 0;
+  for (int y = 0; y < 24; y++) {
+    for (int x = 0; x < 32; x++) {
+      if (grid[y][x] == 3) {
+        terminals[i].x = x;
+        terminals[i].y = y;
+        i++;
+      }
+    }
+  }
+  return i;
+}
+
+int (map_get_door_position) (struct point2D* door) {
+  for (int y = 0; y < 24; y++) {
+    for (int x = 0; x < 32; x++) {
+      if (grid[y][x] == 8) {
+        door->x = x;
+        door->y = y;
+        break;
+      }
+    }
   }
   return 0;
 }

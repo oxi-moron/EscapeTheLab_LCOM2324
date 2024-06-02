@@ -56,9 +56,15 @@ int (map_get_start_pos) (uint32_t* x, uint32_t*y, uint32_t* angle, uint8_t map_n
 /**
  * @brief Gets the positions of the terminals in a map.
  * @param terminals Address where the positions will be stored.
- * @param map_no Number of the map.
  * @return 0 if successful, non-zero otherwise.
  */
-int (map_get_terminal_positions) (struct point2D* terminals, int map_no);
+int (map_get_terminal_positions) (struct point2D terminals[]);
+
+/**
+ * @brief Gets door positions.
+ * @param door Address where positions will be stored.
+ * @return 0 if successful, non-zero otherwise.
+ */
+int (map_get_door_position) (struct point2D* door);
 
 #endif //G6_MAP_H
