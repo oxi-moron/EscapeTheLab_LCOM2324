@@ -259,7 +259,7 @@ int (graphics_draw_map) () {
 
     struct point2D player = player_get_position();
     if (vg_draw_rectangle(player.x * MINIMAP_WIDTH / width + 15, (height - MINIMAP_HEIGHT) + player.y * MINIMAP_HEIGHT / height - 15,
-                          5, 5, 0xFF0000) != 0) {
+                          5, 5, 0x00BABA) != 0) {
         printf("ERROR: %s\n", __func__ );
         return 1;
     }
