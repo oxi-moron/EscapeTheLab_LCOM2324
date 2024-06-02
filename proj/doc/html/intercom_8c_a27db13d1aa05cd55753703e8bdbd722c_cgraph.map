@@ -1,0 +1,10 @@
+<map id="intercom_send_letter" name="intercom_send_letter">
+<area shape="rect" id="Node000001" title="Sends (and receives) a letter to/from the other player via the in&#45;game intercom." alt="" coords="5,31,148,57"/>
+<area shape="rect" id="Node000002" href="$serial__port_8c.html#a1dc9addb862c1f391bcd23cb104f88d8" title="Receives a data byte via the serial port." alt="" coords="196,5,320,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="148,31,180,27,181,32,148,37"/>
+<area shape="rect" id="Node000004" href="$serial__port_8c.html#a0cf4f885a34e06ba2cfa0bf3557f6790" title="Sends a data byte via the serial port." alt="" coords="203,56,313,83"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="148,51,188,57,187,62,148,57"/>
+<area shape="rect" id="Node000003" href="$utils_8c.html#aaae43c6cf9efece01166b2b4d9e355ef" title=" " alt="" coords="368,31,458,57"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="321,26,353,32,352,37,320,31"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="313,58,353,51,353,56,314,63"/>
+</map>

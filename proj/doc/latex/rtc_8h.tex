@@ -1,0 +1,252 @@
+\doxysection{/home/ricardo/\+FEUP/\+LCOM/\+MINIX-\/\+LCOM/shared/g6/proj/src/drivers/rtc.h File Reference}
+\hypertarget{rtc_8h}{}\label{rtc_8h}\index{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/drivers/rtc.h@{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/drivers/rtc.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+Include dependency graph for rtc.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{rtc_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{rtc_8h_a85b5a1fe26a42798f7f1da1687bbb9c5}{rtc\+\_\+set\+\_\+alarm}} (uint8\+\_\+t alarm\+\_\+hours, uint8\+\_\+t alarm\+\_\+minutes, uint8\+\_\+t alarm\+\_\+seconds)
+\begin{DoxyCompactList}\small\item\em Sets up an alarm in the RTC after a certain time. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{rtc_8h_a75dad42881d64cf07cf1bdc2979a7056}{rtc\+\_\+ih}} ()
+\begin{DoxyCompactList}\small\item\em Processes RTC interrupts by setting a flag if an alarm was generated. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rtc_8h_ac8915ed7e97ce0c42a5efc6fcf002e35}{rtc\+\_\+disable\+\_\+alarm}} ()
+\begin{DoxyCompactList}\small\item\em Disables the RTC alarm interrupts. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rtc_8h_a5171a9c0f54940fe60f7500896afcc86}{rtc\+\_\+subscribe\+\_\+int}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}bit\+\_\+no)
+\begin{DoxyCompactList}\small\item\em Subscribes to RTC interrupts using the IRQ\+\_\+\+REENABLE policy. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rtc_8h_ab8f17bf5280c908c8b199a90fefcc758}{rtc\+\_\+unsubscribe\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Unsubscribes to RTC interrupts. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rtc_8h_a8b1ca41a3ec7aa776b7b0e88723d6bca}{rtc\+\_\+get\+\_\+time}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}hours, uint8\+\_\+t \texorpdfstring{$\ast$}{*}minutes, uint8\+\_\+t \texorpdfstring{$\ast$}{*}seconds)
+\begin{DoxyCompactList}\small\item\em Returns the current time in the RTC registers. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rtc_8h_a98d1f0767edb26a9890ebdab35937a1f}{rtc\+\_\+read\+\_\+from\+\_\+reg}} (uint32\+\_\+t reg, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em Reads a register from the RTC. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rtc_8h_ac8bb7a440c32f36b4ec04d0e83f1c346}{rtc\+\_\+write\+\_\+to\+\_\+reg}} (uint32\+\_\+t reg, uint8\+\_\+t data)
+\begin{DoxyCompactList}\small\item\em Writes a byte to a RTC register. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{rtc_8h_ab710920d4b62451b72339fcfa26bd6f4}{to\+\_\+binary}} (uint8\+\_\+t bcd)
+\begin{DoxyCompactList}\small\item\em Converts a BCD number to binary format. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{rtc_8h_a7dc266b7bbca71b81a7d6c937a1b87e6}{to\+\_\+bcd}} (uint8\+\_\+t binary)
+\begin{DoxyCompactList}\small\item\em Converts a binary number to BCD format. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{rtc_8h_ac8915ed7e97ce0c42a5efc6fcf002e35}\index{rtc.h@{rtc.h}!rtc\_disable\_alarm@{rtc\_disable\_alarm}}
+\index{rtc\_disable\_alarm@{rtc\_disable\_alarm}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{rtc\_disable\_alarm()}{rtc\_disable\_alarm()}}
+{\footnotesize\ttfamily \label{rtc_8h_ac8915ed7e97ce0c42a5efc6fcf002e35} 
+int rtc\+\_\+disable\+\_\+alarm (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Disables the RTC alarm interrupts. 
+
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8h_ac8915ed7e97ce0c42a5efc6fcf002e35_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{rtc_8h_a8b1ca41a3ec7aa776b7b0e88723d6bca}\index{rtc.h@{rtc.h}!rtc\_get\_time@{rtc\_get\_time}}
+\index{rtc\_get\_time@{rtc\_get\_time}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{rtc\_get\_time()}{rtc\_get\_time()}}
+{\footnotesize\ttfamily \label{rtc_8h_a8b1ca41a3ec7aa776b7b0e88723d6bca} 
+int rtc\+\_\+get\+\_\+time (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{hours}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{minutes}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{seconds}{}\end{DoxyParamCaption})}
+
+
+
+Returns the current time in the RTC registers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hours} & Address where hours will be stored. \\
+\hline
+{\em minutes} & Address where the minutes will be stored. \\
+\hline
+{\em seconds} & Address where the seconds will be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8h_a8b1ca41a3ec7aa776b7b0e88723d6bca_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{rtc_8h_a75dad42881d64cf07cf1bdc2979a7056}\index{rtc.h@{rtc.h}!rtc\_ih@{rtc\_ih}}
+\index{rtc\_ih@{rtc\_ih}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{rtc\_ih()}{rtc\_ih()}}
+{\footnotesize\ttfamily \label{rtc_8h_a75dad42881d64cf07cf1bdc2979a7056} 
+void rtc\+\_\+ih (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Processes RTC interrupts by setting a flag if an alarm was generated. 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8h_a75dad42881d64cf07cf1bdc2979a7056_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{rtc_8h_a98d1f0767edb26a9890ebdab35937a1f}\index{rtc.h@{rtc.h}!rtc\_read\_from\_reg@{rtc\_read\_from\_reg}}
+\index{rtc\_read\_from\_reg@{rtc\_read\_from\_reg}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{rtc\_read\_from\_reg()}{rtc\_read\_from\_reg()}}
+{\footnotesize\ttfamily \label{rtc_8h_a98d1f0767edb26a9890ebdab35937a1f} 
+int rtc\+\_\+read\+\_\+from\+\_\+reg (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{reg}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data}{}\end{DoxyParamCaption})}
+
+
+
+Reads a register from the RTC. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg} & Address of the register to be read. \\
+\hline
+{\em data} & Address where the register data will be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{rtc_8h_a98d1f0767edb26a9890ebdab35937a1f_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{rtc_8h_a85b5a1fe26a42798f7f1da1687bbb9c5}\index{rtc.h@{rtc.h}!rtc\_set\_alarm@{rtc\_set\_alarm}}
+\index{rtc\_set\_alarm@{rtc\_set\_alarm}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{rtc\_set\_alarm()}{rtc\_set\_alarm()}}
+{\footnotesize\ttfamily \label{rtc_8h_a85b5a1fe26a42798f7f1da1687bbb9c5} 
+int rtc\+\_\+set\+\_\+alarm (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{alarm\+\_\+hours}{, }\item[{uint8\+\_\+t}]{alarm\+\_\+minutes}{, }\item[{uint8\+\_\+t}]{alarm\+\_\+seconds}{}\end{DoxyParamCaption})}
+
+
+
+Sets up an alarm in the RTC after a certain time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em alarm\+\_\+hours} & Hours to elapse until alarm. \\
+\hline
+{\em alarm\+\_\+minutes} & Minutes to elapse until alarm. \\
+\hline
+{\em alarm\+\_\+seconds} & Seconds to elapse until alarm. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8h_a85b5a1fe26a42798f7f1da1687bbb9c5_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{rtc_8h_a5171a9c0f54940fe60f7500896afcc86}\index{rtc.h@{rtc.h}!rtc\_subscribe\_int@{rtc\_subscribe\_int}}
+\index{rtc\_subscribe\_int@{rtc\_subscribe\_int}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{rtc\_subscribe\_int()}{rtc\_subscribe\_int()}}
+{\footnotesize\ttfamily \label{rtc_8h_a5171a9c0f54940fe60f7500896afcc86} 
+int rtc\+\_\+subscribe\+\_\+int (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{bit\+\_\+no}{}\end{DoxyParamCaption})}
+
+
+
+Subscribes to RTC interrupts using the IRQ\+\_\+\+REENABLE policy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bit\+\_\+no} & Bit number to use in the RTC hook ID. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+\Hypertarget{rtc_8h_ab8f17bf5280c908c8b199a90fefcc758}\index{rtc.h@{rtc.h}!rtc\_unsubscribe\_int@{rtc\_unsubscribe\_int}}
+\index{rtc\_unsubscribe\_int@{rtc\_unsubscribe\_int}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{rtc\_unsubscribe\_int()}{rtc\_unsubscribe\_int()}}
+{\footnotesize\ttfamily \label{rtc_8h_ab8f17bf5280c908c8b199a90fefcc758} 
+int rtc\+\_\+unsubscribe\+\_\+int (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Unsubscribes to RTC interrupts. 
+
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+\Hypertarget{rtc_8h_ac8bb7a440c32f36b4ec04d0e83f1c346}\index{rtc.h@{rtc.h}!rtc\_write\_to\_reg@{rtc\_write\_to\_reg}}
+\index{rtc\_write\_to\_reg@{rtc\_write\_to\_reg}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{rtc\_write\_to\_reg()}{rtc\_write\_to\_reg()}}
+{\footnotesize\ttfamily \label{rtc_8h_ac8bb7a440c32f36b4ec04d0e83f1c346} 
+int rtc\+\_\+write\+\_\+to\+\_\+reg (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{reg}{, }\item[{uint8\+\_\+t}]{data}{}\end{DoxyParamCaption})}
+
+
+
+Writes a byte to a RTC register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg} & Address of the register to write to. \\
+\hline
+{\em data} & Byte to be written. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+\Hypertarget{rtc_8h_a7dc266b7bbca71b81a7d6c937a1b87e6}\index{rtc.h@{rtc.h}!to\_bcd@{to\_bcd}}
+\index{to\_bcd@{to\_bcd}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{to\_bcd()}{to\_bcd()}}
+{\footnotesize\ttfamily \label{rtc_8h_a7dc266b7bbca71b81a7d6c937a1b87e6} 
+uint8\+\_\+t to\+\_\+bcd (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{binary}{}\end{DoxyParamCaption})}
+
+
+
+Converts a binary number to BCD format. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em binary} & Number to be converted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The corresponding BCD format number. 
+\end{DoxyReturn}
+\Hypertarget{rtc_8h_ab710920d4b62451b72339fcfa26bd6f4}\index{rtc.h@{rtc.h}!to\_binary@{to\_binary}}
+\index{to\_binary@{to\_binary}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{to\_binary()}{to\_binary()}}
+{\footnotesize\ttfamily \label{rtc_8h_ab710920d4b62451b72339fcfa26bd6f4} 
+uint8\+\_\+t to\+\_\+binary (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{bcd}{}\end{DoxyParamCaption})}
+
+
+
+Converts a BCD number to binary format. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bcd} & Number to be converted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The corresponding binary format number. 
+\end{DoxyReturn}

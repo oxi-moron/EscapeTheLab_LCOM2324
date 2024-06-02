@@ -1,0 +1,7 @@
+<map id="rtc_get_time" name="rtc_get_time">
+<area shape="rect" id="Node000001" title="Returns the current time in the RTC registers." alt="" coords="5,5,99,32"/>
+<area shape="rect" id="Node000002" href="$rtc_8c.html#a98d1f0767edb26a9890ebdab35937a1f" title="Reads a register from the RTC." alt="" coords="147,5,273,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,16,131,16,131,21,99,21"/>
+<area shape="rect" id="Node000003" href="$utils_8c.html#aaae43c6cf9efece01166b2b4d9e355ef" title=" " alt="" coords="321,5,411,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="273,16,305,16,305,21,273,21"/>
+</map>

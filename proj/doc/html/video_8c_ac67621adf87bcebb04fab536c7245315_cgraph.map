@@ -1,0 +1,7 @@
+<map id="vg_start" name="vg_start">
+<area shape="rect" id="Node000001" title="Configures the video card for a given mode." alt="" coords="5,31,74,57"/>
+<area shape="rect" id="Node000002" href="$video_8c.html#a15d59629b6adbc2c2f71ca6a486baa93" title="Maps the physical video RAM into the process space." alt="" coords="122,5,225,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="74,35,106,29,107,34,75,40"/>
+<area shape="rect" id="Node000003" href="$video_8c.html#a3eaed521041b153cd8f9c5d371b393ff" title="Sets the video card mode." alt="" coords="124,56,223,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="75,48,109,54,108,60,74,53"/>
+</map>

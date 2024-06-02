@@ -1,0 +1,34 @@
+\doxysection{game\+\_\+state.\+h}
+\hypertarget{game__state_8h_source}{}\label{game__state_8h_source}\index{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/game/game\_state.h@{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/game/game\_state.h}}
+\mbox{\hyperlink{game__state_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ G6\_GAME\_STATE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ G6\_GAME\_STATE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{player_8h}{player.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{cursor_8h}{cursor.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{graphics_8h}{graphics.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{clock_8h}{clock.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{intercom_8h}{intercom.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game__macros_8h}{game\_macros.h}}"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{game__state_8h_a4edce1ca040716922b6e4a79be4e414d}{game\_state\_t}}\ \{\mbox{\hyperlink{game__state_8h_a4edce1ca040716922b6e4a79be4e414da4c40e60bc71a32b924ce1f08d57f9721}{MENU}},\ \mbox{\hyperlink{game__state_8h_a4edce1ca040716922b6e4a79be4e414dab49108b6fb1ab1d2520660729cb3fa6b}{PLAYER\_SELECT}},\ \mbox{\hyperlink{game__state_8h_a4edce1ca040716922b6e4a79be4e414dad50cf309d7568040619ed26ee6835a84}{GAME}},\ \mbox{\hyperlink{game__state_8h_a4edce1ca040716922b6e4a79be4e414da56b36d0d0bb01b339cf1041adc08e262}{PAUSE}},\ \mbox{\hyperlink{game__state_8h_a4edce1ca040716922b6e4a79be4e414da4010ea3c2f1d9ab23b01c95848aae058}{INTERCOM}},\ \mbox{\hyperlink{game__state_8h_a4edce1ca040716922b6e4a79be4e414dafa6a17124aaf95b93c339c823454df22}{DEFEAT}},\ \mbox{\hyperlink{game__state_8h_a4edce1ca040716922b6e4a79be4e414da38088c60165dc5b369946da1d8797d00}{VICTORY}}\};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{static}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{game__state_8h_a4edce1ca040716922b6e4a79be4e414d}{game\_state\_t}}\ \mbox{\hyperlink{game__state_8h_acd96124f5707225513a333e629161903}{game\_state}}\ =\ \mbox{\hyperlink{game__state_8h_a4edce1ca040716922b6e4a79be4e414da4c40e60bc71a32b924ce1f08d57f9721}{MENU}};}
+\DoxyCodeLine{00015\ \textcolor{keyword}{static}\ uint8\_t\ \mbox{\hyperlink{game__state_8h_ac470fe122e60dbe909e474013ab1363e}{map\_no}}\ =\ \mbox{\hyperlink{game__macros_8h_a2a4bd282495fbf07c6e05f0e9a2df283}{START\_MAP}};}
+\DoxyCodeLine{00016\ \textcolor{keyword}{static}\ uint8\_t\ \mbox{\hyperlink{game__state_8h_a9f741d18013210facdfad8982b28a6cf}{player\_no}}\ =\ 0;}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00022\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{game__state_8h_a70929694baa82ac490dbf80cf91b0ae6}{game\_setup}}();}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00028\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{game__state_8h_a09bf9b68bc402581eff18f20ca6f9e2c}{state\_draw\_frame}}();}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{game__state_8h_ac5ed158ec40984755d9d85d84599b03e}{state\_kbd\_event}}(uint8\_t\ \mbox{\hyperlink{driver__handler_8c_aa1de7a5557e9d96b83cf03f73c92163f}{scancode}});}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{game__state_8h_a3983b0a6d071f6230703e8d83cb4099a}{state\_mouse\_event}}(\textcolor{keyword}{struct}\ packet\ pp);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00048\ int\ (\mbox{\hyperlink{game__state_8h_a24276f0f2d8ee00280bdc479f644087f}{state\_rtc\_event}})\ ();}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//G6\_GAME\_STATE\_H}}
+
+\end{DoxyCode}

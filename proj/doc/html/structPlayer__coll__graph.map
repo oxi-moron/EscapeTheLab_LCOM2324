@@ -1,0 +1,5 @@
+<map id="Player" name="Player">
+<area shape="rect" id="Node000001" title="Struct that defines a player, with his position and his angle." alt="" coords="9,96,68,123"/>
+<area shape="rect" id="Node000002" href="$structpoint2D.html" title="Struct that defines a point in the 2D plane." alt="" coords="5,5,72,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="41,48,41,95,36,95,36,48"/>
+</map>

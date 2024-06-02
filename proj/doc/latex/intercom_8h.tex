@@ -1,0 +1,146 @@
+\doxysection{/home/ricardo/\+FEUP/\+LCOM/\+MINIX-\/\+LCOM/shared/g6/proj/src/game/intercom.h File Reference}
+\hypertarget{intercom_8h}{}\label{intercom_8h}\index{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/game/intercom.h@{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/game/intercom.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include "{}../drivers/serial\+\_\+port.\+h"{}}\newline
+{\ttfamily \#include "{}../drivers/uart\+\_\+macros.\+h"{}}\newline
+{\ttfamily \#include "{}game\+\_\+macros.\+h"{}}\newline
+Include dependency graph for intercom.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{intercom_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{intercom_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{intercom_8h_a27db13d1aa05cd55753703e8bdbd722c}{intercom\+\_\+send\+\_\+letter}} (uint8\+\_\+t \mbox{\hyperlink{game__state_8h_a9f741d18013210facdfad8982b28a6cf}{player\+\_\+no}}, uint8\+\_\+t \mbox{\hyperlink{driver__handler_8c_aa1de7a5557e9d96b83cf03f73c92163f}{scancode}})
+\begin{DoxyCompactList}\small\item\em Sends (and receives) a letter to/from the other player via the in-\/game intercom. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{intercom_8h_a931f8e10068d15c24de5c92b7fae76c1}{intercom\+\_\+get\+\_\+letters}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}letters)
+\begin{DoxyCompactList}\small\item\em Gets the letters received through the intercom. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{intercom_8h_a6dd1a2dd535574d3412b5df1604c0a3b}{intercom\+\_\+get\+\_\+password}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}pw)
+\begin{DoxyCompactList}\small\item\em Gets the secret password to finish the game. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{intercom_8h_a39b42cf24100d68cecddb8254677ffb2}{intercom\+\_\+password\+\_\+entered}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the player has received the secret password via the intercom. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{intercom_8h_a7936213465e733a679a67a3fada08fe9}{intercom\+\_\+reset}} ()
+\begin{DoxyCompactList}\small\item\em Resets the letters received through the intercom. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{intercom_8h_af1d071bd59f679d7d41f2cdf0099b61b}{word}} \mbox{[}\mbox{\hyperlink{game__macros_8h_a4beb8dccd4fdbe871c5ffe78ac63b0cb}{PASSWORD\+\_\+\+SIZE}}\mbox{]} = \{0, 0, 0, 0\}
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{intercom_8h_a2baf1fd903a848a523513bf47c8f5a35}{password}} \mbox{[}\mbox{\hyperlink{game__macros_8h_a4beb8dccd4fdbe871c5ffe78ac63b0cb}{PASSWORD\+\_\+\+SIZE}}\mbox{]} = \{\mbox{\hyperlink{game__macros_8h_a0666f833113295c187d46f1856a4e7cd}{L\+\_\+\+SCANCODE}}, \mbox{\hyperlink{game__macros_8h_a7885695ec9838b88ec8d9fe28a4e30b4}{C\+\_\+\+SCANCODE}}, \mbox{\hyperlink{game__macros_8h_aac7646195d457de0e7802be737aced90}{O\+\_\+\+SCANCODE}}, \mbox{\hyperlink{game__macros_8h_a494858e6f0b4385b7359ce02905c90b4}{M\+\_\+\+SCANCODE}}\}
+\item 
+static int \mbox{\hyperlink{intercom_8h_aa109b69c74e781d1c99d60b2861cbf5d}{current\+\_\+index}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{intercom_8h_a931f8e10068d15c24de5c92b7fae76c1}\index{intercom.h@{intercom.h}!intercom\_get\_letters@{intercom\_get\_letters}}
+\index{intercom\_get\_letters@{intercom\_get\_letters}!intercom.h@{intercom.h}}
+\doxysubsubsection{\texorpdfstring{intercom\_get\_letters()}{intercom\_get\_letters()}}
+{\footnotesize\ttfamily \label{intercom_8h_a931f8e10068d15c24de5c92b7fae76c1} 
+void intercom\+\_\+get\+\_\+letters (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{letters}{}\end{DoxyParamCaption})}
+
+
+
+Gets the letters received through the intercom. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em letters} & Address where the letters will be stored. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{intercom_8h_a6dd1a2dd535574d3412b5df1604c0a3b}\index{intercom.h@{intercom.h}!intercom\_get\_password@{intercom\_get\_password}}
+\index{intercom\_get\_password@{intercom\_get\_password}!intercom.h@{intercom.h}}
+\doxysubsubsection{\texorpdfstring{intercom\_get\_password()}{intercom\_get\_password()}}
+{\footnotesize\ttfamily \label{intercom_8h_a6dd1a2dd535574d3412b5df1604c0a3b} 
+void intercom\+\_\+get\+\_\+password (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{pw}{}\end{DoxyParamCaption})}
+
+
+
+Gets the secret password to finish the game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pw} & Address where the password will be stored. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{intercom_8h_a39b42cf24100d68cecddb8254677ffb2}\index{intercom.h@{intercom.h}!intercom\_password\_entered@{intercom\_password\_entered}}
+\index{intercom\_password\_entered@{intercom\_password\_entered}!intercom.h@{intercom.h}}
+\doxysubsubsection{\texorpdfstring{intercom\_password\_entered()}{intercom\_password\_entered()}}
+{\footnotesize\ttfamily \label{intercom_8h_a39b42cf24100d68cecddb8254677ffb2} 
+bool intercom\+\_\+password\+\_\+entered (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the player has received the secret password via the intercom. 
+
+\begin{DoxyReturn}{Returns}
+True if the password has been received, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{intercom_8h_a7936213465e733a679a67a3fada08fe9}\index{intercom.h@{intercom.h}!intercom\_reset@{intercom\_reset}}
+\index{intercom\_reset@{intercom\_reset}!intercom.h@{intercom.h}}
+\doxysubsubsection{\texorpdfstring{intercom\_reset()}{intercom\_reset()}}
+{\footnotesize\ttfamily \label{intercom_8h_a7936213465e733a679a67a3fada08fe9} 
+void intercom\+\_\+reset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Resets the letters received through the intercom. 
+
+\Hypertarget{intercom_8h_a27db13d1aa05cd55753703e8bdbd722c}\index{intercom.h@{intercom.h}!intercom\_send\_letter@{intercom\_send\_letter}}
+\index{intercom\_send\_letter@{intercom\_send\_letter}!intercom.h@{intercom.h}}
+\doxysubsubsection{\texorpdfstring{intercom\_send\_letter()}{intercom\_send\_letter()}}
+{\footnotesize\ttfamily \label{intercom_8h_a27db13d1aa05cd55753703e8bdbd722c} 
+int intercom\+\_\+send\+\_\+letter (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{player\+\_\+no}{, }\item[{uint8\+\_\+t}]{scancode}{}\end{DoxyParamCaption})}
+
+
+
+Sends (and receives) a letter to/from the other player via the in-\/game intercom. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+\_\+no} & Number of the current player. \\
+\hline
+{\em scancode} & Scancode of the letter to be sent. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{intercom_8h_a27db13d1aa05cd55753703e8bdbd722c_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{intercom_8h_aa109b69c74e781d1c99d60b2861cbf5d}\index{intercom.h@{intercom.h}!current\_index@{current\_index}}
+\index{current\_index@{current\_index}!intercom.h@{intercom.h}}
+\doxysubsubsection{\texorpdfstring{current\_index}{current\_index}}
+{\footnotesize\ttfamily \label{intercom_8h_aa109b69c74e781d1c99d60b2861cbf5d} 
+int current\+\_\+index = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{intercom_8h_a2baf1fd903a848a523513bf47c8f5a35}\index{intercom.h@{intercom.h}!password@{password}}
+\index{password@{password}!intercom.h@{intercom.h}}
+\doxysubsubsection{\texorpdfstring{password}{password}}
+{\footnotesize\ttfamily \label{intercom_8h_a2baf1fd903a848a523513bf47c8f5a35} 
+uint8\+\_\+t password\mbox{[}\mbox{\hyperlink{game__macros_8h_a4beb8dccd4fdbe871c5ffe78ac63b0cb}{PASSWORD\+\_\+\+SIZE}}\mbox{]} = \{\mbox{\hyperlink{game__macros_8h_a0666f833113295c187d46f1856a4e7cd}{L\+\_\+\+SCANCODE}}, \mbox{\hyperlink{game__macros_8h_a7885695ec9838b88ec8d9fe28a4e30b4}{C\+\_\+\+SCANCODE}}, \mbox{\hyperlink{game__macros_8h_aac7646195d457de0e7802be737aced90}{O\+\_\+\+SCANCODE}}, \mbox{\hyperlink{game__macros_8h_a494858e6f0b4385b7359ce02905c90b4}{M\+\_\+\+SCANCODE}}\}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{intercom_8h_af1d071bd59f679d7d41f2cdf0099b61b}\index{intercom.h@{intercom.h}!word@{word}}
+\index{word@{word}!intercom.h@{intercom.h}}
+\doxysubsubsection{\texorpdfstring{word}{word}}
+{\footnotesize\ttfamily \label{intercom_8h_af1d071bd59f679d7d41f2cdf0099b61b} 
+uint8\+\_\+t word\mbox{[}\mbox{\hyperlink{game__macros_8h_a4beb8dccd4fdbe871c5ffe78ac63b0cb}{PASSWORD\+\_\+\+SIZE}}\mbox{]} = \{0, 0, 0, 0\}\hspace{0.3cm}{\ttfamily [static]}}
+

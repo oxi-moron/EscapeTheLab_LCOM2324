@@ -1,0 +1,486 @@
+\doxysection{/home/ricardo/\+FEUP/\+LCOM/\+MINIX-\/\+LCOM/shared/g6/proj/src/game/graphics.c File Reference}
+\hypertarget{graphics_8c}{}\label{graphics_8c}\index{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/game/graphics.c@{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/game/graphics.c}}
+{\ttfamily \#include "{}graphics.\+h"{}}\newline
+Include dependency graph for graphics.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{graphics_8c_a362fe67ec93115182d5bd5a939705835}{graphics\+\_\+construct}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the graphics (sets up the video and map resolutions) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8c_a072d58a9922b14570f694651d02c28ef}{graphics\+\_\+draw\+\_\+game}} ()
+\begin{DoxyCompactList}\small\item\em Draws the current game frame (map, items and player camera). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8c_a1d40ce08c1e7f423254459a41b3108ed}{graphics\+\_\+draw\+\_\+menu}} ()
+\begin{DoxyCompactList}\small\item\em Draws the main menu screen. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8c_aefb4e70b43b832fb6095e5bc0ac42dea}{graphics\+\_\+draw\+\_\+pause\+\_\+menu}} ()
+\begin{DoxyCompactList}\small\item\em Draws the pause menu screen. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8c_a521c4ccfbb4838ce787eac35dda836df}{graphics\+\_\+draw\+\_\+defeat\+\_\+screen}} ()
+\begin{DoxyCompactList}\small\item\em Draws the defeat screen. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8c_ae0c673b0297c5d5fbf76c9f14a49ab7a}{graphics\+\_\+draw\+\_\+victory\+\_\+screen}} ()
+\begin{DoxyCompactList}\small\item\em Draws the victory screen. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8c_a79b0e6c73927a50d2fec64c0f328bb8c}{graphics\+\_\+draw\+\_\+intercom}} ()
+\begin{DoxyCompactList}\small\item\em Draws the intercom screen. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8c_a8fc9d47665faf988ed4dc7f033379330}{graphics\+\_\+draw\+\_\+player\+\_\+select}} ()
+\begin{DoxyCompactList}\small\item\em Draws the player selection screen. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8c_a967d073c45f8ad61c165fb907f9510e9}{graphics\+\_\+draw\+\_\+floor}} ()
+\begin{DoxyCompactList}\small\item\em Draws the floor of the game. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8c_a6dcea0d8ffb21eedc4638adb1dfa89cb}{graphics\+\_\+draw\+\_\+ceiling}} ()
+\begin{DoxyCompactList}\small\item\em Draws the ceiling of the game. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8c_ad77c09c8e0af87e29a057fe139ff6ea2}{graphics\+\_\+draw\+\_\+player\+\_\+camera}} ()
+\begin{DoxyCompactList}\small\item\em Draws the players camera angle. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8c_a2830045f9b413263deca97ff99a2d152}{graphics\+\_\+draw\+\_\+map}} ()
+\begin{DoxyCompactList}\small\item\em Draws the game screen map. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8c_a09adb09ebbf2475b0ce444883ad07b51}{graphics\+\_\+draw\+\_\+cursor}} ()
+\begin{DoxyCompactList}\small\item\em Draws the in-\/game cursor. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8c_aff601059893786603f3cca562915b19b}{create\+\_\+line}} (struct \mbox{\hyperlink{structpoint2D}{point2D}} \texorpdfstring{$\ast$}{*}line, double angle, uint8\+\_\+t \texorpdfstring{$\ast$}{*}delimiter)
+\begin{DoxyCompactList}\small\item\em Creates a line using Bresenham\textquotesingle{}s Line Algorithm to draw the player vision. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8c_a54a59699ef3d7b0467aff83f17763081}{set\+\_\+background\+\_\+color}} (uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Sets the screen\textquotesingle{}s background color. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{graphics_8c_ac82e7d55ed069f5d0c396c20b97337e9}{load\+\_\+xpms}} ()
+\begin{DoxyCompactList}\small\item\em Loads the initial XPMs. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{graphics_8c_a9a681a9e2e9255762319aa6c9e86d584}{get\+\_\+ray\+\_\+angle}} (int diff)
+\begin{DoxyCompactList}\small\item\em Calculates the angle for the Line Drawing Algorithm. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{graphics_8c_a9c49e4c20ac95e0e2cf810bfc6bd770a}{password\+\_\+xpm}} \mbox{[}\mbox{\hyperlink{game__macros_8h_a4beb8dccd4fdbe871c5ffe78ac63b0cb}{PASSWORD\+\_\+\+SIZE}}\mbox{]}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{graphics_8c_aa0b645820735c9c6e66d2930a4dd8610}{menu\+\_\+xpm}}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{graphics_8c_abf88d8dc2c34d875b462cd19445a2fd2}{wall\+\_\+texture\+\_\+xpm}}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{graphics_8c_a3c8da1f512911af11ecd61337746527a}{cursor\+\_\+xpm}}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{graphics_8c_af57edd6a030ab4c7e9069c19e6dda7c2}{pause\+\_\+menu\+\_\+xpm}}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{graphics_8c_a275c0a3f1f49f202b5af8360f673f563}{door\+\_\+texture\+\_\+lock\+\_\+xpm}}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{graphics_8c_a7a8a4632de765a29a48cb1d10f50fc9b}{door\+\_\+texture\+\_\+open\+\_\+xpm}}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{graphics_8c_a5883ae399e8ac25e1b98d5a01e452922}{defeat\+\_\+xpm}}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{graphics_8c_a37a075983d4e06f3eb49b15e7bac12f5}{victory\+\_\+xpm}}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{graphics_8c_a617919382cb5d271787ea7a31207c9f2}{player\+\_\+select\+\_\+xpm}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{graphics_8c_aff601059893786603f3cca562915b19b}\index{graphics.c@{graphics.c}!create\_line@{create\_line}}
+\index{create\_line@{create\_line}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{create\_line()}{create\_line()}}
+{\footnotesize\ttfamily \label{graphics_8c_aff601059893786603f3cca562915b19b} 
+int create\+\_\+line (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structpoint2D}{point2D}} \texorpdfstring{$\ast$}{*}}]{line}{, }\item[{double}]{angle}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{delimiter}{}\end{DoxyParamCaption})}
+
+
+
+Creates a line using Bresenham\textquotesingle{}s Line Algorithm to draw the player vision. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & Address where line will be stored. \\
+\hline
+{\em angle} & Angle between the player and the collision point of its sight. \\
+\hline
+{\em delimiter} & Address where the lines delimiter will be stored (1 if it\textquotesingle{}s a wall, 2 if it\textquotesingle{}s a door). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Length of the line in number of points. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{graphics_8c_aff601059893786603f3cca562915b19b_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{graphics_8c_a9a681a9e2e9255762319aa6c9e86d584}\index{graphics.c@{graphics.c}!get\_ray\_angle@{get\_ray\_angle}}
+\index{get\_ray\_angle@{get\_ray\_angle}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{get\_ray\_angle()}{get\_ray\_angle()}}
+{\footnotesize\ttfamily \label{graphics_8c_a9a681a9e2e9255762319aa6c9e86d584} 
+double get\+\_\+ray\+\_\+angle (\begin{DoxyParamCaption}\item[{int}]{diff}{}\end{DoxyParamCaption})}
+
+
+
+Calculates the angle for the Line Drawing Algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em diff} & The horizontal coordinate of the line to be calculated. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{graphics_8c_a9a681a9e2e9255762319aa6c9e86d584_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{graphics_8c_a362fe67ec93115182d5bd5a939705835}\index{graphics.c@{graphics.c}!graphics\_construct@{graphics\_construct}}
+\index{graphics\_construct@{graphics\_construct}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{graphics\_construct()}{graphics\_construct()}}
+{\footnotesize\ttfamily \label{graphics_8c_a362fe67ec93115182d5bd5a939705835} 
+int graphics\+\_\+construct (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the graphics (sets up the video and map resolutions) 
+
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{graphics_8c_a362fe67ec93115182d5bd5a939705835_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{graphics_8c_a6dcea0d8ffb21eedc4638adb1dfa89cb}\index{graphics.c@{graphics.c}!graphics\_draw\_ceiling@{graphics\_draw\_ceiling}}
+\index{graphics\_draw\_ceiling@{graphics\_draw\_ceiling}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{graphics\_draw\_ceiling()}{graphics\_draw\_ceiling()}}
+{\footnotesize\ttfamily \label{graphics_8c_a6dcea0d8ffb21eedc4638adb1dfa89cb} 
+int graphics\+\_\+draw\+\_\+ceiling (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Draws the ceiling of the game. 
+
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{graphics_8c_a6dcea0d8ffb21eedc4638adb1dfa89cb_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{graphics_8c_a09adb09ebbf2475b0ce444883ad07b51}\index{graphics.c@{graphics.c}!graphics\_draw\_cursor@{graphics\_draw\_cursor}}
+\index{graphics\_draw\_cursor@{graphics\_draw\_cursor}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{graphics\_draw\_cursor()}{graphics\_draw\_cursor()}}
+{\footnotesize\ttfamily \label{graphics_8c_a09adb09ebbf2475b0ce444883ad07b51} 
+int graphics\+\_\+draw\+\_\+cursor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Draws the in-\/game cursor. 
+
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8c_a09adb09ebbf2475b0ce444883ad07b51_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{graphics_8c_a521c4ccfbb4838ce787eac35dda836df}\index{graphics.c@{graphics.c}!graphics\_draw\_defeat\_screen@{graphics\_draw\_defeat\_screen}}
+\index{graphics\_draw\_defeat\_screen@{graphics\_draw\_defeat\_screen}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{graphics\_draw\_defeat\_screen()}{graphics\_draw\_defeat\_screen()}}
+{\footnotesize\ttfamily \label{graphics_8c_a521c4ccfbb4838ce787eac35dda836df} 
+int graphics\+\_\+draw\+\_\+defeat\+\_\+screen (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Draws the defeat screen. 
+
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8c_a521c4ccfbb4838ce787eac35dda836df_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{graphics_8c_a967d073c45f8ad61c165fb907f9510e9}\index{graphics.c@{graphics.c}!graphics\_draw\_floor@{graphics\_draw\_floor}}
+\index{graphics\_draw\_floor@{graphics\_draw\_floor}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{graphics\_draw\_floor()}{graphics\_draw\_floor()}}
+{\footnotesize\ttfamily \label{graphics_8c_a967d073c45f8ad61c165fb907f9510e9} 
+int graphics\+\_\+draw\+\_\+floor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Draws the floor of the game. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=297pt]{graphics_8c_a967d073c45f8ad61c165fb907f9510e9_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{graphics_8c_a072d58a9922b14570f694651d02c28ef}\index{graphics.c@{graphics.c}!graphics\_draw\_game@{graphics\_draw\_game}}
+\index{graphics\_draw\_game@{graphics\_draw\_game}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{graphics\_draw\_game()}{graphics\_draw\_game()}}
+{\footnotesize\ttfamily \label{graphics_8c_a072d58a9922b14570f694651d02c28ef} 
+int graphics\+\_\+draw\+\_\+game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Draws the current game frame (map, items and player camera). 
+
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8c_a072d58a9922b14570f694651d02c28ef_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{graphics_8c_a79b0e6c73927a50d2fec64c0f328bb8c}\index{graphics.c@{graphics.c}!graphics\_draw\_intercom@{graphics\_draw\_intercom}}
+\index{graphics\_draw\_intercom@{graphics\_draw\_intercom}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{graphics\_draw\_intercom()}{graphics\_draw\_intercom()}}
+{\footnotesize\ttfamily \label{graphics_8c_a79b0e6c73927a50d2fec64c0f328bb8c} 
+int graphics\+\_\+draw\+\_\+intercom (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Draws the intercom screen. 
+
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8c_a79b0e6c73927a50d2fec64c0f328bb8c_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{graphics_8c_a2830045f9b413263deca97ff99a2d152}\index{graphics.c@{graphics.c}!graphics\_draw\_map@{graphics\_draw\_map}}
+\index{graphics\_draw\_map@{graphics\_draw\_map}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{graphics\_draw\_map()}{graphics\_draw\_map()}}
+{\footnotesize\ttfamily \label{graphics_8c_a2830045f9b413263deca97ff99a2d152} 
+int graphics\+\_\+draw\+\_\+map (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Draws the game screen map. 
+
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8c_a2830045f9b413263deca97ff99a2d152_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{graphics_8c_a1d40ce08c1e7f423254459a41b3108ed}\index{graphics.c@{graphics.c}!graphics\_draw\_menu@{graphics\_draw\_menu}}
+\index{graphics\_draw\_menu@{graphics\_draw\_menu}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{graphics\_draw\_menu()}{graphics\_draw\_menu()}}
+{\footnotesize\ttfamily \label{graphics_8c_a1d40ce08c1e7f423254459a41b3108ed} 
+int graphics\+\_\+draw\+\_\+menu (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Draws the main menu screen. 
+
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8c_a1d40ce08c1e7f423254459a41b3108ed_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{graphics_8c_aefb4e70b43b832fb6095e5bc0ac42dea}\index{graphics.c@{graphics.c}!graphics\_draw\_pause\_menu@{graphics\_draw\_pause\_menu}}
+\index{graphics\_draw\_pause\_menu@{graphics\_draw\_pause\_menu}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{graphics\_draw\_pause\_menu()}{graphics\_draw\_pause\_menu()}}
+{\footnotesize\ttfamily \label{graphics_8c_aefb4e70b43b832fb6095e5bc0ac42dea} 
+int graphics\+\_\+draw\+\_\+pause\+\_\+menu (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Draws the pause menu screen. 
+
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8c_aefb4e70b43b832fb6095e5bc0ac42dea_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{graphics_8c_ad77c09c8e0af87e29a057fe139ff6ea2}\index{graphics.c@{graphics.c}!graphics\_draw\_player\_camera@{graphics\_draw\_player\_camera}}
+\index{graphics\_draw\_player\_camera@{graphics\_draw\_player\_camera}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{graphics\_draw\_player\_camera()}{graphics\_draw\_player\_camera()}}
+{\footnotesize\ttfamily \label{graphics_8c_ad77c09c8e0af87e29a057fe139ff6ea2} 
+int graphics\+\_\+draw\+\_\+player\+\_\+camera (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Draws the players camera angle. 
+
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8c_ad77c09c8e0af87e29a057fe139ff6ea2_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{graphics_8c_a8fc9d47665faf988ed4dc7f033379330}\index{graphics.c@{graphics.c}!graphics\_draw\_player\_select@{graphics\_draw\_player\_select}}
+\index{graphics\_draw\_player\_select@{graphics\_draw\_player\_select}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{graphics\_draw\_player\_select()}{graphics\_draw\_player\_select()}}
+{\footnotesize\ttfamily \label{graphics_8c_a8fc9d47665faf988ed4dc7f033379330} 
+int graphics\+\_\+draw\+\_\+player\+\_\+select (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Draws the player selection screen. 
+
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8c_a8fc9d47665faf988ed4dc7f033379330_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{graphics_8c_ae0c673b0297c5d5fbf76c9f14a49ab7a}\index{graphics.c@{graphics.c}!graphics\_draw\_victory\_screen@{graphics\_draw\_victory\_screen}}
+\index{graphics\_draw\_victory\_screen@{graphics\_draw\_victory\_screen}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{graphics\_draw\_victory\_screen()}{graphics\_draw\_victory\_screen()}}
+{\footnotesize\ttfamily \label{graphics_8c_ae0c673b0297c5d5fbf76c9f14a49ab7a} 
+int graphics\+\_\+draw\+\_\+victory\+\_\+screen (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Draws the victory screen. 
+
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8c_ae0c673b0297c5d5fbf76c9f14a49ab7a_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{graphics_8c_ac82e7d55ed069f5d0c396c20b97337e9}\index{graphics.c@{graphics.c}!load\_xpms@{load\_xpms}}
+\index{load\_xpms@{load\_xpms}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{load\_xpms()}{load\_xpms()}}
+{\footnotesize\ttfamily \label{graphics_8c_ac82e7d55ed069f5d0c396c20b97337e9} 
+void load\+\_\+xpms (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Loads the initial XPMs. 
+
+\Hypertarget{graphics_8c_a54a59699ef3d7b0467aff83f17763081}\index{graphics.c@{graphics.c}!set\_background\_color@{set\_background\_color}}
+\index{set\_background\_color@{set\_background\_color}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{set\_background\_color()}{set\_background\_color()}}
+{\footnotesize\ttfamily \label{graphics_8c_a54a59699ef3d7b0467aff83f17763081} 
+int set\+\_\+background\+\_\+color (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Sets the screen\textquotesingle{}s background color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & Color to be set. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8c_a54a59699ef3d7b0467aff83f17763081_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{graphics_8c_a3c8da1f512911af11ecd61337746527a}\index{graphics.c@{graphics.c}!cursor\_xpm@{cursor\_xpm}}
+\index{cursor\_xpm@{cursor\_xpm}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{cursor\_xpm}{cursor\_xpm}}
+{\footnotesize\ttfamily \label{graphics_8c_a3c8da1f512911af11ecd61337746527a} 
+xpm\+\_\+image\+\_\+t cursor\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{graphics_8c_a5883ae399e8ac25e1b98d5a01e452922}\index{graphics.c@{graphics.c}!defeat\_xpm@{defeat\_xpm}}
+\index{defeat\_xpm@{defeat\_xpm}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{defeat\_xpm}{defeat\_xpm}}
+{\footnotesize\ttfamily \label{graphics_8c_a5883ae399e8ac25e1b98d5a01e452922} 
+xpm\+\_\+image\+\_\+t defeat\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{graphics_8c_a275c0a3f1f49f202b5af8360f673f563}\index{graphics.c@{graphics.c}!door\_texture\_lock\_xpm@{door\_texture\_lock\_xpm}}
+\index{door\_texture\_lock\_xpm@{door\_texture\_lock\_xpm}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{door\_texture\_lock\_xpm}{door\_texture\_lock\_xpm}}
+{\footnotesize\ttfamily \label{graphics_8c_a275c0a3f1f49f202b5af8360f673f563} 
+xpm\+\_\+image\+\_\+t door\+\_\+texture\+\_\+lock\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{graphics_8c_a7a8a4632de765a29a48cb1d10f50fc9b}\index{graphics.c@{graphics.c}!door\_texture\_open\_xpm@{door\_texture\_open\_xpm}}
+\index{door\_texture\_open\_xpm@{door\_texture\_open\_xpm}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{door\_texture\_open\_xpm}{door\_texture\_open\_xpm}}
+{\footnotesize\ttfamily \label{graphics_8c_a7a8a4632de765a29a48cb1d10f50fc9b} 
+xpm\+\_\+image\+\_\+t door\+\_\+texture\+\_\+open\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{graphics_8c_aa0b645820735c9c6e66d2930a4dd8610}\index{graphics.c@{graphics.c}!menu\_xpm@{menu\_xpm}}
+\index{menu\_xpm@{menu\_xpm}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{menu\_xpm}{menu\_xpm}}
+{\footnotesize\ttfamily \label{graphics_8c_aa0b645820735c9c6e66d2930a4dd8610} 
+xpm\+\_\+image\+\_\+t menu\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{graphics_8c_a9c49e4c20ac95e0e2cf810bfc6bd770a}\index{graphics.c@{graphics.c}!password\_xpm@{password\_xpm}}
+\index{password\_xpm@{password\_xpm}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{password\_xpm}{password\_xpm}}
+{\footnotesize\ttfamily \label{graphics_8c_a9c49e4c20ac95e0e2cf810bfc6bd770a} 
+xpm\+\_\+image\+\_\+t password\+\_\+xpm\mbox{[}\mbox{\hyperlink{game__macros_8h_a4beb8dccd4fdbe871c5ffe78ac63b0cb}{PASSWORD\+\_\+\+SIZE}}\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{graphics_8c_af57edd6a030ab4c7e9069c19e6dda7c2}\index{graphics.c@{graphics.c}!pause\_menu\_xpm@{pause\_menu\_xpm}}
+\index{pause\_menu\_xpm@{pause\_menu\_xpm}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{pause\_menu\_xpm}{pause\_menu\_xpm}}
+{\footnotesize\ttfamily \label{graphics_8c_af57edd6a030ab4c7e9069c19e6dda7c2} 
+xpm\+\_\+image\+\_\+t pause\+\_\+menu\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{graphics_8c_a617919382cb5d271787ea7a31207c9f2}\index{graphics.c@{graphics.c}!player\_select\_xpm@{player\_select\_xpm}}
+\index{player\_select\_xpm@{player\_select\_xpm}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{player\_select\_xpm}{player\_select\_xpm}}
+{\footnotesize\ttfamily \label{graphics_8c_a617919382cb5d271787ea7a31207c9f2} 
+xpm\+\_\+image\+\_\+t player\+\_\+select\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{graphics_8c_a37a075983d4e06f3eb49b15e7bac12f5}\index{graphics.c@{graphics.c}!victory\_xpm@{victory\_xpm}}
+\index{victory\_xpm@{victory\_xpm}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{victory\_xpm}{victory\_xpm}}
+{\footnotesize\ttfamily \label{graphics_8c_a37a075983d4e06f3eb49b15e7bac12f5} 
+xpm\+\_\+image\+\_\+t victory\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{graphics_8c_abf88d8dc2c34d875b462cd19445a2fd2}\index{graphics.c@{graphics.c}!wall\_texture\_xpm@{wall\_texture\_xpm}}
+\index{wall\_texture\_xpm@{wall\_texture\_xpm}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{wall\_texture\_xpm}{wall\_texture\_xpm}}
+{\footnotesize\ttfamily \label{graphics_8c_abf88d8dc2c34d875b462cd19445a2fd2} 
+xpm\+\_\+image\+\_\+t wall\+\_\+texture\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+

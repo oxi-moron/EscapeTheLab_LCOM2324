@@ -1,0 +1,32 @@
+\doxysection{rtc.\+h}
+\hypertarget{rtc_8h_source}{}\label{rtc_8h_source}\index{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/drivers/rtc.h@{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/drivers/rtc.h}}
+\mbox{\hyperlink{rtc_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ G6\_RTC\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ G6\_RTC\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00013\ int\ (\mbox{\hyperlink{rtc_8h_a85b5a1fe26a42798f7f1da1687bbb9c5}{rtc\_set\_alarm}})\ (uint8\_t\ alarm\_hours,\ uint8\_t\ alarm\_minutes,\ uint8\_t\ alarm\_seconds);}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00018\ void\ (\mbox{\hyperlink{rtc_8h_a75dad42881d64cf07cf1bdc2979a7056}{rtc\_ih}})\ ();}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00024\ int\ (\mbox{\hyperlink{rtc_8h_ac8915ed7e97ce0c42a5efc6fcf002e35}{rtc\_disable\_alarm}})\ ();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00031\ int\ (\mbox{\hyperlink{rtc_8h_a5171a9c0f54940fe60f7500896afcc86}{rtc\_subscribe\_int}})\ (uint8\_t*\ bit\_no);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00037\ int\ (\mbox{\hyperlink{rtc_8h_ab8f17bf5280c908c8b199a90fefcc758}{rtc\_unsubscribe\_int}})\ ();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00046\ int\ (\mbox{\hyperlink{rtc_8h_a8b1ca41a3ec7aa776b7b0e88723d6bca}{rtc\_get\_time}})\ (uint8\_t*\ hours,\ uint8\_t*\ minutes,\ uint8\_t*\ seconds);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00054\ int\ (\mbox{\hyperlink{rtc_8h_a98d1f0767edb26a9890ebdab35937a1f}{rtc\_read\_from\_reg}})\ (uint32\_t\ reg,\ uint8\_t*\ data);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00062\ int\ (\mbox{\hyperlink{rtc_8h_ac8bb7a440c32f36b4ec04d0e83f1c346}{rtc\_write\_to\_reg}})\ (uint32\_t\ reg,\ uint8\_t\ data);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00069\ uint8\_t\ (\mbox{\hyperlink{rtc_8h_ab710920d4b62451b72339fcfa26bd6f4}{to\_binary}})\ (uint8\_t\ bcd);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00076\ uint8\_t\ (\mbox{\hyperlink{rtc_8h_a7dc266b7bbca71b81a7d6c937a1b87e6}{to\_bcd}})\ (uint8\_t\ binary);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//G6\_RTC\_H}}
+
+\end{DoxyCode}

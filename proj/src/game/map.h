@@ -43,8 +43,22 @@ int (map_get_grid_dimensions) (uint32_t* width, uint32_t* height);
  */
 int (map_load) (uint8_t map_no);
 
+/**
+ * @brief Gets the players start position, for each map.
+ * @param x Address where players x will be stored.
+ * @param y Address where players y will be stored.
+ * @param angle Address where the players angle will be stored.
+ * @param map_no Number of the map to be loaded.
+ * @return 0 if successful, non-zero otherwise.
+ */
 int (map_get_start_pos) (uint32_t* x, uint32_t*y, uint32_t* angle, uint8_t map_no);
 
+/**
+ * @brief Gets the positions of the terminals in a map.
+ * @param terminals Address where the positions will be stored.
+ * @param map_no Number of the map.
+ * @return 0 if successful, non-zero otherwise.
+ */
 int (map_get_terminal_positions) (struct point2D* terminals, int map_no);
 
 #endif //G6_MAP_H

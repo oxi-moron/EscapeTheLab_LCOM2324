@@ -1,0 +1,25 @@
+<map id="graphics_draw_player_camera" name="graphics_draw_player_camera">
+<area shape="rect" id="Node000001" title="Draws the players camera angle." alt="" coords="5,149,153,192"/>
+<area shape="rect" id="Node000002" href="$graphics_8c.html#aff601059893786603f3cca562915b19b" title="Creates a line using Bresenham&#39;s Line Algorithm to draw the player vision." alt="" coords="241,56,325,83"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,147,199,99,228,86,230,91,202,104,116,151"/>
+<area shape="rect" id="Node000004" href="$player_8c.html#a6700d264d9f4d83871bd22956fd9a61a" title="Gets the players current position." alt="" coords="413,5,546,32"/>
+<area shape="poly" id="edge8_Node000001_Node000004" title=" " alt="" coords="91,147,134,93,165,64,199,42,248,24,300,13,351,9,397,9,397,14,351,14,301,19,250,29,202,46,168,68,138,96,96,151"/>
+<area shape="rect" id="Node000005" href="$player_8c.html#a33984e21a1f93ab7b8de83d7029db12a" title="Converts an angle in degrees to radians." alt="" coords="439,107,520,133"/>
+<area shape="poly" id="edge9_Node000001_Node000005" title=" " alt="" coords="153,159,423,124,424,130,154,164"/>
+<area shape="rect" id="Node000006" href="$graphics_8c.html#a9a681a9e2e9255762319aa6c9e86d584" title="Calculates the angle for the Line Drawing Algorithm." alt="" coords="232,208,334,235"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="154,186,217,202,216,208,152,192"/>
+<area shape="rect" id="Node000007" href="$player_8c.html#a9b629896649fa110c3fe5a96011c287c" title="Gets the players current angle." alt="" coords="420,183,539,209"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="154,173,404,189,404,194,153,178"/>
+<area shape="rect" id="Node000008" href="$video_8c.html#a240fc458a4f42c9396bcc98d47f253e3" title="Draws a vertical line in VRAM." alt="" coords="231,309,335,336"/>
+<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="97,191,141,243,170,271,202,295,217,303,215,308,199,300,166,275,137,247,93,194"/>
+<area shape="rect" id="Node000010" href="$video_8c.html#a3f88c7b3588c85d8f59f8408b83761cf" title="Draws a vertical line with a color pattern in VRAM." alt="" coords="201,259,365,285"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="112,190,153,218,202,244,217,250,214,255,200,249,151,223,109,195"/>
+<area shape="rect" id="Node000003" href="$map_8c.html#a08d69843ce56b47436f54bc15d041f1d" title="Gets the element of a given grid position (wall, door or empty cell)." alt="" coords="416,56,543,83"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="325,67,400,67,400,72,325,72"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="325,56,410,34,411,39,326,61"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="326,77,425,103,423,108,325,83"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="334,212,404,203,405,208,335,217"/>
+<area shape="rect" id="Node000009" href="$video_8c.html#a6f895de9725f9f231f9a7f74b6087f60" title="Gives a color to a pixel in VRAM." alt="" coords="428,284,532,311"/>
+<area shape="poly" id="edge11_Node000008_Node000009" title=" " alt="" coords="335,313,411,303,412,309,336,319"/>
+<area shape="poly" id="edge13_Node000010_Node000009" title=" " alt="" coords="366,280,412,286,412,291,365,285"/>
+</map>

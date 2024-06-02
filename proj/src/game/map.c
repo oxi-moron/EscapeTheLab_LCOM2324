@@ -33,7 +33,6 @@ int (map_get_grid_dimensions) (uint32_t* width, uint32_t* height) {
     return 0;
 }
 
-// TODO: better way to load maps?
 int (map_load) (uint8_t map_no) {
     switch (map_no) {
         case 0:

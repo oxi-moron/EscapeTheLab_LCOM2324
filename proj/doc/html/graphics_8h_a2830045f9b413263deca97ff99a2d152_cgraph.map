@@ -1,0 +1,13 @@
+<map id="graphics_draw_map" name="graphics_draw_map">
+<area shape="rect" id="Node000001" title="Draws the game screen map." alt="" coords="5,56,143,83"/>
+<area shape="rect" id="Node000002" href="$map_8c.html#a08d69843ce56b47436f54bc15d041f1d" title="Gets the element of a given grid position (wall, door or empty cell)." alt="" coords="194,5,321,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,53,191,34,192,39,126,58"/>
+<area shape="rect" id="Node000003" href="$player_8c.html#a6700d264d9f4d83871bd22956fd9a61a" title="Gets the players current position." alt="" coords="191,56,324,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="143,67,175,67,175,72,143,72"/>
+<area shape="rect" id="Node000004" href="$video_8c.html#a4d53728322f948683b768482bf4906e8" title="Draws a rectangle in VRAM." alt="" coords="192,107,323,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="126,81,192,99,191,105,124,86"/>
+<area shape="rect" id="Node000005" href="$video_8c.html#adb08b276272848bc7f3bccc0f5e770c8" title="Draws a horizontal line in VRAM." alt="" coords="372,107,476,133"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="323,117,357,117,357,123,323,123"/>
+<area shape="rect" id="Node000006" href="$video_8c.html#a6f895de9725f9f231f9a7f74b6087f60" title="Gives a color to a pixel in VRAM." alt="" coords="524,107,629,133"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="477,117,509,117,509,123,477,123"/>
+</map>

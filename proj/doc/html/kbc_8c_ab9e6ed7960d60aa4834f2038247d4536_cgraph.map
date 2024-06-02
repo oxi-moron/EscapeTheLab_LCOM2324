@@ -1,0 +1,5 @@
+<map id="kbc_ih" name="kbc_ih">
+<area shape="rect" id="Node000001" title="Handles keyboard interrupts by checking the KBC output buffer and reading its scancode." alt="" coords="5,5,65,32"/>
+<area shape="rect" id="Node000002" href="$utils_8c.html#aaae43c6cf9efece01166b2b4d9e355ef" title=" " alt="" coords="113,5,203,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="65,16,97,16,97,21,65,21"/>
+</map>

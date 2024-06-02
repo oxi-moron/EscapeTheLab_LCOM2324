@@ -1,0 +1,45 @@
+<map id="state_kbd_event" name="state_kbd_event">
+<area shape="rect" id="Node000001" title="Handles the in&#45;game logic of pressing a key." alt="" coords="5,233,123,260"/>
+<area shape="rect" id="Node000002" href="$clock_8c.html#ab06292d98e4532f304bad7c576d59e7a" title="Stops the in&#45;game clock timer." alt="" coords="203,31,323,57"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="67,232,79,198,100,154,130,107,169,67,187,57,190,61,172,71,134,110,105,156,84,200,72,234"/>
+<area shape="rect" id="Node000008" href="$intercom_8c.html#a39b42cf24100d68cecddb8254677ffb2" title="Checks if the player has received the secret password via the intercom." alt="" coords="171,81,355,108"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="72,231,110,180,138,150,169,124,192,112,195,116,172,129,141,154,114,183,76,234"/>
+<area shape="rect" id="Node000009" href="$intercom_8c.html#a27db13d1aa05cd55753703e8bdbd722c" title="Sends (and receives) a letter to/from the other player via the in&#45;game intercom." alt="" coords="403,132,545,159"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="77,231,116,198,142,181,170,168,225,152,282,143,387,138,388,143,282,148,226,158,172,173,145,186,119,202,81,235"/>
+<area shape="rect" id="Node000012" href="$map_8c.html#afe8e6f007f495a95e3d49875ffc545d4" title="Loads a new map as the current map." alt="" coords="224,183,302,209"/>
+<area shape="poly" id="edge14_Node000001_Node000012" title=" " alt="" coords="119,230,208,207,210,212,120,235"/>
+<area shape="rect" id="Node000013" href="$map_8c.html#a127d24fae7da76d1368f5bdd80364ce1" title="Sets the element of a given grid position." alt="" coords="199,233,327,260"/>
+<area shape="poly" id="edge15_Node000001_Node000013" title=" " alt="" coords="123,244,184,244,184,249,123,249"/>
+<area shape="rect" id="Node000014" href="$player_8c.html#aa22b743e4e3d5c8c65b96ba8fb2d4cb4" title="Verifies if a player is walking through a door." alt="" coords="192,284,334,311"/>
+<area shape="poly" id="edge16_Node000001_Node000014" title=" " alt="" coords="120,258,194,277,192,282,119,263"/>
+<area shape="rect" id="Node000016" href="$player_8c.html#a6700d264d9f4d83871bd22956fd9a61a" title="Gets the players current position." alt="" coords="196,335,330,361"/>
+<area shape="poly" id="edge18_Node000001_Node000016" title=" " alt="" coords="82,258,121,289,172,320,187,327,185,332,169,325,118,294,79,263"/>
+<area shape="rect" id="Node000017" href="$player_8c.html#adc311c6fb1dc572c02a70bf1a8d07201" title="Moves the player with a preset movement." alt="" coords="215,385,311,412"/>
+<area shape="poly" id="edge19_Node000001_Node000017" title=" " alt="" coords="75,259,112,314,140,345,172,371,201,385,199,390,169,376,136,349,108,317,71,262"/>
+<area shape="rect" id="Node000019" href="$player_8c.html#a9ce0e187e4620f2c285a6e2c27324083" title="Resets the players position to its initial position." alt="" coords="191,436,335,463"/>
+<area shape="poly" id="edge22_Node000001_Node000019" title=" " alt="" coords="72,260,84,293,105,337,134,383,172,422,179,426,176,431,169,426,130,386,100,340,79,295,67,262"/>
+<area shape="rect" id="Node000003" href="$rtc_8c.html#ac8915ed7e97ce0c42a5efc6fcf002e35" title="Disables the RTC alarm interrupts." alt="" coords="413,56,536,83"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="324,49,397,57,397,63,323,54"/>
+<area shape="rect" id="Node000007" href="$rtc_8c.html#a8b1ca41a3ec7aa776b7b0e88723d6bca" title="Returns the current time in the RTC registers." alt="" coords="428,5,521,32"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="323,34,412,23,413,29,324,39"/>
+<area shape="rect" id="Node000004" href="$rtc_8c.html#a98d1f0767edb26a9890ebdab35937a1f" title="Reads a register from the RTC." alt="" coords="593,5,720,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="524,53,590,34,592,39,526,58"/>
+<area shape="rect" id="Node000006" href="$rtc_8c.html#ac8bb7a440c32f36b4ec04d0e83f1c346" title="Writes a byte to a RTC register." alt="" coords="599,56,714,83"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="536,67,584,67,584,72,536,72"/>
+<area shape="rect" id="Node000005" href="$utils_8c.html#aaae43c6cf9efece01166b2b4d9e355ef" title=" " alt="" coords="768,107,858,133"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="698,30,721,42,757,67,788,94,785,98,754,71,718,46,695,35"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="521,16,578,16,578,21,521,21"/>
+<area shape="rect" id="Node000010" href="$serial__port_8c.html#a1dc9addb862c1f391bcd23cb104f88d8" title="Receives a data byte via the serial port." alt="" coords="594,107,719,133"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="546,133,579,128,580,133,546,138"/>
+<area shape="rect" id="Node000011" href="$serial__port_8c.html#a0cf4f885a34e06ba2cfa0bf3557f6790" title="Sends a data byte via the serial port." alt="" coords="601,157,712,184"/>
+<area shape="poly" id="edge12_Node000009_Node000011" title=" " alt="" coords="546,153,586,158,586,164,546,158"/>
+<area shape="poly" id="edge11_Node000010_Node000005" title=" " alt="" coords="719,117,752,117,752,123,719,123"/>
+<area shape="poly" id="edge13_Node000011_Node000005" title=" " alt="" coords="699,154,754,136,756,141,701,159"/>
+<area shape="rect" id="Node000015" href="$map_8c.html#a08d69843ce56b47436f54bc15d041f1d" title="Gets the element of a given grid position (wall, door or empty cell)." alt="" coords="411,309,538,336"/>
+<area shape="poly" id="edge17_Node000014_Node000015" title=" " alt="" coords="334,303,395,311,395,316,333,308"/>
+<area shape="poly" id="edge20_Node000017_Node000015" title=" " alt="" coords="310,384,354,371,429,340,431,345,356,376,312,390"/>
+<area shape="rect" id="Node000018" href="$player_8c.html#a33984e21a1f93ab7b8de83d7029db12a" title="Converts an angle in degrees to radians." alt="" coords="434,385,515,412"/>
+<area shape="poly" id="edge21_Node000017_Node000018" title=" " alt="" coords="311,396,418,396,418,401,311,401"/>
+<area shape="rect" id="Node000020" href="$map_8c.html#adab1c87447abbc45f14f592b0fe489b4" title=" " alt="" coords="408,436,540,463"/>
+<area shape="poly" id="edge23_Node000019_Node000020" title=" " alt="" coords="335,447,393,447,393,452,335,452"/>
+</map>

@@ -1,0 +1,268 @@
+\doxysection{/home/ricardo/\+FEUP/\+LCOM/\+MINIX-\/\+LCOM/shared/g6/proj/src/game/player.h File Reference}
+\hypertarget{player_8h}{}\label{player_8h}\index{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/game/player.h@{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/game/player.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include "{}game\+\_\+macros.\+h"{}}\newline
+{\ttfamily \#include "{}map.\+h"{}}\newline
+Include dependency graph for player.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=304pt]{player_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structPlayer}{Player}}
+\begin{DoxyCompactList}\small\item\em Struct that defines a player, with his position and his angle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{player_8h_a885f356433229296f9ca51fd9de5cdfb}{player\+\_\+moves}} \{ \newline
+\mbox{\hyperlink{player_8h_a885f356433229296f9ca51fd9de5cdfbaba595d8bca8bc5e67c37c0a9d89becfa}{UP}}
+, \mbox{\hyperlink{player_8h_a885f356433229296f9ca51fd9de5cdfba9b0b4a95b99523966e0e34ffdadac9da}{DOWN}}
+, \mbox{\hyperlink{player_8h_a885f356433229296f9ca51fd9de5cdfbadb45120aafd37a973140edee24708065}{LEFT}}
+, \mbox{\hyperlink{player_8h_a885f356433229296f9ca51fd9de5cdfbaec8379af7490bb9eaaf579cf17876f38}{RIGHT}}
+, \newline
+\mbox{\hyperlink{player_8h_a885f356433229296f9ca51fd9de5cdfba4058a39e19c958e2d10d7297d0beaa72}{ROTATE\+\_\+\+LEFT}}
+, \mbox{\hyperlink{player_8h_a885f356433229296f9ca51fd9de5cdfba94c535fb585c220b052a698d4d467e4c}{ROTATE\+\_\+\+RIGHT}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration of the players possible moves. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{player_8h_a87047ebd41096a4a32b83b3798b26f1f}{player\+\_\+construct}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the player (sets his start position and angle). \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structpoint2D}{point2D}} \mbox{\hyperlink{player_8h_a6700d264d9f4d83871bd22956fd9a61a}{player\+\_\+get\+\_\+position}} ()
+\begin{DoxyCompactList}\small\item\em Gets the players current position. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{player_8h_a9b629896649fa110c3fe5a96011c287c}{player\+\_\+get\+\_\+angle}} ()
+\begin{DoxyCompactList}\small\item\em Gets the players current angle. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{player_8h_aaf6104ef64ce96cb2b154e2b0c155ed5}{player\+\_\+set\+\_\+position}} (struct \mbox{\hyperlink{structpoint2D}{point2D}} position)
+\begin{DoxyCompactList}\small\item\em Sets the position of the player. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{player_8h_af1e990bb7b52718dfaedacf19df1ff9d}{player\+\_\+set\+\_\+angle}} (double angle)
+\begin{DoxyCompactList}\small\item\em Sets the angle of the player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8h_a9ce0e187e4620f2c285a6e2c27324083}{player\+\_\+reset\+\_\+position}} (int n)
+\begin{DoxyCompactList}\small\item\em Resets the players position to its initial position. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{player_8h_aa22b743e4e3d5c8c65b96ba8fb2d4cb4}{player\+\_\+crossed\+\_\+door}} ()
+\begin{DoxyCompactList}\small\item\em Verifies if a player is walking through a door. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{player_8h_adc311c6fb1dc572c02a70bf1a8d07201}{player\+\_\+move}} (enum \mbox{\hyperlink{player_8h_a885f356433229296f9ca51fd9de5cdfb}{player\+\_\+moves}} move)
+\begin{DoxyCompactList}\small\item\em Moves the player with a preset movement. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{player_8h_a33984e21a1f93ab7b8de83d7029db12a}{to\+\_\+radians}} (double angle)
+\begin{DoxyCompactList}\small\item\em Converts an angle in degrees to radians. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static struct \mbox{\hyperlink{structPlayer}{Player}} \mbox{\hyperlink{player_8h_a73090bb6f3fb51137a791fee01794a36}{player}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{player_8h_a885f356433229296f9ca51fd9de5cdfb}\index{player.h@{player.h}!player\_moves@{player\_moves}}
+\index{player\_moves@{player\_moves}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{player\_moves}{player\_moves}}
+{\footnotesize\ttfamily \label{player_8h_a885f356433229296f9ca51fd9de5cdfb} 
+enum \mbox{\hyperlink{player_8h_a885f356433229296f9ca51fd9de5cdfb}{player\+\_\+moves}}}
+
+
+
+Enumeration of the players possible moves. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UP@{UP}!player.h@{player.h}}\index{player.h@{player.h}!UP@{UP}}}\Hypertarget{player_8h_a885f356433229296f9ca51fd9de5cdfbaba595d8bca8bc5e67c37c0a9d89becfa}\label{player_8h_a885f356433229296f9ca51fd9de5cdfb} 
+UP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DOWN@{DOWN}!player.h@{player.h}}\index{player.h@{player.h}!DOWN@{DOWN}}}\Hypertarget{player_8h_a885f356433229296f9ca51fd9de5cdfba9b0b4a95b99523966e0e34ffdadac9da}\label{player_8h_a885f356433229296f9ca51fd9de5cdfb} 
+DOWN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LEFT@{LEFT}!player.h@{player.h}}\index{player.h@{player.h}!LEFT@{LEFT}}}\Hypertarget{player_8h_a885f356433229296f9ca51fd9de5cdfbadb45120aafd37a973140edee24708065}\label{player_8h_a885f356433229296f9ca51fd9de5cdfb} 
+LEFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RIGHT@{RIGHT}!player.h@{player.h}}\index{player.h@{player.h}!RIGHT@{RIGHT}}}\Hypertarget{player_8h_a885f356433229296f9ca51fd9de5cdfbaec8379af7490bb9eaaf579cf17876f38}\label{player_8h_a885f356433229296f9ca51fd9de5cdfb} 
+RIGHT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ROTATE\_LEFT@{ROTATE\_LEFT}!player.h@{player.h}}\index{player.h@{player.h}!ROTATE\_LEFT@{ROTATE\_LEFT}}}\Hypertarget{player_8h_a885f356433229296f9ca51fd9de5cdfba4058a39e19c958e2d10d7297d0beaa72}\label{player_8h_a885f356433229296f9ca51fd9de5cdfb} 
+ROTATE\+\_\+\+LEFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ROTATE\_RIGHT@{ROTATE\_RIGHT}!player.h@{player.h}}\index{player.h@{player.h}!ROTATE\_RIGHT@{ROTATE\_RIGHT}}}\Hypertarget{player_8h_a885f356433229296f9ca51fd9de5cdfba94c535fb585c220b052a698d4d467e4c}\label{player_8h_a885f356433229296f9ca51fd9de5cdfb} 
+ROTATE\+\_\+\+RIGHT&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{player_8h_a87047ebd41096a4a32b83b3798b26f1f}\index{player.h@{player.h}!player\_construct@{player\_construct}}
+\index{player\_construct@{player\_construct}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{player\_construct()}{player\_construct()}}
+{\footnotesize\ttfamily \label{player_8h_a87047ebd41096a4a32b83b3798b26f1f} 
+void player\+\_\+construct (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the player (sets his start position and angle). 
+
+\Hypertarget{player_8h_aa22b743e4e3d5c8c65b96ba8fb2d4cb4}\index{player.h@{player.h}!player\_crossed\_door@{player\_crossed\_door}}
+\index{player\_crossed\_door@{player\_crossed\_door}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{player\_crossed\_door()}{player\_crossed\_door()}}
+{\footnotesize\ttfamily \label{player_8h_aa22b743e4e3d5c8c65b96ba8fb2d4cb4} 
+bool player\+\_\+crossed\+\_\+door (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifies if a player is walking through a door. 
+
+\begin{DoxyReturn}{Returns}
+True if player is crossing the door, false otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{player_8h_aa22b743e4e3d5c8c65b96ba8fb2d4cb4_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{player_8h_a9b629896649fa110c3fe5a96011c287c}\index{player.h@{player.h}!player\_get\_angle@{player\_get\_angle}}
+\index{player\_get\_angle@{player\_get\_angle}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{player\_get\_angle()}{player\_get\_angle()}}
+{\footnotesize\ttfamily \label{player_8h_a9b629896649fa110c3fe5a96011c287c} 
+double player\+\_\+get\+\_\+angle (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the players current angle. 
+
+\begin{DoxyReturn}{Returns}
+The angle of the player. 
+\end{DoxyReturn}
+\Hypertarget{player_8h_a6700d264d9f4d83871bd22956fd9a61a}\index{player.h@{player.h}!player\_get\_position@{player\_get\_position}}
+\index{player\_get\_position@{player\_get\_position}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{player\_get\_position()}{player\_get\_position()}}
+{\footnotesize\ttfamily \label{player_8h_a6700d264d9f4d83871bd22956fd9a61a} 
+struct \mbox{\hyperlink{structpoint2D}{point2D}} player\+\_\+get\+\_\+position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the players current position. 
+
+\begin{DoxyReturn}{Returns}
+The position of the player. 
+\end{DoxyReturn}
+\Hypertarget{player_8h_adc311c6fb1dc572c02a70bf1a8d07201}\index{player.h@{player.h}!player\_move@{player\_move}}
+\index{player\_move@{player\_move}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{player\_move()}{player\_move()}}
+{\footnotesize\ttfamily \label{player_8h_adc311c6fb1dc572c02a70bf1a8d07201} 
+int player\+\_\+move (\begin{DoxyParamCaption}\item[{enum \mbox{\hyperlink{player_8h_a885f356433229296f9ca51fd9de5cdfb}{player\+\_\+moves}}}]{move}{}\end{DoxyParamCaption})}
+
+
+
+Moves the player with a preset movement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em move} & Move to be executed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=283pt]{player_8h_adc311c6fb1dc572c02a70bf1a8d07201_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{player_8h_a9ce0e187e4620f2c285a6e2c27324083}\index{player.h@{player.h}!player\_reset\_position@{player\_reset\_position}}
+\index{player\_reset\_position@{player\_reset\_position}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{player\_reset\_position()}{player\_reset\_position()}}
+{\footnotesize\ttfamily \label{player_8h_a9ce0e187e4620f2c285a6e2c27324083} 
+void player\+\_\+reset\+\_\+position (\begin{DoxyParamCaption}\item[{int}]{n}{}\end{DoxyParamCaption})}
+
+
+
+Resets the players position to its initial position. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{player_8h_a9ce0e187e4620f2c285a6e2c27324083_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{player_8h_af1e990bb7b52718dfaedacf19df1ff9d}\index{player.h@{player.h}!player\_set\_angle@{player\_set\_angle}}
+\index{player\_set\_angle@{player\_set\_angle}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{player\_set\_angle()}{player\_set\_angle()}}
+{\footnotesize\ttfamily \label{player_8h_af1e990bb7b52718dfaedacf19df1ff9d} 
+int player\+\_\+set\+\_\+angle (\begin{DoxyParamCaption}\item[{double}]{angle}{}\end{DoxyParamCaption})}
+
+
+
+Sets the angle of the player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & Angle to be set. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+\Hypertarget{player_8h_aaf6104ef64ce96cb2b154e2b0c155ed5}\index{player.h@{player.h}!player\_set\_position@{player\_set\_position}}
+\index{player\_set\_position@{player\_set\_position}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{player\_set\_position()}{player\_set\_position()}}
+{\footnotesize\ttfamily \label{player_8h_aaf6104ef64ce96cb2b154e2b0c155ed5} 
+int player\+\_\+set\+\_\+position (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structpoint2D}{point2D}}}]{position}{}\end{DoxyParamCaption})}
+
+
+
+Sets the position of the player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & Position to be set. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+\Hypertarget{player_8h_a33984e21a1f93ab7b8de83d7029db12a}\index{player.h@{player.h}!to\_radians@{to\_radians}}
+\index{to\_radians@{to\_radians}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{to\_radians()}{to\_radians()}}
+{\footnotesize\ttfamily \label{player_8h_a33984e21a1f93ab7b8de83d7029db12a} 
+double to\+\_\+radians (\begin{DoxyParamCaption}\item[{double}]{angle}{}\end{DoxyParamCaption})}
+
+
+
+Converts an angle in degrees to radians. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & Angle to be converted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Corresponding radians value. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{player_8h_a73090bb6f3fb51137a791fee01794a36}\index{player.h@{player.h}!player@{player}}
+\index{player@{player}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{player}{player}}
+{\footnotesize\ttfamily \label{player_8h_a73090bb6f3fb51137a791fee01794a36} 
+struct \mbox{\hyperlink{structPlayer}{Player}} player\hspace{0.3cm}{\ttfamily [static]}}
+

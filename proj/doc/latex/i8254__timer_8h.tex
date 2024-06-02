@@ -1,0 +1,175 @@
+\doxysection{/home/ricardo/\+FEUP/\+LCOM/\+MINIX-\/\+LCOM/shared/g6/proj/src/drivers/i8254\+\_\+timer.h File Reference}
+\hypertarget{i8254__timer_8h}{}\label{i8254__timer_8h}\index{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/drivers/i8254\_timer.h@{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/drivers/i8254\_timer.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+Include dependency graph for i8254\+\_\+timer.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{i8254__timer_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{i8254__timer_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{i8254__timer_8h_acf926951944b6cf370b7229ebd50dd8b}{TIMER\+\_\+\+FREQ}}~60
+\item 
+\#define \mbox{\hyperlink{i8254__timer_8h_a30bf84c312af248cb81bb224e09f9ba8}{TIMER0\+\_\+\+IRQ}}~0
+\item 
+\#define \mbox{\hyperlink{i8254__timer_8h_a8dbcc976b1fe74759104466e117b3e05}{TIMER\+\_\+\+BIT\+\_\+\+NO}}~0
+\item 
+\#define \mbox{\hyperlink{i8254__timer_8h_a1289b9d4b0a5581bfff99da04e297f77}{CW\+\_\+\+TIMER0}}~0
+\item 
+\#define \mbox{\hyperlink{i8254__timer_8h_aa2e859c7e8c9deba7d02de2a0e648117}{CW\+\_\+\+TIMER1}}~BIT(6)
+\item 
+\#define \mbox{\hyperlink{i8254__timer_8h_abaee44aa8bc2694392da16a154d2dc62}{CW\+\_\+\+TIMER2}}~BIT(7)
+\item 
+\#define \mbox{\hyperlink{i8254__timer_8h_aa39449287cc14d72818cb0769490e65c}{CW\+\_\+\+LSB}}~BIT(4)
+\item 
+\#define \mbox{\hyperlink{i8254__timer_8h_a1b67f4ae2940430f36219ddee3170f8e}{CW\+\_\+\+MSB}}~BIT(5)
+\item 
+\#define \mbox{\hyperlink{i8254__timer_8h_abfcf0f336d355c7f9fdb6760a121e599}{CW\+\_\+\+LSB\+\_\+\+MSB}}~BIT(4) \texorpdfstring{$\vert$}{|} BIT(5)
+\item 
+\#define \mbox{\hyperlink{i8254__timer_8h_a6419c9deb9c65945b2d2a276564ef184}{CW\+\_\+\+MODE\+\_\+3}}~BIT(1) \texorpdfstring{$\vert$}{|} BIT(2) \texorpdfstring{$\vert$}{|} BIT(3)
+\item 
+\#define \mbox{\hyperlink{i8254__timer_8h_aa75078e269d15b4ec431ee47b6a7d725}{CW\+\_\+\+BINARY}}~0
+\item 
+\#define \mbox{\hyperlink{i8254__timer_8h_aff9ddaeb830a60b8322cea3c3aa13d2a}{CW\+\_\+\+BCD}}~BIT(0)
+\item 
+\#define \mbox{\hyperlink{i8254__timer_8h_ab46145a1f7f0fd78ab860ac367543b14}{READ\+\_\+\+BACK}}~BIT(7) \texorpdfstring{$\vert$}{|} BIT(6)
+\item 
+\#define \mbox{\hyperlink{i8254__timer_8h_ab639d0fd44c34b616bd92741147fe2a5}{RB\+\_\+\+NO\+\_\+\+COUNT}}~BIT(5)
+\item 
+\#define \mbox{\hyperlink{i8254__timer_8h_afdb97ae473041fe5694d9707e7140b4a}{RB\+\_\+\+NO\+\_\+\+STATUS}}~BIT(4)
+\item 
+\#define \mbox{\hyperlink{i8254__timer_8h_ac45ef467896fc1bb8de34320b50ef36a}{RB\+\_\+\+TIMER}}(n)~BIT(n + 1)
+\item 
+\#define \mbox{\hyperlink{i8254__timer_8h_a282832448fb0281ef53d243c1cd48491}{TIMER\+\_\+\+CTRL}}~0x43
+\item 
+\#define \mbox{\hyperlink{i8254__timer_8h_acc9ff9df4a9674a1ce9ba08fc4a4679e}{TIMER\+\_\+0}}~0x40
+\item 
+\#define \mbox{\hyperlink{i8254__timer_8h_ae2f99e05f64d0383aee9bd75a52c4fbb}{FRAME\+\_\+\+RATE}}~30
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{i8254__timer_8h_aff9ddaeb830a60b8322cea3c3aa13d2a}\index{i8254\_timer.h@{i8254\_timer.h}!CW\_BCD@{CW\_BCD}}
+\index{CW\_BCD@{CW\_BCD}!i8254\_timer.h@{i8254\_timer.h}}
+\doxysubsubsection{\texorpdfstring{CW\_BCD}{CW\_BCD}}
+{\footnotesize\ttfamily \label{i8254__timer_8h_aff9ddaeb830a60b8322cea3c3aa13d2a} 
+\#define CW\+\_\+\+BCD~BIT(0)}
+
+\Hypertarget{i8254__timer_8h_aa75078e269d15b4ec431ee47b6a7d725}\index{i8254\_timer.h@{i8254\_timer.h}!CW\_BINARY@{CW\_BINARY}}
+\index{CW\_BINARY@{CW\_BINARY}!i8254\_timer.h@{i8254\_timer.h}}
+\doxysubsubsection{\texorpdfstring{CW\_BINARY}{CW\_BINARY}}
+{\footnotesize\ttfamily \label{i8254__timer_8h_aa75078e269d15b4ec431ee47b6a7d725} 
+\#define CW\+\_\+\+BINARY~0}
+
+\Hypertarget{i8254__timer_8h_aa39449287cc14d72818cb0769490e65c}\index{i8254\_timer.h@{i8254\_timer.h}!CW\_LSB@{CW\_LSB}}
+\index{CW\_LSB@{CW\_LSB}!i8254\_timer.h@{i8254\_timer.h}}
+\doxysubsubsection{\texorpdfstring{CW\_LSB}{CW\_LSB}}
+{\footnotesize\ttfamily \label{i8254__timer_8h_aa39449287cc14d72818cb0769490e65c} 
+\#define CW\+\_\+\+LSB~BIT(4)}
+
+\Hypertarget{i8254__timer_8h_abfcf0f336d355c7f9fdb6760a121e599}\index{i8254\_timer.h@{i8254\_timer.h}!CW\_LSB\_MSB@{CW\_LSB\_MSB}}
+\index{CW\_LSB\_MSB@{CW\_LSB\_MSB}!i8254\_timer.h@{i8254\_timer.h}}
+\doxysubsubsection{\texorpdfstring{CW\_LSB\_MSB}{CW\_LSB\_MSB}}
+{\footnotesize\ttfamily \label{i8254__timer_8h_abfcf0f336d355c7f9fdb6760a121e599} 
+\#define CW\+\_\+\+LSB\+\_\+\+MSB~BIT(4) \texorpdfstring{$\vert$}{|} BIT(5)}
+
+\Hypertarget{i8254__timer_8h_a6419c9deb9c65945b2d2a276564ef184}\index{i8254\_timer.h@{i8254\_timer.h}!CW\_MODE\_3@{CW\_MODE\_3}}
+\index{CW\_MODE\_3@{CW\_MODE\_3}!i8254\_timer.h@{i8254\_timer.h}}
+\doxysubsubsection{\texorpdfstring{CW\_MODE\_3}{CW\_MODE\_3}}
+{\footnotesize\ttfamily \label{i8254__timer_8h_a6419c9deb9c65945b2d2a276564ef184} 
+\#define CW\+\_\+\+MODE\+\_\+3~BIT(1) \texorpdfstring{$\vert$}{|} BIT(2) \texorpdfstring{$\vert$}{|} BIT(3)}
+
+\Hypertarget{i8254__timer_8h_a1b67f4ae2940430f36219ddee3170f8e}\index{i8254\_timer.h@{i8254\_timer.h}!CW\_MSB@{CW\_MSB}}
+\index{CW\_MSB@{CW\_MSB}!i8254\_timer.h@{i8254\_timer.h}}
+\doxysubsubsection{\texorpdfstring{CW\_MSB}{CW\_MSB}}
+{\footnotesize\ttfamily \label{i8254__timer_8h_a1b67f4ae2940430f36219ddee3170f8e} 
+\#define CW\+\_\+\+MSB~BIT(5)}
+
+\Hypertarget{i8254__timer_8h_a1289b9d4b0a5581bfff99da04e297f77}\index{i8254\_timer.h@{i8254\_timer.h}!CW\_TIMER0@{CW\_TIMER0}}
+\index{CW\_TIMER0@{CW\_TIMER0}!i8254\_timer.h@{i8254\_timer.h}}
+\doxysubsubsection{\texorpdfstring{CW\_TIMER0}{CW\_TIMER0}}
+{\footnotesize\ttfamily \label{i8254__timer_8h_a1289b9d4b0a5581bfff99da04e297f77} 
+\#define CW\+\_\+\+TIMER0~0}
+
+\Hypertarget{i8254__timer_8h_aa2e859c7e8c9deba7d02de2a0e648117}\index{i8254\_timer.h@{i8254\_timer.h}!CW\_TIMER1@{CW\_TIMER1}}
+\index{CW\_TIMER1@{CW\_TIMER1}!i8254\_timer.h@{i8254\_timer.h}}
+\doxysubsubsection{\texorpdfstring{CW\_TIMER1}{CW\_TIMER1}}
+{\footnotesize\ttfamily \label{i8254__timer_8h_aa2e859c7e8c9deba7d02de2a0e648117} 
+\#define CW\+\_\+\+TIMER1~BIT(6)}
+
+\Hypertarget{i8254__timer_8h_abaee44aa8bc2694392da16a154d2dc62}\index{i8254\_timer.h@{i8254\_timer.h}!CW\_TIMER2@{CW\_TIMER2}}
+\index{CW\_TIMER2@{CW\_TIMER2}!i8254\_timer.h@{i8254\_timer.h}}
+\doxysubsubsection{\texorpdfstring{CW\_TIMER2}{CW\_TIMER2}}
+{\footnotesize\ttfamily \label{i8254__timer_8h_abaee44aa8bc2694392da16a154d2dc62} 
+\#define CW\+\_\+\+TIMER2~BIT(7)}
+
+\Hypertarget{i8254__timer_8h_ae2f99e05f64d0383aee9bd75a52c4fbb}\index{i8254\_timer.h@{i8254\_timer.h}!FRAME\_RATE@{FRAME\_RATE}}
+\index{FRAME\_RATE@{FRAME\_RATE}!i8254\_timer.h@{i8254\_timer.h}}
+\doxysubsubsection{\texorpdfstring{FRAME\_RATE}{FRAME\_RATE}}
+{\footnotesize\ttfamily \label{i8254__timer_8h_ae2f99e05f64d0383aee9bd75a52c4fbb} 
+\#define FRAME\+\_\+\+RATE~30}
+
+\Hypertarget{i8254__timer_8h_ab639d0fd44c34b616bd92741147fe2a5}\index{i8254\_timer.h@{i8254\_timer.h}!RB\_NO\_COUNT@{RB\_NO\_COUNT}}
+\index{RB\_NO\_COUNT@{RB\_NO\_COUNT}!i8254\_timer.h@{i8254\_timer.h}}
+\doxysubsubsection{\texorpdfstring{RB\_NO\_COUNT}{RB\_NO\_COUNT}}
+{\footnotesize\ttfamily \label{i8254__timer_8h_ab639d0fd44c34b616bd92741147fe2a5} 
+\#define RB\+\_\+\+NO\+\_\+\+COUNT~BIT(5)}
+
+\Hypertarget{i8254__timer_8h_afdb97ae473041fe5694d9707e7140b4a}\index{i8254\_timer.h@{i8254\_timer.h}!RB\_NO\_STATUS@{RB\_NO\_STATUS}}
+\index{RB\_NO\_STATUS@{RB\_NO\_STATUS}!i8254\_timer.h@{i8254\_timer.h}}
+\doxysubsubsection{\texorpdfstring{RB\_NO\_STATUS}{RB\_NO\_STATUS}}
+{\footnotesize\ttfamily \label{i8254__timer_8h_afdb97ae473041fe5694d9707e7140b4a} 
+\#define RB\+\_\+\+NO\+\_\+\+STATUS~BIT(4)}
+
+\Hypertarget{i8254__timer_8h_ac45ef467896fc1bb8de34320b50ef36a}\index{i8254\_timer.h@{i8254\_timer.h}!RB\_TIMER@{RB\_TIMER}}
+\index{RB\_TIMER@{RB\_TIMER}!i8254\_timer.h@{i8254\_timer.h}}
+\doxysubsubsection{\texorpdfstring{RB\_TIMER}{RB\_TIMER}}
+{\footnotesize\ttfamily \label{i8254__timer_8h_ac45ef467896fc1bb8de34320b50ef36a} 
+\#define RB\+\_\+\+TIMER(\begin{DoxyParamCaption}\item[{}]{n}{}\end{DoxyParamCaption})~BIT(n + 1)}
+
+\Hypertarget{i8254__timer_8h_ab46145a1f7f0fd78ab860ac367543b14}\index{i8254\_timer.h@{i8254\_timer.h}!READ\_BACK@{READ\_BACK}}
+\index{READ\_BACK@{READ\_BACK}!i8254\_timer.h@{i8254\_timer.h}}
+\doxysubsubsection{\texorpdfstring{READ\_BACK}{READ\_BACK}}
+{\footnotesize\ttfamily \label{i8254__timer_8h_ab46145a1f7f0fd78ab860ac367543b14} 
+\#define READ\+\_\+\+BACK~BIT(7) \texorpdfstring{$\vert$}{|} BIT(6)}
+
+\Hypertarget{i8254__timer_8h_a30bf84c312af248cb81bb224e09f9ba8}\index{i8254\_timer.h@{i8254\_timer.h}!TIMER0\_IRQ@{TIMER0\_IRQ}}
+\index{TIMER0\_IRQ@{TIMER0\_IRQ}!i8254\_timer.h@{i8254\_timer.h}}
+\doxysubsubsection{\texorpdfstring{TIMER0\_IRQ}{TIMER0\_IRQ}}
+{\footnotesize\ttfamily \label{i8254__timer_8h_a30bf84c312af248cb81bb224e09f9ba8} 
+\#define TIMER0\+\_\+\+IRQ~0}
+
+\Hypertarget{i8254__timer_8h_acc9ff9df4a9674a1ce9ba08fc4a4679e}\index{i8254\_timer.h@{i8254\_timer.h}!TIMER\_0@{TIMER\_0}}
+\index{TIMER\_0@{TIMER\_0}!i8254\_timer.h@{i8254\_timer.h}}
+\doxysubsubsection{\texorpdfstring{TIMER\_0}{TIMER\_0}}
+{\footnotesize\ttfamily \label{i8254__timer_8h_acc9ff9df4a9674a1ce9ba08fc4a4679e} 
+\#define TIMER\+\_\+0~0x40}
+
+\Hypertarget{i8254__timer_8h_a8dbcc976b1fe74759104466e117b3e05}\index{i8254\_timer.h@{i8254\_timer.h}!TIMER\_BIT\_NO@{TIMER\_BIT\_NO}}
+\index{TIMER\_BIT\_NO@{TIMER\_BIT\_NO}!i8254\_timer.h@{i8254\_timer.h}}
+\doxysubsubsection{\texorpdfstring{TIMER\_BIT\_NO}{TIMER\_BIT\_NO}}
+{\footnotesize\ttfamily \label{i8254__timer_8h_a8dbcc976b1fe74759104466e117b3e05} 
+\#define TIMER\+\_\+\+BIT\+\_\+\+NO~0}
+
+\Hypertarget{i8254__timer_8h_a282832448fb0281ef53d243c1cd48491}\index{i8254\_timer.h@{i8254\_timer.h}!TIMER\_CTRL@{TIMER\_CTRL}}
+\index{TIMER\_CTRL@{TIMER\_CTRL}!i8254\_timer.h@{i8254\_timer.h}}
+\doxysubsubsection{\texorpdfstring{TIMER\_CTRL}{TIMER\_CTRL}}
+{\footnotesize\ttfamily \label{i8254__timer_8h_a282832448fb0281ef53d243c1cd48491} 
+\#define TIMER\+\_\+\+CTRL~0x43}
+
+\Hypertarget{i8254__timer_8h_acf926951944b6cf370b7229ebd50dd8b}\index{i8254\_timer.h@{i8254\_timer.h}!TIMER\_FREQ@{TIMER\_FREQ}}
+\index{TIMER\_FREQ@{TIMER\_FREQ}!i8254\_timer.h@{i8254\_timer.h}}
+\doxysubsubsection{\texorpdfstring{TIMER\_FREQ}{TIMER\_FREQ}}
+{\footnotesize\ttfamily \label{i8254__timer_8h_acf926951944b6cf370b7229ebd50dd8b} 
+\#define TIMER\+\_\+\+FREQ~60}
+

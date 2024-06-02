@@ -1,0 +1,9 @@
+<map id="/home/ricardo/FEUP/LCOM/MINIX&#45;LCOM/shared/g6/proj/src/drivers/serial_port.c" name="/home/ricardo/FEUP/LCOM/MINIX&#45;LCOM/shared/g6/proj/src/drivers/serial_port.c">
+<area shape="rect" id="Node000001" title=" " alt="" coords="11,5,215,64"/>
+<area shape="rect" id="Node000002" href="$serial__port_8h.html" title=" " alt="" coords="5,112,98,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,66,71,101,67,97,91,63"/>
+<area shape="rect" id="Node000004" href="$uart__macros_8h.html" title=" " alt="" coords="122,112,226,139"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="135,63,159,97,155,101,130,66"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="12,187,91,213"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="54,139,54,171,49,171,49,139"/>
+</map>

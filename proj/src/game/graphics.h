@@ -8,13 +8,16 @@
 #include "player.h"
 #include "graphics_macros.h"
 #include "cursor.h"
+#include "clock.h"
 #include "intercom.h"
 #include <math.h>
 
-#include "../images/test_menu.xpm"
+#include "../images/main_menu.xpm"
 #include "../images/wall_texture.xpm"
 #include "../images/cursor.xpm"
-#include "../images/test_pause_menu.xpm"
+#include "../images/victory.xpm"
+#include "../images/defeat.xpm"
+#include "../images/pause_menu.xpm"
 #include "../images/whitebrick.xpm"
 #include "../images/player_select.xpm"
 #include "../images/doorLazerBad.xpm"
@@ -23,6 +26,17 @@
 #include "../images/letter_C.xpm"
 #include "../images/letter_O.xpm"
 #include "../images/letter_M.xpm"
+#include "../images/two_dots.xpm"
+#include "../images/1.xpm"
+#include "../images/2.xpm"
+#include "../images/3.xpm"
+#include "../images/4.xpm"
+#include "../images/5.xpm"
+#include "../images/6.xpm"
+#include "../images/7.xpm"
+#include "../images/8.xpm"
+#include "../images/9.xpm"
+#include "../images/0.xpm"
 
 static uint32_t width, height, map_width, map_height;
 
@@ -74,8 +88,12 @@ int (graphics_draw_intercom) ();
  */
 int (graphics_draw_player_select) ();
 
+/**
+ * @brief Draws the in-game timer.
+ * @return 0 if successful, non-zero otherwise.
+ */
+int (graphics_draw_timer) ();
 
-// TODO: declare static
 /**
  * @brief Draws the floor of the game.
  * @return

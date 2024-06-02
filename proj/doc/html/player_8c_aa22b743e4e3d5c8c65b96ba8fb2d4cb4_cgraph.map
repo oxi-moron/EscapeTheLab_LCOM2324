@@ -1,0 +1,5 @@
+<map id="player_crossed_door" name="player_crossed_door">
+<area shape="rect" id="Node000001" title="Verifies if a player is walking through a door." alt="" coords="5,5,147,32"/>
+<area shape="rect" id="Node000002" href="$map_8c.html#a08d69843ce56b47436f54bc15d041f1d" title="Gets the element of a given grid position (wall, door or empty cell)." alt="" coords="195,5,322,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="147,16,179,16,179,21,147,21"/>
+</map>

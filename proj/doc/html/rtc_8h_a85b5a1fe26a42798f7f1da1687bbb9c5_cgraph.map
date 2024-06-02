@@ -1,0 +1,16 @@
+<map id="rtc_set_alarm" name="rtc_set_alarm">
+<area shape="rect" id="Node000001" title="Sets up an alarm in the RTC after a certain time." alt="" coords="5,107,106,133"/>
+<area shape="rect" id="Node000002" href="$rtc_8c.html#a8b1ca41a3ec7aa776b7b0e88723d6bca" title="Returns the current time in the RTC registers." alt="" coords="164,5,258,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="73,104,152,48,170,38,172,42,155,53,77,108"/>
+<area shape="rect" id="Node000003" href="$rtc_8c.html#a98d1f0767edb26a9890ebdab35937a1f" title="Reads a register from the RTC." alt="" coords="316,31,442,57"/>
+<area shape="poly" id="edge4_Node000001_Node000003" title=" " alt="" coords="105,104,153,92,300,58,301,63,154,97,107,109"/>
+<area shape="rect" id="Node000005" href="$rtc_8c.html#ac8bb7a440c32f36b4ec04d0e83f1c346" title="Writes a byte to a RTC register." alt="" coords="154,107,268,133"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="106,117,138,117,138,123,106,123"/>
+<area shape="rect" id="Node000006" href="$rtc_8c.html#a7dc266b7bbca71b81a7d6c937a1b87e6" title="Converts a binary number to BCD format." alt="" coords="181,157,241,184"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="100,131,166,154,165,159,98,137"/>
+<area shape="rect" id="Node000007" href="$rtc_8c.html#ab710920d4b62451b72339fcfa26bd6f4" title="Converts a BCD number to binary format." alt="" coords="174,208,248,235"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="73,132,110,162,155,194,163,198,161,203,152,198,106,166,70,136"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="258,23,301,30,300,35,257,28"/>
+<area shape="rect" id="Node000004" href="$utils_8c.html#aaae43c6cf9efece01166b2b4d9e355ef" title=" " alt="" coords="490,31,581,57"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="443,41,475,41,475,47,443,47"/>
+</map>

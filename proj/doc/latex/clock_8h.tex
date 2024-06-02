@@ -1,0 +1,138 @@
+\doxysection{/home/ricardo/\+FEUP/\+LCOM/\+MINIX-\/\+LCOM/shared/g6/proj/src/game/clock.h File Reference}
+\hypertarget{clock_8h}{}\label{clock_8h}\index{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/game/clock.h@{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/game/clock.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include "{}../drivers/rtc.\+h"{}}\newline
+{\ttfamily \#include "{}game\+\_\+macros.\+h"{}}\newline
+Include dependency graph for clock.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=293pt]{clock_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{clock_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{clock_8h_ac20f5006515cc83a439bc32fe1a8b6ce}{clock\+\_\+start\+\_\+timer}} ()
+\begin{DoxyCompactList}\small\item\em Starts the in-\/game clock timer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{clock_8h_ab06292d98e4532f304bad7c576d59e7a}{clock\+\_\+stop\+\_\+timer}} ()
+\begin{DoxyCompactList}\small\item\em Stops the in-\/game clock timer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{clock_8h_a12cb3d68305ff8efb4b88f0b5cca3f1a}{clock\+\_\+reset\+\_\+timer}} ()
+\begin{DoxyCompactList}\small\item\em Resets the in-\/game clock timer to 10 minutes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{clock_8h_a0ce68b651686ee64a582d9160c839ffa}{remaining\+\_\+hours}} = \mbox{\hyperlink{game__macros_8h_a2e239ee6582b9cac79bcbdb98908f7ed}{HOUR\+\_\+\+LIMIT}}
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{clock_8h_abf4ea6a57f7bf0386a1bebcdd235b1a4}{remaining\+\_\+minutes}} = \mbox{\hyperlink{game__macros_8h_a1f968a08831a90253f093a682bffa876}{MINUTE\+\_\+\+LIMIT}}
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{clock_8h_a56758156f787a62304b71b4e9ea81212}{remaining\+\_\+seconds}} = \mbox{\hyperlink{game__macros_8h_ad553ac86da2315bcfc02c227ad278e4e}{SECOND\+\_\+\+LIMIT}}
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{clock_8h_a521aa0d12e91cd6d39f3f9db7612fea1}{start\+\_\+hours}}
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{clock_8h_a0d11243ad30c301fae15f290b4785e38}{start\+\_\+minutes}}
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{clock_8h_af651f5a8fca309e79ab71a6cc6ba046a}{start\+\_\+seconds}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{clock_8h_a12cb3d68305ff8efb4b88f0b5cca3f1a}\index{clock.h@{clock.h}!clock\_reset\_timer@{clock\_reset\_timer}}
+\index{clock\_reset\_timer@{clock\_reset\_timer}!clock.h@{clock.h}}
+\doxysubsubsection{\texorpdfstring{clock\_reset\_timer()}{clock\_reset\_timer()}}
+{\footnotesize\ttfamily \label{clock_8h_a12cb3d68305ff8efb4b88f0b5cca3f1a} 
+int clock\+\_\+reset\+\_\+timer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Resets the in-\/game clock timer to 10 minutes. 
+
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+\Hypertarget{clock_8h_ac20f5006515cc83a439bc32fe1a8b6ce}\index{clock.h@{clock.h}!clock\_start\_timer@{clock\_start\_timer}}
+\index{clock\_start\_timer@{clock\_start\_timer}!clock.h@{clock.h}}
+\doxysubsubsection{\texorpdfstring{clock\_start\_timer()}{clock\_start\_timer()}}
+{\footnotesize\ttfamily \label{clock_8h_ac20f5006515cc83a439bc32fe1a8b6ce} 
+int clock\+\_\+start\+\_\+timer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Starts the in-\/game clock timer. 
+
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{clock_8h_ac20f5006515cc83a439bc32fe1a8b6ce_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{clock_8h_ab06292d98e4532f304bad7c576d59e7a}\index{clock.h@{clock.h}!clock\_stop\_timer@{clock\_stop\_timer}}
+\index{clock\_stop\_timer@{clock\_stop\_timer}!clock.h@{clock.h}}
+\doxysubsubsection{\texorpdfstring{clock\_stop\_timer()}{clock\_stop\_timer()}}
+{\footnotesize\ttfamily \label{clock_8h_ab06292d98e4532f304bad7c576d59e7a} 
+int clock\+\_\+stop\+\_\+timer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Stops the in-\/game clock timer. 
+
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{clock_8h_ab06292d98e4532f304bad7c576d59e7a_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{clock_8h_a0ce68b651686ee64a582d9160c839ffa}\index{clock.h@{clock.h}!remaining\_hours@{remaining\_hours}}
+\index{remaining\_hours@{remaining\_hours}!clock.h@{clock.h}}
+\doxysubsubsection{\texorpdfstring{remaining\_hours}{remaining\_hours}}
+{\footnotesize\ttfamily \label{clock_8h_a0ce68b651686ee64a582d9160c839ffa} 
+uint8\+\_\+t remaining\+\_\+hours = \mbox{\hyperlink{game__macros_8h_a2e239ee6582b9cac79bcbdb98908f7ed}{HOUR\+\_\+\+LIMIT}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{clock_8h_abf4ea6a57f7bf0386a1bebcdd235b1a4}\index{clock.h@{clock.h}!remaining\_minutes@{remaining\_minutes}}
+\index{remaining\_minutes@{remaining\_minutes}!clock.h@{clock.h}}
+\doxysubsubsection{\texorpdfstring{remaining\_minutes}{remaining\_minutes}}
+{\footnotesize\ttfamily \label{clock_8h_abf4ea6a57f7bf0386a1bebcdd235b1a4} 
+uint8\+\_\+t remaining\+\_\+minutes = \mbox{\hyperlink{game__macros_8h_a1f968a08831a90253f093a682bffa876}{MINUTE\+\_\+\+LIMIT}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{clock_8h_a56758156f787a62304b71b4e9ea81212}\index{clock.h@{clock.h}!remaining\_seconds@{remaining\_seconds}}
+\index{remaining\_seconds@{remaining\_seconds}!clock.h@{clock.h}}
+\doxysubsubsection{\texorpdfstring{remaining\_seconds}{remaining\_seconds}}
+{\footnotesize\ttfamily \label{clock_8h_a56758156f787a62304b71b4e9ea81212} 
+uint8\+\_\+t remaining\+\_\+seconds = \mbox{\hyperlink{game__macros_8h_ad553ac86da2315bcfc02c227ad278e4e}{SECOND\+\_\+\+LIMIT}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{clock_8h_a521aa0d12e91cd6d39f3f9db7612fea1}\index{clock.h@{clock.h}!start\_hours@{start\_hours}}
+\index{start\_hours@{start\_hours}!clock.h@{clock.h}}
+\doxysubsubsection{\texorpdfstring{start\_hours}{start\_hours}}
+{\footnotesize\ttfamily \label{clock_8h_a521aa0d12e91cd6d39f3f9db7612fea1} 
+uint8\+\_\+t start\+\_\+hours\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{clock_8h_a0d11243ad30c301fae15f290b4785e38}\index{clock.h@{clock.h}!start\_minutes@{start\_minutes}}
+\index{start\_minutes@{start\_minutes}!clock.h@{clock.h}}
+\doxysubsubsection{\texorpdfstring{start\_minutes}{start\_minutes}}
+{\footnotesize\ttfamily \label{clock_8h_a0d11243ad30c301fae15f290b4785e38} 
+uint8\+\_\+t start\+\_\+minutes\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{clock_8h_af651f5a8fca309e79ab71a6cc6ba046a}\index{clock.h@{clock.h}!start\_seconds@{start\_seconds}}
+\index{start\_seconds@{start\_seconds}!clock.h@{clock.h}}
+\doxysubsubsection{\texorpdfstring{start\_seconds}{start\_seconds}}
+{\footnotesize\ttfamily \label{clock_8h_af651f5a8fca309e79ab71a6cc6ba046a} 
+uint8\+\_\+t start\+\_\+seconds\hspace{0.3cm}{\ttfamily [static]}}
+

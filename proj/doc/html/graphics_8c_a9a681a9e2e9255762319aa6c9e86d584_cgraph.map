@@ -1,0 +1,5 @@
+<map id="get_ray_angle" name="get_ray_angle">
+<area shape="rect" id="Node000001" title="Calculates the angle for the Line Drawing Algorithm." alt="" coords="5,5,108,32"/>
+<area shape="rect" id="Node000002" href="$player_8c.html#a9b629896649fa110c3fe5a96011c287c" title="Gets the players current angle." alt="" coords="156,5,275,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,16,140,16,140,21,108,21"/>
+</map>

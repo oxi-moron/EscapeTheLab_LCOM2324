@@ -1,0 +1,9 @@
+<map id="create_line" name="create_line">
+<area shape="rect" id="Node000001" title="Creates a line using Bresenham&#39;s Line Algorithm to draw the player vision." alt="" coords="5,56,90,83"/>
+<area shape="rect" id="Node000002" href="$map_8c.html#a08d69843ce56b47436f54bc15d041f1d" title="Gets the element of a given grid position (wall, door or empty cell)." alt="" coords="141,5,268,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,53,145,35,147,40,91,58"/>
+<area shape="rect" id="Node000003" href="$player_8c.html#a6700d264d9f4d83871bd22956fd9a61a" title="Gets the players current position." alt="" coords="138,56,271,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="90,67,122,67,122,72,90,72"/>
+<area shape="rect" id="Node000004" href="$player_8c.html#a33984e21a1f93ab7b8de83d7029db12a" title="Converts an angle in degrees to radians." alt="" coords="164,107,245,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="91,80,150,100,148,105,89,85"/>
+</map>

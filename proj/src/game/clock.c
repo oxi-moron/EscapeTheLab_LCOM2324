@@ -6,6 +6,12 @@ int (clock_start_timer) () {
         return 1;
     }
 
+    if (game_start_hours == 0 && game_start_minutes == 0 && game_start_seconds == 0) {
+        game_start_hours = start_hours;
+        game_start_minutes = start_minutes;
+        game_start_seconds = start_seconds;
+    }
+
     if (rtc_set_alarm(remaining_hours, remaining_minutes, remaining_seconds) != 0) {
         printf("ERROR: %s\n", __func__);
         return 1;
@@ -41,6 +47,27 @@ int (clock_reset_timer) () {
     remaining_hours = 0;
     remaining_minutes = 10;
     remaining_seconds = 0;
+    game_start_hours = 0;
+    game_start_minutes = 0;
+    game_start_seconds = 0;
+
+    return 0;
+}
+
+int (clock_get_elapsed_time) (uint8_t* hours, uint8_t* minutes, uint8_t* seconds) {
+    uint8_t curr_minutes, curr_seconds, curr_hours;
+    if (rtc_get_time(&curr_hours, &curr_minutes, &curr_seconds) != 0) {
+        printf("ERROR: %s\n", __func__);
+        return 1;
+    }
+
+    uint32_t elapsed_seconds = (curr_hours * 3600 + curr_minutes * 60 + curr_seconds) - (game_start_hours * 3600 + game_start_minutes * 60 + game_start_seconds);
+
+    *hours = elapsed_seconds / 3600;
+    elapsed_seconds -= *hours * 3600;
+    *minutes = elapsed_seconds / 60;
+    elapsed_seconds -= *minutes * 60;
+    *seconds = elapsed_seconds;
 
     return 0;
 }

@@ -1,8 +1,9 @@
 #include "graphics.h"
 
 static xpm_image_t password_xpm[PASSWORD_SIZE];
+static xpm_image_t numbers_xpm[10];
 static xpm_image_t menu_xpm, wall_texture_xpm, cursor_xpm, pause_menu_xpm, door_texture_lock_xpm, door_texture_open_xpm, defeat_xpm, victory_xpm,
-        player_select_xpm;
+        player_select_xpm, two_dots_xpm;
 
 int (graphics_construct) () {
     if (vg_get_resolution(&width, &height) != 0) {
@@ -31,6 +32,11 @@ int (graphics_draw_game) () {
         return 1;
     }
     if (graphics_draw_map() != 0) {
+        printf("ERROR: %s\n", __func__ );
+        return 1;
+    }
+
+    if (graphics_draw_timer() != 0) {
         printf("ERROR: %s\n", __func__ );
         return 1;
     }
@@ -155,6 +161,45 @@ int (graphics_draw_ceiling) () {
     }
   }
   return 0;
+}
+
+int (graphics_draw_timer) () {
+    uint8_t hours, minutes, seconds;
+    if (clock_get_elapsed_time(&hours, &minutes, &seconds) != 0) {
+        printf("ERROR: %s\n", __func__ );
+        return 1;
+    }
+
+    if (vg_draw_rectangle(MINIMAP_WIDTH + 80, height - 100, width - MINIMAP_WIDTH - 80, 100, WHITE) != 0) {
+        printf("ERROR: %s\n", __func__ );
+        return 1;
+    }
+
+    if (seconds < 10) {
+        vg_draw_xpm(width - 140, height - 90, 60, numbers_xpm[0].size, numbers_xpm[0].bytes);
+        vg_draw_xpm(width - 80, height - 90, 60, numbers_xpm[seconds].size, numbers_xpm[seconds].bytes);
+    } else {
+        vg_draw_xpm(width - 80, height - 90, 60, numbers_xpm[seconds % 10].size, numbers_xpm[0].bytes);
+        vg_draw_xpm(width - 140, height - 90, 60, numbers_xpm[seconds / 10].size, numbers_xpm[0].bytes);
+    }
+    vg_draw_xpm(width - 170, height - 90, two_dots_xpm.width, two_dots_xpm.size, two_dots_xpm.bytes);
+    if (minutes < 10) {
+        vg_draw_xpm(width - 290, height - 90, 60, numbers_xpm[0].size, numbers_xpm[0].bytes);
+        vg_draw_xpm(width - 230, height - 90, 60, numbers_xpm[minutes].size, numbers_xpm[0].bytes);
+    } else {
+        vg_draw_xpm(width - 290, height - 90, 60, numbers_xpm[minutes / 10].size, numbers_xpm[0].bytes);
+        vg_draw_xpm(width - 230, height - 90, 60, numbers_xpm[minutes % 10].size, numbers_xpm[0].bytes);
+    }
+    vg_draw_xpm(width - 320, height - 90, two_dots_xpm.width, two_dots_xpm.size, two_dots_xpm.bytes);
+    if (hours < 10) {
+        vg_draw_xpm(width - 440, height - 90, 60, numbers_xpm[0].size, numbers_xpm[0].bytes);
+        vg_draw_xpm(width - 380, height - 90, 60, numbers_xpm[hours].size, numbers_xpm[0].bytes);
+    } else {
+        vg_draw_xpm(width - 440, height - 90, 60, numbers_xpm[hours / 10].size, numbers_xpm[0].bytes);
+        vg_draw_xpm(width - 380, height - 90, 60, numbers_xpm[hours % 10].size, numbers_xpm[0].bytes);
+    }
+
+    return 0;
 }
 
 int (graphics_draw_player_camera) () {
@@ -340,20 +385,30 @@ int (set_background_color) (uint32_t color) {
 }
 
 void (load_xpms) () {
-    // TODO: Replace XPMs
-    xpm_load(test_menu, XPM_8_8_8, &menu_xpm);
+    xpm_load(main_menu, XPM_8_8_8, &menu_xpm);
     xpm_load(whitebrick, XPM_8_8_8, &wall_texture_xpm);
     xpm_load(cursor, XPM_8_8_8, &cursor_xpm);
     xpm_load(pause_menu, XPM_8_8_8, &pause_menu_xpm);
     xpm_load(doorLazerBad, XPM_8_8_8, &door_texture_lock_xpm);
     xpm_load(doorLazer, XPM_8_8_8, &door_texture_open_xpm);
-    xpm_load(pause_menu, XPM_8_8_8, &defeat_xpm);
-    xpm_load(pause_menu, XPM_8_8_8, &victory_xpm);
+    xpm_load(defeat, XPM_8_8_8, &defeat_xpm);
+    xpm_load(victory, XPM_8_8_8, &victory_xpm);
     xpm_load(player_select, XPM_8_8_8, &player_select_xpm);
     xpm_load(letter_L, XPM_8_8_8, &password_xpm[0]);
     xpm_load(letter_C, XPM_8_8_8, &password_xpm[1]);
     xpm_load(letter_O, XPM_8_8_8, &password_xpm[2]);
     xpm_load(letter_M, XPM_8_8_8, &password_xpm[3]);
+    xpm_load(number_0, XPM_8_8_8, &numbers_xpm[0]);
+    xpm_load(number_1, XPM_8_8_8, &numbers_xpm[1]);
+    xpm_load(number_2, XPM_8_8_8, &numbers_xpm[2]);
+    xpm_load(number_3, XPM_8_8_8, &numbers_xpm[3]);
+    xpm_load(number_4, XPM_8_8_8, &numbers_xpm[4]);
+    xpm_load(number_5, XPM_8_8_8, &numbers_xpm[5]);
+    xpm_load(number_6, XPM_8_8_8, &numbers_xpm[6]);
+    xpm_load(number_7, XPM_8_8_8, &numbers_xpm[7]);
+    xpm_load(number_8, XPM_8_8_8, &numbers_xpm[8]);
+    xpm_load(number_9, XPM_8_8_8, &numbers_xpm[9]);
+    xpm_load(two_dots, XPM_8_8_8, &two_dots_xpm);
 }
 
 double (get_ray_angle) (int diff) {

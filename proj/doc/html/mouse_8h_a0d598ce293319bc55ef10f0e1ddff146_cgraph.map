@@ -1,0 +1,8 @@
+<map id="writeCommand" name="writeCommand">
+<area shape="rect" id="Node000001" title="Writes a command byte directly to the mouse." alt="" coords="5,5,115,32"/>
+<area shape="rect" id="Node000002" href="$utils_8c.html#aaae43c6cf9efece01166b2b4d9e355ef" title=" " alt="" coords="302,5,392,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,16,287,16,287,21,115,21"/>
+<area shape="rect" id="Node000003" href="$mouse_8c.html#a5c98fb28d08bbb8e3ee6321393c7bcc5" title="Writes a command byte to the KBC." alt="" coords="163,31,254,57"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="116,25,148,31,147,36,115,31"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="254,33,286,27,287,32,255,38"/>
+</map>

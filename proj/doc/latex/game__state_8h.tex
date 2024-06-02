@@ -1,0 +1,235 @@
+\doxysection{/home/ricardo/\+FEUP/\+LCOM/\+MINIX-\/\+LCOM/shared/g6/proj/src/game/game\+\_\+state.h File Reference}
+\hypertarget{game__state_8h}{}\label{game__state_8h}\index{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/game/game\_state.h@{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/game/game\_state.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include "{}player.\+h"{}}\newline
+{\ttfamily \#include "{}cursor.\+h"{}}\newline
+{\ttfamily \#include "{}graphics.\+h"{}}\newline
+{\ttfamily \#include "{}clock.\+h"{}}\newline
+{\ttfamily \#include "{}intercom.\+h"{}}\newline
+{\ttfamily \#include "{}game\+\_\+macros.\+h"{}}\newline
+Include dependency graph for game\+\_\+state.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game__state_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game__state_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{game__state_8h_a4edce1ca040716922b6e4a79be4e414d}{game\+\_\+state\+\_\+t}} \{ \newline
+\mbox{\hyperlink{game__state_8h_a4edce1ca040716922b6e4a79be4e414da4c40e60bc71a32b924ce1f08d57f9721}{MENU}}
+, \mbox{\hyperlink{game__state_8h_a4edce1ca040716922b6e4a79be4e414dab49108b6fb1ab1d2520660729cb3fa6b}{PLAYER\+\_\+\+SELECT}}
+, \mbox{\hyperlink{game__state_8h_a4edce1ca040716922b6e4a79be4e414dad50cf309d7568040619ed26ee6835a84}{GAME}}
+, \mbox{\hyperlink{game__state_8h_a4edce1ca040716922b6e4a79be4e414da56b36d0d0bb01b339cf1041adc08e262}{PAUSE}}
+, \newline
+\mbox{\hyperlink{game__state_8h_a4edce1ca040716922b6e4a79be4e414da4010ea3c2f1d9ab23b01c95848aae058}{INTERCOM}}
+, \mbox{\hyperlink{game__state_8h_a4edce1ca040716922b6e4a79be4e414dafa6a17124aaf95b93c339c823454df22}{DEFEAT}}
+, \mbox{\hyperlink{game__state_8h_a4edce1ca040716922b6e4a79be4e414da38088c60165dc5b369946da1d8797d00}{VICTORY}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{game__state_8h_a70929694baa82ac490dbf80cf91b0ae6}{game\+\_\+setup}} ()
+\begin{DoxyCompactList}\small\item\em Sets up game (loads initial map, initializes player and graphics display). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{game__state_8h_a09bf9b68bc402581eff18f20ca6f9e2c}{state\+\_\+draw\+\_\+frame}} ()
+\begin{DoxyCompactList}\small\item\em Draws the current game frame. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{game__state_8h_ac5ed158ec40984755d9d85d84599b03e}{state\+\_\+kbd\+\_\+event}} (uint8\+\_\+t \mbox{\hyperlink{driver__handler_8c_aa1de7a5557e9d96b83cf03f73c92163f}{scancode}})
+\begin{DoxyCompactList}\small\item\em Handles the in-\/game logic of pressing a key. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{game__state_8h_a3983b0a6d071f6230703e8d83cb4099a}{state\+\_\+mouse\+\_\+event}} (struct packet pp)
+\begin{DoxyCompactList}\small\item\em Handles the in-\/game logic of a mouse movement. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{game__state_8h_a24276f0f2d8ee00280bdc479f644087f}{state\+\_\+rtc\+\_\+event}} ()
+\begin{DoxyCompactList}\small\item\em Handles the in-\/game logic of a RTC alarm. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static enum \mbox{\hyperlink{game__state_8h_a4edce1ca040716922b6e4a79be4e414d}{game\+\_\+state\+\_\+t}} \mbox{\hyperlink{game__state_8h_acd96124f5707225513a333e629161903}{game\+\_\+state}} = \mbox{\hyperlink{game__state_8h_a4edce1ca040716922b6e4a79be4e414da4c40e60bc71a32b924ce1f08d57f9721}{MENU}}
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{game__state_8h_ac470fe122e60dbe909e474013ab1363e}{map\+\_\+no}} = \mbox{\hyperlink{game__macros_8h_a2a4bd282495fbf07c6e05f0e9a2df283}{START\+\_\+\+MAP}}
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{game__state_8h_a9f741d18013210facdfad8982b28a6cf}{player\+\_\+no}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{game__state_8h_a4edce1ca040716922b6e4a79be4e414d}\index{game\_state.h@{game\_state.h}!game\_state\_t@{game\_state\_t}}
+\index{game\_state\_t@{game\_state\_t}!game\_state.h@{game\_state.h}}
+\doxysubsubsection{\texorpdfstring{game\_state\_t}{game\_state\_t}}
+{\footnotesize\ttfamily \label{game__state_8h_a4edce1ca040716922b6e4a79be4e414d} 
+enum \mbox{\hyperlink{game__state_8h_a4edce1ca040716922b6e4a79be4e414d}{game\+\_\+state\+\_\+t}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MENU@{MENU}!game\_state.h@{game\_state.h}}\index{game\_state.h@{game\_state.h}!MENU@{MENU}}}\Hypertarget{game__state_8h_a4edce1ca040716922b6e4a79be4e414da4c40e60bc71a32b924ce1f08d57f9721}\label{game__state_8h_a4edce1ca040716922b6e4a79be4e414d} 
+MENU&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PLAYER\_SELECT@{PLAYER\_SELECT}!game\_state.h@{game\_state.h}}\index{game\_state.h@{game\_state.h}!PLAYER\_SELECT@{PLAYER\_SELECT}}}\Hypertarget{game__state_8h_a4edce1ca040716922b6e4a79be4e414dab49108b6fb1ab1d2520660729cb3fa6b}\label{game__state_8h_a4edce1ca040716922b6e4a79be4e414d} 
+PLAYER\+\_\+\+SELECT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAME@{GAME}!game\_state.h@{game\_state.h}}\index{game\_state.h@{game\_state.h}!GAME@{GAME}}}\Hypertarget{game__state_8h_a4edce1ca040716922b6e4a79be4e414dad50cf309d7568040619ed26ee6835a84}\label{game__state_8h_a4edce1ca040716922b6e4a79be4e414d} 
+GAME&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PAUSE@{PAUSE}!game\_state.h@{game\_state.h}}\index{game\_state.h@{game\_state.h}!PAUSE@{PAUSE}}}\Hypertarget{game__state_8h_a4edce1ca040716922b6e4a79be4e414da56b36d0d0bb01b339cf1041adc08e262}\label{game__state_8h_a4edce1ca040716922b6e4a79be4e414d} 
+PAUSE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INTERCOM@{INTERCOM}!game\_state.h@{game\_state.h}}\index{game\_state.h@{game\_state.h}!INTERCOM@{INTERCOM}}}\Hypertarget{game__state_8h_a4edce1ca040716922b6e4a79be4e414da4010ea3c2f1d9ab23b01c95848aae058}\label{game__state_8h_a4edce1ca040716922b6e4a79be4e414d} 
+INTERCOM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DEFEAT@{DEFEAT}!game\_state.h@{game\_state.h}}\index{game\_state.h@{game\_state.h}!DEFEAT@{DEFEAT}}}\Hypertarget{game__state_8h_a4edce1ca040716922b6e4a79be4e414dafa6a17124aaf95b93c339c823454df22}\label{game__state_8h_a4edce1ca040716922b6e4a79be4e414d} 
+DEFEAT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VICTORY@{VICTORY}!game\_state.h@{game\_state.h}}\index{game\_state.h@{game\_state.h}!VICTORY@{VICTORY}}}\Hypertarget{game__state_8h_a4edce1ca040716922b6e4a79be4e414da38088c60165dc5b369946da1d8797d00}\label{game__state_8h_a4edce1ca040716922b6e4a79be4e414d} 
+VICTORY&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{game__state_8h_a70929694baa82ac490dbf80cf91b0ae6}\index{game\_state.h@{game\_state.h}!game\_setup@{game\_setup}}
+\index{game\_setup@{game\_setup}!game\_state.h@{game\_state.h}}
+\doxysubsubsection{\texorpdfstring{game\_setup()}{game\_setup()}}
+{\footnotesize\ttfamily \label{game__state_8h_a70929694baa82ac490dbf80cf91b0ae6} 
+int game\+\_\+setup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Sets up game (loads initial map, initializes player and graphics display). 
+
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game__state_8h_a70929694baa82ac490dbf80cf91b0ae6_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{game__state_8h_a09bf9b68bc402581eff18f20ca6f9e2c}\index{game\_state.h@{game\_state.h}!state\_draw\_frame@{state\_draw\_frame}}
+\index{state\_draw\_frame@{state\_draw\_frame}!game\_state.h@{game\_state.h}}
+\doxysubsubsection{\texorpdfstring{state\_draw\_frame()}{state\_draw\_frame()}}
+{\footnotesize\ttfamily \label{game__state_8h_a09bf9b68bc402581eff18f20ca6f9e2c} 
+int state\+\_\+draw\+\_\+frame (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Draws the current game frame. 
+
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game__state_8h_a09bf9b68bc402581eff18f20ca6f9e2c_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{game__state_8h_ac5ed158ec40984755d9d85d84599b03e}\index{game\_state.h@{game\_state.h}!state\_kbd\_event@{state\_kbd\_event}}
+\index{state\_kbd\_event@{state\_kbd\_event}!game\_state.h@{game\_state.h}}
+\doxysubsubsection{\texorpdfstring{state\_kbd\_event()}{state\_kbd\_event()}}
+{\footnotesize\ttfamily \label{game__state_8h_ac5ed158ec40984755d9d85d84599b03e} 
+int state\+\_\+kbd\+\_\+event (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{scancode}{}\end{DoxyParamCaption})}
+
+
+
+Handles the in-\/game logic of pressing a key. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scancode} & Scancode of the pressed key. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game__state_8h_ac5ed158ec40984755d9d85d84599b03e_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{game__state_8h_a3983b0a6d071f6230703e8d83cb4099a}\index{game\_state.h@{game\_state.h}!state\_mouse\_event@{state\_mouse\_event}}
+\index{state\_mouse\_event@{state\_mouse\_event}!game\_state.h@{game\_state.h}}
+\doxysubsubsection{\texorpdfstring{state\_mouse\_event()}{state\_mouse\_event()}}
+{\footnotesize\ttfamily \label{game__state_8h_a3983b0a6d071f6230703e8d83cb4099a} 
+int state\+\_\+mouse\+\_\+event (\begin{DoxyParamCaption}\item[{struct packet}]{pp}{}\end{DoxyParamCaption})}
+
+
+
+Handles the in-\/game logic of a mouse movement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pp} & Packet received by the mouse. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game__state_8h_a3983b0a6d071f6230703e8d83cb4099a_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{game__state_8h_a24276f0f2d8ee00280bdc479f644087f}\index{game\_state.h@{game\_state.h}!state\_rtc\_event@{state\_rtc\_event}}
+\index{state\_rtc\_event@{state\_rtc\_event}!game\_state.h@{game\_state.h}}
+\doxysubsubsection{\texorpdfstring{state\_rtc\_event()}{state\_rtc\_event()}}
+{\footnotesize\ttfamily \label{game__state_8h_a24276f0f2d8ee00280bdc479f644087f} 
+int state\+\_\+rtc\+\_\+event (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Handles the in-\/game logic of a RTC alarm. 
+
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=293pt]{game__state_8h_a24276f0f2d8ee00280bdc479f644087f_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{game__state_8h_acd96124f5707225513a333e629161903}\index{game\_state.h@{game\_state.h}!game\_state@{game\_state}}
+\index{game\_state@{game\_state}!game\_state.h@{game\_state.h}}
+\doxysubsubsection{\texorpdfstring{game\_state}{game\_state}}
+{\footnotesize\ttfamily \label{game__state_8h_acd96124f5707225513a333e629161903} 
+enum \mbox{\hyperlink{game__state_8h_a4edce1ca040716922b6e4a79be4e414d}{game\+\_\+state\+\_\+t}} game\+\_\+state = \mbox{\hyperlink{game__state_8h_a4edce1ca040716922b6e4a79be4e414da4c40e60bc71a32b924ce1f08d57f9721}{MENU}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{game__state_8h_ac470fe122e60dbe909e474013ab1363e}\index{game\_state.h@{game\_state.h}!map\_no@{map\_no}}
+\index{map\_no@{map\_no}!game\_state.h@{game\_state.h}}
+\doxysubsubsection{\texorpdfstring{map\_no}{map\_no}}
+{\footnotesize\ttfamily \label{game__state_8h_ac470fe122e60dbe909e474013ab1363e} 
+uint8\+\_\+t map\+\_\+no = \mbox{\hyperlink{game__macros_8h_a2a4bd282495fbf07c6e05f0e9a2df283}{START\+\_\+\+MAP}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{game__state_8h_a9f741d18013210facdfad8982b28a6cf}\index{game\_state.h@{game\_state.h}!player\_no@{player\_no}}
+\index{player\_no@{player\_no}!game\_state.h@{game\_state.h}}
+\doxysubsubsection{\texorpdfstring{player\_no}{player\_no}}
+{\footnotesize\ttfamily \label{game__state_8h_a9f741d18013210facdfad8982b28a6cf} 
+uint8\+\_\+t player\+\_\+no = 0\hspace{0.3cm}{\ttfamily [static]}}
+

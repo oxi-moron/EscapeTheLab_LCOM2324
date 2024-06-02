@@ -1,0 +1,9 @@
+<map id="graphics_draw_cursor" name="graphics_draw_cursor">
+<area shape="rect" id="Node000001" title="Draws the in&#45;game cursor." alt="" coords="5,31,154,57"/>
+<area shape="rect" id="Node000002" href="$cursor_8c.html#a26161ceb457d510c4134f92082a89293" title="Gets the current position of the cursor." alt="" coords="202,5,336,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="154,31,186,27,187,32,154,37"/>
+<area shape="rect" id="Node000003" href="$video_8c.html#ac90b29de6b2fef91a4613977b01d6869" title="Draws an XPM image in VRAM." alt="" coords="218,56,320,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="154,51,203,58,202,63,154,57"/>
+<area shape="rect" id="Node000004" href="$video_8c.html#a6f895de9725f9f231f9a7f74b6087f60" title="Gives a color to a pixel in VRAM." alt="" coords="384,56,488,83"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="320,67,369,67,369,72,320,72"/>
+</map>

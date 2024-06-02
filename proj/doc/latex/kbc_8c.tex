@@ -1,0 +1,92 @@
+\doxysection{/home/ricardo/\+FEUP/\+LCOM/\+MINIX-\/\+LCOM/shared/g6/proj/src/drivers/kbc.c File Reference}
+\hypertarget{kbc_8c}{}\label{kbc_8c}\index{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/drivers/kbc.c@{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/drivers/kbc.c}}
+{\ttfamily \#include "{}kbc.\+h"{}}\newline
+Include dependency graph for kbc.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=284pt]{kbc_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{kbc_8c_a8eee4d0a15beada731a514481b5ad4bf}{keyboard\+\_\+subscribe\+\_\+int}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}bit\+\_\+no)
+\begin{DoxyCompactList}\small\item\em Subscribes to keyboard interrupts with policies IRQ\+\_\+\+REENABLE and IRQ\+\_\+\+EXCLUSIVE. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kbc_8c_ac95aea27a5e91b363b876fed881f368f}{keyboard\+\_\+unsubscribe\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Unsubscribes to keyboard interrupts. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{kbc_8c_ab9e6ed7960d60aa4834f2038247d4536}{kbc\+\_\+ih}} ()
+\begin{DoxyCompactList}\small\item\em Handles keyboard interrupts by checking the KBC output buffer and reading its scancode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{kbc_8c_a74708534432e98d4ab30ba40e2e5dcc3}{kbd\+\_\+hook\+\_\+id}} = \mbox{\hyperlink{i8024__kbc_8h_ac41312e80b212daec4a8f7bd200e275a}{KBD\+\_\+\+BIT\+\_\+\+NO}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{kbc_8c_aa1de7a5557e9d96b83cf03f73c92163f}{scancode}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{kbc_8c_ab9e6ed7960d60aa4834f2038247d4536}\index{kbc.c@{kbc.c}!kbc\_ih@{kbc\_ih}}
+\index{kbc\_ih@{kbc\_ih}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{kbc\_ih()}{kbc\_ih()}}
+{\footnotesize\ttfamily \label{kbc_8c_ab9e6ed7960d60aa4834f2038247d4536} 
+void kbc\+\_\+ih (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Handles keyboard interrupts by checking the KBC output buffer and reading its scancode. 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{kbc_8c_ab9e6ed7960d60aa4834f2038247d4536_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{kbc_8c_a8eee4d0a15beada731a514481b5ad4bf}\index{kbc.c@{kbc.c}!keyboard\_subscribe\_int@{keyboard\_subscribe\_int}}
+\index{keyboard\_subscribe\_int@{keyboard\_subscribe\_int}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{keyboard\_subscribe\_int()}{keyboard\_subscribe\_int()}}
+{\footnotesize\ttfamily \label{kbc_8c_a8eee4d0a15beada731a514481b5ad4bf} 
+int keyboard\+\_\+subscribe\+\_\+int (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{bit\+\_\+no}{}\end{DoxyParamCaption})}
+
+
+
+Subscribes to keyboard interrupts with policies IRQ\+\_\+\+REENABLE and IRQ\+\_\+\+EXCLUSIVE. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bit\+\_\+no} & Bit number to be used in the keyboard hook ID. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+\Hypertarget{kbc_8c_ac95aea27a5e91b363b876fed881f368f}\index{kbc.c@{kbc.c}!keyboard\_unsubscribe\_int@{keyboard\_unsubscribe\_int}}
+\index{keyboard\_unsubscribe\_int@{keyboard\_unsubscribe\_int}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{keyboard\_unsubscribe\_int()}{keyboard\_unsubscribe\_int()}}
+{\footnotesize\ttfamily \label{kbc_8c_ac95aea27a5e91b363b876fed881f368f} 
+int keyboard\+\_\+unsubscribe\+\_\+int (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Unsubscribes to keyboard interrupts. 
+
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{kbc_8c_a74708534432e98d4ab30ba40e2e5dcc3}\index{kbc.c@{kbc.c}!kbd\_hook\_id@{kbd\_hook\_id}}
+\index{kbd\_hook\_id@{kbd\_hook\_id}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{kbd\_hook\_id}{kbd\_hook\_id}}
+{\footnotesize\ttfamily \label{kbc_8c_a74708534432e98d4ab30ba40e2e5dcc3} 
+int kbd\+\_\+hook\+\_\+id = \mbox{\hyperlink{i8024__kbc_8h_ac41312e80b212daec4a8f7bd200e275a}{KBD\+\_\+\+BIT\+\_\+\+NO}}}
+
+\Hypertarget{kbc_8c_aa1de7a5557e9d96b83cf03f73c92163f}\index{kbc.c@{kbc.c}!scancode@{scancode}}
+\index{scancode@{scancode}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{scancode}{scancode}}
+{\footnotesize\ttfamily \label{kbc_8c_aa1de7a5557e9d96b83cf03f73c92163f} 
+uint8\+\_\+t scancode}
+

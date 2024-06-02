@@ -1,0 +1,19 @@
+<map id="clock_start_timer" name="clock_start_timer">
+<area shape="rect" id="Node000001" title="Starts the in&#45;game clock timer." alt="" coords="5,56,127,83"/>
+<area shape="rect" id="Node000002" href="$rtc_8c.html#a8b1ca41a3ec7aa776b7b0e88723d6bca" title="Returns the current time in the RTC registers." alt="" coords="334,5,427,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,57,318,26,319,31,127,62"/>
+<area shape="rect" id="Node000005" href="$rtc_8c.html#a85b5a1fe26a42798f7f1da1687bbb9c5" title="Sets up an alarm in the RTC after a certain time." alt="" coords="175,81,275,108"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="128,76,159,82,159,87,127,82"/>
+<area shape="rect" id="Node000003" href="$rtc_8c.html#a98d1f0767edb26a9890ebdab35937a1f" title="Reads a register from the RTC." alt="" coords="485,31,612,57"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="428,23,470,30,469,35,427,28"/>
+<area shape="rect" id="Node000004" href="$utils_8c.html#aaae43c6cf9efece01166b2b4d9e355ef" title=" " alt="" coords="660,31,750,57"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="612,41,644,41,644,47,612,47"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="253,78,336,37,339,42,255,83"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="275,84,470,54,471,59,276,89"/>
+<area shape="rect" id="Node000006" href="$rtc_8c.html#ac8bb7a440c32f36b4ec04d0e83f1c346" title="Writes a byte to a RTC register." alt="" coords="323,107,437,133"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="276,100,308,105,307,111,275,105"/>
+<area shape="rect" id="Node000007" href="$rtc_8c.html#a7dc266b7bbca71b81a7d6c937a1b87e6" title="Converts a binary number to BCD format." alt="" coords="350,157,410,184"/>
+<area shape="poly" id="edge8_Node000005_Node000007" title=" " alt="" coords="253,106,324,143,337,149,335,154,322,148,251,111"/>
+<area shape="rect" id="Node000008" href="$rtc_8c.html#ab710920d4b62451b72339fcfa26bd6f4" title="Converts a BCD number to binary format." alt="" coords="343,208,417,235"/>
+<area shape="poly" id="edge9_Node000005_Node000008" title=" " alt="" coords="238,107,274,149,325,194,331,198,328,203,321,198,270,152,234,110"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="vg_draw_xpm" name="vg_draw_xpm">
+<area shape="rect" id="Node000001" title="Draws an XPM image in VRAM." alt="" coords="5,5,108,32"/>
+<area shape="rect" id="Node000002" href="$video_8c.html#a6f895de9725f9f231f9a7f74b6087f60" title="Gives a color to a pixel in VRAM." alt="" coords="156,5,260,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,16,140,16,140,21,108,21"/>
+</map>

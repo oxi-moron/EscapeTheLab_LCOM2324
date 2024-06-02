@@ -1,0 +1,23 @@
+\doxysection{clock.\+h}
+\hypertarget{clock_8h_source}{}\label{clock_8h_source}\index{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/game/clock.h@{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/game/clock.h}}
+\mbox{\hyperlink{clock_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ G6\_CLOCK\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ G6\_CLOCK\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{rtc_8h}{../drivers/rtc.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game__macros_8h}{game\_macros.h}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{static}\ uint8\_t\ \mbox{\hyperlink{clock_8h_a0ce68b651686ee64a582d9160c839ffa}{remaining\_hours}}\ =\ \mbox{\hyperlink{game__macros_8h_a2e239ee6582b9cac79bcbdb98908f7ed}{HOUR\_LIMIT}},\ \mbox{\hyperlink{clock_8h_abf4ea6a57f7bf0386a1bebcdd235b1a4}{remaining\_minutes}}\ =\ \mbox{\hyperlink{game__macros_8h_a1f968a08831a90253f093a682bffa876}{MINUTE\_LIMIT}},\ \mbox{\hyperlink{clock_8h_a56758156f787a62304b71b4e9ea81212}{remaining\_seconds}}\ =\ \mbox{\hyperlink{game__macros_8h_ad553ac86da2315bcfc02c227ad278e4e}{SECOND\_LIMIT}};}
+\DoxyCodeLine{00009\ \textcolor{keyword}{static}\ uint8\_t\ \mbox{\hyperlink{clock_8h_a521aa0d12e91cd6d39f3f9db7612fea1}{start\_hours}},\ \mbox{\hyperlink{clock_8h_a0d11243ad30c301fae15f290b4785e38}{start\_minutes}},\ \mbox{\hyperlink{clock_8h_af651f5a8fca309e79ab71a6cc6ba046a}{start\_seconds}};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00015\ int\ (\mbox{\hyperlink{clock_8h_ac20f5006515cc83a439bc32fe1a8b6ce}{clock\_start\_timer}})\ ();}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00021\ int\ (\mbox{\hyperlink{clock_8h_ab06292d98e4532f304bad7c576d59e7a}{clock\_stop\_timer}})\ ();}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00027\ int\ (\mbox{\hyperlink{clock_8h_a12cb3d68305ff8efb4b88f0b5cca3f1a}{clock\_reset\_timer}})\ ();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//G6\_CLOCK\_H}}
+
+\end{DoxyCode}

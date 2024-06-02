@@ -1,0 +1,7 @@
+<map id="player_move" name="player_move">
+<area shape="rect" id="Node000001" title="Moves the player with a preset movement." alt="" coords="5,31,101,57"/>
+<area shape="rect" id="Node000002" href="$map_8c.html#a08d69843ce56b47436f54bc15d041f1d" title="Gets the element of a given grid position (wall, door or empty cell)." alt="" coords="149,5,276,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,34,133,29,134,34,101,39"/>
+<area shape="rect" id="Node000003" href="$player_8c.html#a33984e21a1f93ab7b8de83d7029db12a" title="Converts an angle in degrees to radians." alt="" coords="172,56,253,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="101,49,157,58,156,63,100,54"/>
+</map>

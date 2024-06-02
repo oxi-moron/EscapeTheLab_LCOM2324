@@ -1,0 +1,40 @@
+\doxysection{uart\+\_\+macros.\+h}
+\hypertarget{uart__macros_8h_source}{}\label{uart__macros_8h_source}\index{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/drivers/uart\_macros.h@{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/drivers/uart\_macros.h}}
+\mbox{\hyperlink{uart__macros_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ G6\_UART\_MACROS\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ G6\_UART\_MACROS\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ COM1\_IRQ\ 4}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ COM2\_IRQ\ 3}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ COM1\ 0x3F8}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ COM2\ 0x2F8}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ Register\ Address\ Macros}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ LCR\ 3}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ IER\ 1}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ THR\ 0}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ RBR\ 0}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ LSR\ 5}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ BITS\_PER\_CHAR(n)\ ((n\ \&\ 0x3)\ +\ 5)}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ Line\ Control\ Register\ (LCR)\ macros}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ BPC\_8\ 0x03}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ ODD\_PARITY\ 0x08}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ DLAB\_0\ 0x7F}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ DLAB\ BIT(7)}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ Line\ Status\ Register\ (LSR)\ macros}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ TRANSMITTER\_READY\ BIT(5)}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ RECEIVER\_READY\ BIT(0)}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{comment}{//\ Interrupt\ Enable\ Register\ (IER)\ macros}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ DISABLE\_INT\ 0x8}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ WAIT\_UART\ 20000}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//G6\_UART\_MACROS\_H}}
+
+\end{DoxyCode}

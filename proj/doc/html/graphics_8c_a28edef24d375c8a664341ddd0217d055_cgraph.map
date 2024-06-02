@@ -1,0 +1,9 @@
+<map id="graphics_draw_item_bar" name="graphics_draw_item_bar">
+<area shape="rect" id="Node000001" title="Draws the game screen item bar." alt="" coords="5,31,168,57"/>
+<area shape="rect" id="Node000002" href="$player_8c.html#a5e32b7711868d63ea8886769be0362d9" title=" " alt="" coords="216,5,336,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="168,30,200,26,200,31,168,36"/>
+<area shape="rect" id="Node000003" href="$video_8c.html#ac90b29de6b2fef91a4613977b01d6869" title="Draws an XPM image in VRAM." alt="" coords="225,56,327,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="168,52,210,58,209,63,168,58"/>
+<area shape="rect" id="Node000004" href="$video_8c.html#a6f895de9725f9f231f9a7f74b6087f60" title="Gives a color to a pixel in VRAM." alt="" coords="384,56,488,83"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="327,67,368,67,368,72,327,72"/>
+</map>

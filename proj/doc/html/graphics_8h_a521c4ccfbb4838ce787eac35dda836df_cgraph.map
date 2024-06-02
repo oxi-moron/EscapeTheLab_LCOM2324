@@ -1,0 +1,14 @@
+<map id="graphics_draw_defeat_screen" name="graphics_draw_defeat_screen">
+<area shape="rect" id="Node000001" title="Draws the defeat screen." alt="" coords="5,48,154,91"/>
+<area shape="rect" id="Node000002" href="$graphics_8c.html#a09adb09ebbf2475b0ce444883ad07b51" title="Draws the in&#45;game cursor." alt="" coords="202,5,350,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="153,48,206,34,207,39,155,53"/>
+<area shape="rect" id="Node000004" href="$video_8c.html#ac90b29de6b2fef91a4613977b01d6869" title="Draws an XPM image in VRAM." alt="" coords="414,56,516,83"/>
+<area shape="poly" id="edge6_Node000001_Node000004" title=" " alt="" coords="154,67,399,67,399,72,154,72"/>
+<area shape="rect" id="Node000006" href="$video_8c.html#ad42c7cf5f54fed0714fcf1f6e5e35bee" title="Swaps the current VRAM buffer via copying." alt="" coords="230,107,322,133"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="155,86,216,102,215,107,153,91"/>
+<area shape="rect" id="Node000003" href="$cursor_8c.html#a26161ceb457d510c4134f92082a89293" title="Gets the current position of the cursor." alt="" coords="398,5,532,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="350,16,382,16,382,21,350,21"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="329,30,400,49,398,54,328,35"/>
+<area shape="rect" id="Node000005" href="$video_8c.html#a6f895de9725f9f231f9a7f74b6087f60" title="Gives a color to a pixel in VRAM." alt="" coords="580,56,685,83"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="517,67,565,67,565,72,517,72"/>
+</map>

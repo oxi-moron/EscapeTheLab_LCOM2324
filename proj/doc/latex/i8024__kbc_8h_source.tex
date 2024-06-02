@@ -1,0 +1,52 @@
+\doxysection{i8024\+\_\+kbc.\+h}
+\hypertarget{i8024__kbc_8h_source}{}\label{i8024__kbc_8h_source}\index{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/drivers/i8024\_kbc.h@{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/drivers/i8024\_kbc.h}}
+\mbox{\hyperlink{i8024__kbc_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ G6\_I8024\_KBC\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ G6\_I8024\_KBC\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ KBD\_BIT\_NO\ 1}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ KBD\_IRQ\_LINE\ 1}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ ESC\_BREAK\_CODE\ 0x81}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ MOUSE\_BIT\_NO\ 12}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ MOUSE\_IRQ\_LINE\ 12}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ KBD\_OUT\_BUF\ 0x60}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ KBD\_STATUS\_REG\ 0x64}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ KBD\_CMD\_REG\ 0x64}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ KBD\_ARG\_REG\ 0x60}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ KBD\_OBF\ 0x01}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ KBD\_IBF\ 0x02}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ MAKE\_BREAK\_BIT\ 0x80}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ READ\_CMD\_BYTE\ 0x20}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ WRITE\_CMD\_BYTE\ 0x60}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ WAIT\_KBD\ 20000}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ KBD\_TO\_ERR\ 0x40}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ KBD\_PAR\_ERR\ 0x80}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ KBD\_AUX\ 0x20}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ KBD\_ENABLE\_INT\ 0x01}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ ENABLE\_DATA\ 0xF4}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ DISABLE\_DATA\ 0xF5}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ WRITE\_TO\_MOUSE\ 0xD4}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ MAX\_ATTEMPTS\ 10}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ ACK\ 0xFA}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ ERROR\ 0xFC}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ PACKET\_SIZE\ 3}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//G6\_I8024\_KBC\_H}}
+
+\end{DoxyCode}

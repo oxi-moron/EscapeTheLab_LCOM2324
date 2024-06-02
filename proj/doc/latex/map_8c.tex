@@ -1,0 +1,152 @@
+\doxysection{/home/ricardo/\+FEUP/\+LCOM/\+MINIX-\/\+LCOM/shared/g6/proj/src/game/map.c File Reference}
+\hypertarget{map_8c}{}\label{map_8c}\index{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/game/map.c@{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/game/map.c}}
+{\ttfamily \#include "{}map.\+h"{}}\newline
+Include dependency graph for map.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{map_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{map_8c_a08d69843ce56b47436f54bc15d041f1d}{map\+\_\+get\+\_\+grid\+\_\+pos}} (uint32\+\_\+t \mbox{\hyperlink{cursor_8h_a4dde988b1b2adba65ae3efa69f65d960}{x}}, uint32\+\_\+t \mbox{\hyperlink{cursor_8h_ab0580f504a7428539be299fa71565f30}{y}}, uint8\+\_\+t \texorpdfstring{$\ast$}{*}pos)
+\begin{DoxyCompactList}\small\item\em Gets the element of a given grid position (wall, door or empty cell). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{map_8c_a127d24fae7da76d1368f5bdd80364ce1}{map\+\_\+set\+\_\+grid\+\_\+pos}} (uint32\+\_\+t \mbox{\hyperlink{cursor_8h_a4dde988b1b2adba65ae3efa69f65d960}{x}}, uint32\+\_\+t \mbox{\hyperlink{cursor_8h_ab0580f504a7428539be299fa71565f30}{y}}, uint8\+\_\+t pos)
+\begin{DoxyCompactList}\small\item\em Sets the element of a given grid position. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{map_8c_a49fb290d358a19f41b519ae2778d5b01}{map\+\_\+get\+\_\+grid\+\_\+dimensions}} (uint32\+\_\+t \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{graphics_8h_a325272ddd9a962f05deb905101d25cbd}{width}}, uint32\+\_\+t \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{graphics_8h_a6ad4f820ce4e75cda0686fcaad5168be}{height}})
+\begin{DoxyCompactList}\small\item\em Gets the map grid dimensions. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{map_8c_afe8e6f007f495a95e3d49875ffc545d4}{map\+\_\+load}} (uint8\+\_\+t \mbox{\hyperlink{game__state_8h_ac470fe122e60dbe909e474013ab1363e}{map\+\_\+no}})
+\begin{DoxyCompactList}\small\item\em Loads a new map as the current map. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{map_8c_adab1c87447abbc45f14f592b0fe489b4}{map\+\_\+get\+\_\+start\+\_\+pos}} (uint32\+\_\+t \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{cursor_8h_a4dde988b1b2adba65ae3efa69f65d960}{x}}, uint32\+\_\+t \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{cursor_8h_ab0580f504a7428539be299fa71565f30}{y}}, uint32\+\_\+t \texorpdfstring{$\ast$}{*}angle, uint8\+\_\+t \mbox{\hyperlink{game__state_8h_ac470fe122e60dbe909e474013ab1363e}{map\+\_\+no}})
+\item 
+int \mbox{\hyperlink{map_8c_a162f2f315325f48bb898ca0bcd3578a0}{map\+\_\+get\+\_\+terminal\+\_\+positions}} (struct \mbox{\hyperlink{structpoint2D}{point2D}} \texorpdfstring{$\ast$}{*}terminals, int \mbox{\hyperlink{game__state_8h_ac470fe122e60dbe909e474013ab1363e}{map\+\_\+no}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{map_8c_abc1876ed713ae4ceb1df5f6e48878022}{grid}} \mbox{[}24\mbox{]}\mbox{[}32\mbox{]}
+\item 
+static uint32\+\_\+t \mbox{\hyperlink{map_8c_a04e0e1f37291709d5399fbea4b27aa17}{map\+\_\+width}} = 32
+\item 
+static uint32\+\_\+t \mbox{\hyperlink{map_8c_ae749754f796f289f684a5ec46e4e68de}{map\+\_\+height}} = 24
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{map_8c_a49fb290d358a19f41b519ae2778d5b01}\index{map.c@{map.c}!map\_get\_grid\_dimensions@{map\_get\_grid\_dimensions}}
+\index{map\_get\_grid\_dimensions@{map\_get\_grid\_dimensions}!map.c@{map.c}}
+\doxysubsubsection{\texorpdfstring{map\_get\_grid\_dimensions()}{map\_get\_grid\_dimensions()}}
+{\footnotesize\ttfamily \label{map_8c_a49fb290d358a19f41b519ae2778d5b01} 
+int map\+\_\+get\+\_\+grid\+\_\+dimensions (\begin{DoxyParamCaption}\item[{uint32\+\_\+t \texorpdfstring{$\ast$}{*}}]{width}{, }\item[{uint32\+\_\+t \texorpdfstring{$\ast$}{*}}]{height}{}\end{DoxyParamCaption})}
+
+
+
+Gets the map grid dimensions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & Address where the map width will be stored. \\
+\hline
+{\em height} & Address where the map height will be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+\Hypertarget{map_8c_a08d69843ce56b47436f54bc15d041f1d}\index{map.c@{map.c}!map\_get\_grid\_pos@{map\_get\_grid\_pos}}
+\index{map\_get\_grid\_pos@{map\_get\_grid\_pos}!map.c@{map.c}}
+\doxysubsubsection{\texorpdfstring{map\_get\_grid\_pos()}{map\_get\_grid\_pos()}}
+{\footnotesize\ttfamily \label{map_8c_a08d69843ce56b47436f54bc15d041f1d} 
+int map\+\_\+get\+\_\+grid\+\_\+pos (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{x}{, }\item[{uint32\+\_\+t}]{y}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{pos}{}\end{DoxyParamCaption})}
+
+
+
+Gets the element of a given grid position (wall, door or empty cell). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X coordinate of the grid position. \\
+\hline
+{\em y} & Y coordinate of the grid position. \\
+\hline
+{\em pos} & Address where the grid position will be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+\Hypertarget{map_8c_adab1c87447abbc45f14f592b0fe489b4}\index{map.c@{map.c}!map\_get\_start\_pos@{map\_get\_start\_pos}}
+\index{map\_get\_start\_pos@{map\_get\_start\_pos}!map.c@{map.c}}
+\doxysubsubsection{\texorpdfstring{map\_get\_start\_pos()}{map\_get\_start\_pos()}}
+{\footnotesize\ttfamily \label{map_8c_adab1c87447abbc45f14f592b0fe489b4} 
+int map\+\_\+get\+\_\+start\+\_\+pos (\begin{DoxyParamCaption}\item[{uint32\+\_\+t \texorpdfstring{$\ast$}{*}}]{x}{, }\item[{uint32\+\_\+t \texorpdfstring{$\ast$}{*}}]{y}{, }\item[{uint32\+\_\+t \texorpdfstring{$\ast$}{*}}]{angle}{, }\item[{uint8\+\_\+t}]{map\+\_\+no}{}\end{DoxyParamCaption})}
+
+\Hypertarget{map_8c_a162f2f315325f48bb898ca0bcd3578a0}\index{map.c@{map.c}!map\_get\_terminal\_positions@{map\_get\_terminal\_positions}}
+\index{map\_get\_terminal\_positions@{map\_get\_terminal\_positions}!map.c@{map.c}}
+\doxysubsubsection{\texorpdfstring{map\_get\_terminal\_positions()}{map\_get\_terminal\_positions()}}
+{\footnotesize\ttfamily \label{map_8c_a162f2f315325f48bb898ca0bcd3578a0} 
+int map\+\_\+get\+\_\+terminal\+\_\+positions (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structpoint2D}{point2D}} \texorpdfstring{$\ast$}{*}}]{terminals}{, }\item[{int}]{map\+\_\+no}{}\end{DoxyParamCaption})}
+
+\Hypertarget{map_8c_afe8e6f007f495a95e3d49875ffc545d4}\index{map.c@{map.c}!map\_load@{map\_load}}
+\index{map\_load@{map\_load}!map.c@{map.c}}
+\doxysubsubsection{\texorpdfstring{map\_load()}{map\_load()}}
+{\footnotesize\ttfamily \label{map_8c_afe8e6f007f495a95e3d49875ffc545d4} 
+int map\+\_\+load (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{map\+\_\+no}{}\end{DoxyParamCaption})}
+
+
+
+Loads a new map as the current map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map\+\_\+no} & Number of the map to be loaded. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+\Hypertarget{map_8c_a127d24fae7da76d1368f5bdd80364ce1}\index{map.c@{map.c}!map\_set\_grid\_pos@{map\_set\_grid\_pos}}
+\index{map\_set\_grid\_pos@{map\_set\_grid\_pos}!map.c@{map.c}}
+\doxysubsubsection{\texorpdfstring{map\_set\_grid\_pos()}{map\_set\_grid\_pos()}}
+{\footnotesize\ttfamily \label{map_8c_a127d24fae7da76d1368f5bdd80364ce1} 
+int map\+\_\+set\+\_\+grid\+\_\+pos (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{x}{, }\item[{uint32\+\_\+t}]{y}{, }\item[{uint8\+\_\+t}]{pos}{}\end{DoxyParamCaption})}
+
+
+
+Sets the element of a given grid position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X coordinate of the grid position. \\
+\hline
+{\em y} & Y coordinate of the grid position. \\
+\hline
+{\em pos} & Position to be set. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if successful, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{map_8c_abc1876ed713ae4ceb1df5f6e48878022}\index{map.c@{map.c}!grid@{grid}}
+\index{grid@{grid}!map.c@{map.c}}
+\doxysubsubsection{\texorpdfstring{grid}{grid}}
+{\footnotesize\ttfamily \label{map_8c_abc1876ed713ae4ceb1df5f6e48878022} 
+uint8\+\_\+t grid\mbox{[}24\mbox{]}\mbox{[}32\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{map_8c_ae749754f796f289f684a5ec46e4e68de}\index{map.c@{map.c}!map\_height@{map\_height}}
+\index{map\_height@{map\_height}!map.c@{map.c}}
+\doxysubsubsection{\texorpdfstring{map\_height}{map\_height}}
+{\footnotesize\ttfamily \label{map_8c_ae749754f796f289f684a5ec46e4e68de} 
+uint32\+\_\+t map\+\_\+height = 24\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{map_8c_a04e0e1f37291709d5399fbea4b27aa17}\index{map.c@{map.c}!map\_width@{map\_width}}
+\index{map\_width@{map\_width}!map.c@{map.c}}
+\doxysubsubsection{\texorpdfstring{map\_width}{map\_width}}
+{\footnotesize\ttfamily \label{map_8c_a04e0e1f37291709d5399fbea4b27aa17} 
+uint32\+\_\+t map\+\_\+width = 32\hspace{0.3cm}{\ttfamily [static]}}
+

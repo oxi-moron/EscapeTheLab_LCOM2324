@@ -1,0 +1,15 @@
+<map id="game_setup" name="game_setup">
+<area shape="rect" id="Node000001" title="Sets up game (loads initial map, initializes player and graphics display)." alt="" coords="5,107,98,133"/>
+<area shape="rect" id="Node000002" href="$graphics_8c.html#a362fe67ec93115182d5bd5a939705835" title="Initializes the graphics (sets up the video and map resolutions)" alt="" coords="146,56,277,83"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,103,152,85,153,90,97,109"/>
+<area shape="rect" id="Node000006" href="$map_8c.html#afe8e6f007f495a95e3d49875ffc545d4" title="Loads a new map as the current map." alt="" coords="173,107,250,133"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="98,117,157,117,157,123,98,123"/>
+<area shape="rect" id="Node000007" href="$player_8c.html#a87047ebd41096a4a32b83b3798b26f1f" title="Initializes the player (sets his start position and angle)." alt="" coords="153,157,270,184"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="97,131,153,150,152,155,95,137"/>
+<area shape="rect" id="Node000003" href="$graphics_8c.html#ac82e7d55ed069f5d0c396c20b97337e9" title="Loads the initial XPMs." alt="" coords="369,5,453,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="266,53,354,30,355,36,268,58"/>
+<area shape="rect" id="Node000004" href="$map_8c.html#a49fb290d358a19f41b519ae2778d5b01" title="Gets the map grid dimensions." alt="" coords="325,56,497,83"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="277,67,310,67,310,72,277,72"/>
+<area shape="rect" id="Node000005" href="$video_8c.html#a805480cb0560917df39a69cbcb9e77e7" title="Gets the resolution of the current video mode." alt="" coords="350,107,473,133"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="268,81,342,100,340,105,266,86"/>
+</map>

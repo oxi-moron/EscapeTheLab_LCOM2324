@@ -1,0 +1,9 @@
+<map id="graphics_construct" name="graphics_construct">
+<area shape="rect" id="Node000001" title="Initializes the graphics (sets up the video and map resolutions)" alt="" coords="5,56,137,83"/>
+<area shape="rect" id="Node000002" href="$graphics_8c.html#ac82e7d55ed069f5d0c396c20b97337e9" title="Loads the initial XPMs." alt="" coords="229,5,313,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,53,213,30,215,36,127,58"/>
+<area shape="rect" id="Node000003" href="$map_8c.html#a49fb290d358a19f41b519ae2778d5b01" title="Gets the map grid dimensions." alt="" coords="185,56,357,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="137,67,169,67,169,72,137,72"/>
+<area shape="rect" id="Node000004" href="$video_8c.html#a805480cb0560917df39a69cbcb9e77e7" title="Gets the resolution of the current video mode." alt="" coords="209,107,333,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="127,81,201,100,200,105,126,86"/>
+</map>

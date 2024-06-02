@@ -1,0 +1,20 @@
+<map id="graphics_draw_intercom" name="graphics_draw_intercom">
+<area shape="rect" id="Node000001" title="Draws the intercom screen." alt="" coords="5,107,168,133"/>
+<area shape="rect" id="Node000002" href="$intercom_8c.html#a931f8e10068d15c24de5c92b7fae76c1" title="Gets the letters received through the intercom." alt="" coords="226,5,365,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,104,155,73,215,42,230,35,232,40,217,46,157,78,109,108"/>
+<area shape="rect" id="Node000003" href="$intercom_8c.html#a6dd1a2dd535574d3412b5df1604c0a3b" title="Gets the secret password to finish the game." alt="" coords="216,56,375,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="144,103,222,84,223,89,145,109"/>
+<area shape="rect" id="Node000004" href="$graphics_8c.html#a54a59699ef3d7b0467aff83f17763081" title="Sets the screen&#39;s background color." alt="" coords="221,107,370,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="168,117,206,117,206,123,168,123"/>
+<area shape="rect" id="Node000008" href="$video_8c.html#ad42c7cf5f54fed0714fcf1f6e5e35bee" title="Swaps the current VRAM buffer via copying." alt="" coords="250,157,341,184"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="145,131,235,153,234,159,144,137"/>
+<area shape="rect" id="Node000009" href="$video_8c.html#ac90b29de6b2fef91a4613977b01d6869" title="Draws an XPM image in VRAM." alt="" coords="437,183,539,209"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="106,132,153,165,184,181,216,193,269,204,324,207,422,203,422,208,323,213,269,209,215,199,182,186,151,170,103,136"/>
+<area shape="rect" id="Node000005" href="$video_8c.html#a4d53728322f948683b768482bf4906e8" title="Draws a rectangle in VRAM." alt="" coords="423,111,553,137"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="370,119,407,120,407,125,370,124"/>
+<area shape="rect" id="Node000006" href="$video_8c.html#adb08b276272848bc7f3bccc0f5e770c8" title="Draws a horizontal line in VRAM." alt="" coords="601,113,706,140"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="554,122,586,123,586,128,554,128"/>
+<area shape="rect" id="Node000007" href="$video_8c.html#a6f895de9725f9f231f9a7f74b6087f60" title="Gives a color to a pixel in VRAM." alt="" coords="754,145,858,172"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="706,135,739,142,738,147,705,140"/>
+<area shape="poly" id="edge9_Node000009_Node000007" title=" " alt="" coords="539,187,738,164,738,169,540,193"/>
+</map>

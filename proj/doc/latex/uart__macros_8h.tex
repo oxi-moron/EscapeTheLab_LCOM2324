@@ -1,0 +1,159 @@
+\doxysection{/home/ricardo/\+FEUP/\+LCOM/\+MINIX-\/\+LCOM/shared/g6/proj/src/drivers/uart\+\_\+macros.h File Reference}
+\hypertarget{uart__macros_8h}{}\label{uart__macros_8h}\index{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/drivers/uart\_macros.h@{/home/ricardo/FEUP/LCOM/MINIX-\/LCOM/shared/g6/proj/src/drivers/uart\_macros.h}}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uart__macros_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{uart__macros_8h_a3685c78b9bd6dd0fa3861807e24a4e1b}{COM1\+\_\+\+IRQ}}~4
+\item 
+\#define \mbox{\hyperlink{uart__macros_8h_ab02d84052a299a0c207a8ea4c1a5636d}{COM2\+\_\+\+IRQ}}~3
+\item 
+\#define \mbox{\hyperlink{uart__macros_8h_a00dbb3ab1c59e14699be9393693e2248}{COM1}}~0x3\+F8
+\item 
+\#define \mbox{\hyperlink{uart__macros_8h_a435e02f194c24c9b0e00d7cd27a1704e}{COM2}}~0x2\+F8
+\item 
+\#define \mbox{\hyperlink{uart__macros_8h_a851cb396b6eaa97346364a772b439f37}{LCR}}~3
+\item 
+\#define \mbox{\hyperlink{uart__macros_8h_a3e27fa35f9febccdc4a0c28a5c8cffbb}{IER}}~1
+\item 
+\#define \mbox{\hyperlink{uart__macros_8h_a5e9787adf3c9afcc4b781e85bb545b35}{THR}}~0
+\item 
+\#define \mbox{\hyperlink{uart__macros_8h_aa6f7e7a9f4551d6151f9d45362118a50}{RBR}}~0
+\item 
+\#define \mbox{\hyperlink{uart__macros_8h_ad51d51aee21f6cc77d4955221aee3dcb}{LSR}}~5
+\item 
+\#define \mbox{\hyperlink{uart__macros_8h_a77266ba8f5ab6350d093e706ca2e74c7}{BITS\+\_\+\+PER\+\_\+\+CHAR}}(n)~((n \& 0x3) + 5)
+\item 
+\#define \mbox{\hyperlink{uart__macros_8h_ab315067396156b3a6efc6c5f0d59dd1d}{BPC\+\_\+8}}~0x03
+\item 
+\#define \mbox{\hyperlink{uart__macros_8h_a898d7631f24dd6b1deebf808a2214ea2}{ODD\+\_\+\+PARITY}}~0x08
+\item 
+\#define \mbox{\hyperlink{uart__macros_8h_a37023b7ff007bee40df617e7afe0f504}{DLAB\+\_\+0}}~0x7F
+\item 
+\#define \mbox{\hyperlink{uart__macros_8h_aeacff95e17799eeacbff843e63ead9d3}{DLAB}}~BIT(7)
+\item 
+\#define \mbox{\hyperlink{uart__macros_8h_a819bcf4e0e7ff6aa48714099bcbc49c3}{TRANSMITTER\+\_\+\+READY}}~BIT(5)
+\item 
+\#define \mbox{\hyperlink{uart__macros_8h_afd734fdc3e50f084eabcae1ca7373b5d}{RECEIVER\+\_\+\+READY}}~BIT(0)
+\item 
+\#define \mbox{\hyperlink{uart__macros_8h_a1108491d9b7ad3d2c91f62035a9790af}{DISABLE\+\_\+\+INT}}~0x8
+\item 
+\#define \mbox{\hyperlink{uart__macros_8h_a83b8f35e350a7dcb97c4018ee2530476}{WAIT\+\_\+\+UART}}~20000
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{uart__macros_8h_a77266ba8f5ab6350d093e706ca2e74c7}\index{uart\_macros.h@{uart\_macros.h}!BITS\_PER\_CHAR@{BITS\_PER\_CHAR}}
+\index{BITS\_PER\_CHAR@{BITS\_PER\_CHAR}!uart\_macros.h@{uart\_macros.h}}
+\doxysubsubsection{\texorpdfstring{BITS\_PER\_CHAR}{BITS\_PER\_CHAR}}
+{\footnotesize\ttfamily \label{uart__macros_8h_a77266ba8f5ab6350d093e706ca2e74c7} 
+\#define BITS\+\_\+\+PER\+\_\+\+CHAR(\begin{DoxyParamCaption}\item[{}]{n}{}\end{DoxyParamCaption})~((n \& 0x3) + 5)}
+
+\Hypertarget{uart__macros_8h_ab315067396156b3a6efc6c5f0d59dd1d}\index{uart\_macros.h@{uart\_macros.h}!BPC\_8@{BPC\_8}}
+\index{BPC\_8@{BPC\_8}!uart\_macros.h@{uart\_macros.h}}
+\doxysubsubsection{\texorpdfstring{BPC\_8}{BPC\_8}}
+{\footnotesize\ttfamily \label{uart__macros_8h_ab315067396156b3a6efc6c5f0d59dd1d} 
+\#define BPC\+\_\+8~0x03}
+
+\Hypertarget{uart__macros_8h_a00dbb3ab1c59e14699be9393693e2248}\index{uart\_macros.h@{uart\_macros.h}!COM1@{COM1}}
+\index{COM1@{COM1}!uart\_macros.h@{uart\_macros.h}}
+\doxysubsubsection{\texorpdfstring{COM1}{COM1}}
+{\footnotesize\ttfamily \label{uart__macros_8h_a00dbb3ab1c59e14699be9393693e2248} 
+\#define COM1~0x3\+F8}
+
+\Hypertarget{uart__macros_8h_a3685c78b9bd6dd0fa3861807e24a4e1b}\index{uart\_macros.h@{uart\_macros.h}!COM1\_IRQ@{COM1\_IRQ}}
+\index{COM1\_IRQ@{COM1\_IRQ}!uart\_macros.h@{uart\_macros.h}}
+\doxysubsubsection{\texorpdfstring{COM1\_IRQ}{COM1\_IRQ}}
+{\footnotesize\ttfamily \label{uart__macros_8h_a3685c78b9bd6dd0fa3861807e24a4e1b} 
+\#define COM1\+\_\+\+IRQ~4}
+
+\Hypertarget{uart__macros_8h_a435e02f194c24c9b0e00d7cd27a1704e}\index{uart\_macros.h@{uart\_macros.h}!COM2@{COM2}}
+\index{COM2@{COM2}!uart\_macros.h@{uart\_macros.h}}
+\doxysubsubsection{\texorpdfstring{COM2}{COM2}}
+{\footnotesize\ttfamily \label{uart__macros_8h_a435e02f194c24c9b0e00d7cd27a1704e} 
+\#define COM2~0x2\+F8}
+
+\Hypertarget{uart__macros_8h_ab02d84052a299a0c207a8ea4c1a5636d}\index{uart\_macros.h@{uart\_macros.h}!COM2\_IRQ@{COM2\_IRQ}}
+\index{COM2\_IRQ@{COM2\_IRQ}!uart\_macros.h@{uart\_macros.h}}
+\doxysubsubsection{\texorpdfstring{COM2\_IRQ}{COM2\_IRQ}}
+{\footnotesize\ttfamily \label{uart__macros_8h_ab02d84052a299a0c207a8ea4c1a5636d} 
+\#define COM2\+\_\+\+IRQ~3}
+
+\Hypertarget{uart__macros_8h_a1108491d9b7ad3d2c91f62035a9790af}\index{uart\_macros.h@{uart\_macros.h}!DISABLE\_INT@{DISABLE\_INT}}
+\index{DISABLE\_INT@{DISABLE\_INT}!uart\_macros.h@{uart\_macros.h}}
+\doxysubsubsection{\texorpdfstring{DISABLE\_INT}{DISABLE\_INT}}
+{\footnotesize\ttfamily \label{uart__macros_8h_a1108491d9b7ad3d2c91f62035a9790af} 
+\#define DISABLE\+\_\+\+INT~0x8}
+
+\Hypertarget{uart__macros_8h_aeacff95e17799eeacbff843e63ead9d3}\index{uart\_macros.h@{uart\_macros.h}!DLAB@{DLAB}}
+\index{DLAB@{DLAB}!uart\_macros.h@{uart\_macros.h}}
+\doxysubsubsection{\texorpdfstring{DLAB}{DLAB}}
+{\footnotesize\ttfamily \label{uart__macros_8h_aeacff95e17799eeacbff843e63ead9d3} 
+\#define DLAB~BIT(7)}
+
+\Hypertarget{uart__macros_8h_a37023b7ff007bee40df617e7afe0f504}\index{uart\_macros.h@{uart\_macros.h}!DLAB\_0@{DLAB\_0}}
+\index{DLAB\_0@{DLAB\_0}!uart\_macros.h@{uart\_macros.h}}
+\doxysubsubsection{\texorpdfstring{DLAB\_0}{DLAB\_0}}
+{\footnotesize\ttfamily \label{uart__macros_8h_a37023b7ff007bee40df617e7afe0f504} 
+\#define DLAB\+\_\+0~0x7F}
+
+\Hypertarget{uart__macros_8h_a3e27fa35f9febccdc4a0c28a5c8cffbb}\index{uart\_macros.h@{uart\_macros.h}!IER@{IER}}
+\index{IER@{IER}!uart\_macros.h@{uart\_macros.h}}
+\doxysubsubsection{\texorpdfstring{IER}{IER}}
+{\footnotesize\ttfamily \label{uart__macros_8h_a3e27fa35f9febccdc4a0c28a5c8cffbb} 
+\#define IER~1}
+
+\Hypertarget{uart__macros_8h_a851cb396b6eaa97346364a772b439f37}\index{uart\_macros.h@{uart\_macros.h}!LCR@{LCR}}
+\index{LCR@{LCR}!uart\_macros.h@{uart\_macros.h}}
+\doxysubsubsection{\texorpdfstring{LCR}{LCR}}
+{\footnotesize\ttfamily \label{uart__macros_8h_a851cb396b6eaa97346364a772b439f37} 
+\#define LCR~3}
+
+\Hypertarget{uart__macros_8h_ad51d51aee21f6cc77d4955221aee3dcb}\index{uart\_macros.h@{uart\_macros.h}!LSR@{LSR}}
+\index{LSR@{LSR}!uart\_macros.h@{uart\_macros.h}}
+\doxysubsubsection{\texorpdfstring{LSR}{LSR}}
+{\footnotesize\ttfamily \label{uart__macros_8h_ad51d51aee21f6cc77d4955221aee3dcb} 
+\#define LSR~5}
+
+\Hypertarget{uart__macros_8h_a898d7631f24dd6b1deebf808a2214ea2}\index{uart\_macros.h@{uart\_macros.h}!ODD\_PARITY@{ODD\_PARITY}}
+\index{ODD\_PARITY@{ODD\_PARITY}!uart\_macros.h@{uart\_macros.h}}
+\doxysubsubsection{\texorpdfstring{ODD\_PARITY}{ODD\_PARITY}}
+{\footnotesize\ttfamily \label{uart__macros_8h_a898d7631f24dd6b1deebf808a2214ea2} 
+\#define ODD\+\_\+\+PARITY~0x08}
+
+\Hypertarget{uart__macros_8h_aa6f7e7a9f4551d6151f9d45362118a50}\index{uart\_macros.h@{uart\_macros.h}!RBR@{RBR}}
+\index{RBR@{RBR}!uart\_macros.h@{uart\_macros.h}}
+\doxysubsubsection{\texorpdfstring{RBR}{RBR}}
+{\footnotesize\ttfamily \label{uart__macros_8h_aa6f7e7a9f4551d6151f9d45362118a50} 
+\#define RBR~0}
+
+\Hypertarget{uart__macros_8h_afd734fdc3e50f084eabcae1ca7373b5d}\index{uart\_macros.h@{uart\_macros.h}!RECEIVER\_READY@{RECEIVER\_READY}}
+\index{RECEIVER\_READY@{RECEIVER\_READY}!uart\_macros.h@{uart\_macros.h}}
+\doxysubsubsection{\texorpdfstring{RECEIVER\_READY}{RECEIVER\_READY}}
+{\footnotesize\ttfamily \label{uart__macros_8h_afd734fdc3e50f084eabcae1ca7373b5d} 
+\#define RECEIVER\+\_\+\+READY~BIT(0)}
+
+\Hypertarget{uart__macros_8h_a5e9787adf3c9afcc4b781e85bb545b35}\index{uart\_macros.h@{uart\_macros.h}!THR@{THR}}
+\index{THR@{THR}!uart\_macros.h@{uart\_macros.h}}
+\doxysubsubsection{\texorpdfstring{THR}{THR}}
+{\footnotesize\ttfamily \label{uart__macros_8h_a5e9787adf3c9afcc4b781e85bb545b35} 
+\#define THR~0}
+
+\Hypertarget{uart__macros_8h_a819bcf4e0e7ff6aa48714099bcbc49c3}\index{uart\_macros.h@{uart\_macros.h}!TRANSMITTER\_READY@{TRANSMITTER\_READY}}
+\index{TRANSMITTER\_READY@{TRANSMITTER\_READY}!uart\_macros.h@{uart\_macros.h}}
+\doxysubsubsection{\texorpdfstring{TRANSMITTER\_READY}{TRANSMITTER\_READY}}
+{\footnotesize\ttfamily \label{uart__macros_8h_a819bcf4e0e7ff6aa48714099bcbc49c3} 
+\#define TRANSMITTER\+\_\+\+READY~BIT(5)}
+
+\Hypertarget{uart__macros_8h_a83b8f35e350a7dcb97c4018ee2530476}\index{uart\_macros.h@{uart\_macros.h}!WAIT\_UART@{WAIT\_UART}}
+\index{WAIT\_UART@{WAIT\_UART}!uart\_macros.h@{uart\_macros.h}}
+\doxysubsubsection{\texorpdfstring{WAIT\_UART}{WAIT\_UART}}
+{\footnotesize\ttfamily \label{uart__macros_8h_a83b8f35e350a7dcb97c4018ee2530476} 
+\#define WAIT\+\_\+\+UART~20000}
+

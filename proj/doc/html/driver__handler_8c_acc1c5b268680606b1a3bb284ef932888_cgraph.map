@@ -1,0 +1,27 @@
+<map id="driver_setup" name="driver_setup">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,157,98,184"/>
+<area shape="rect" id="Node000002" href="$kbc_8c.html#a8eee4d0a15beada731a514481b5ad4bf" title="Subscribes to keyboard interrupts with policies IRQ_REENABLE and IRQ_EXCLUSIVE." alt="" coords="146,5,304,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="57,156,89,101,114,69,144,42,152,37,155,41,147,46,118,73,93,104,61,158"/>
+<area shape="rect" id="Node000003" href="$mouse_8c.html#a9da18257ff113b686bb826d154bfaa87" title="Subscribes to mouse interrupts with the IRQ_REENABLE and IRQ_EXCLUSIVE policies." alt="" coords="153,56,297,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="64,155,99,124,144,92,156,86,159,91,147,97,102,128,68,159"/>
+<area shape="rect" id="Node000004" href="$rtc_8c.html#a5171a9c0f54940fe60f7500896afcc86" title="Subscribes to RTC interrupts using the IRQ_REENABLE policy." alt="" coords="165,107,285,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="97,155,162,136,163,141,99,160"/>
+<area shape="rect" id="Node000005" href="$timer_8c.html#a6f786481e80308348d629d605ffa2d84" title="Subscribes to the timer interrupts with the IRQ_REENABLE policy." alt="" coords="158,157,292,184"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="98,168,142,168,142,173,98,173"/>
+<area shape="rect" id="Node000006" href="$serial__port_8c.html#a5c9f87c6f437508710a9be40c40fc87c" title="Configures the serial port (8&#45;bit mode, no parity and disables interrupts)." alt="" coords="361,183,446,209"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="95,182,146,193,252,200,345,198,346,203,252,205,145,199,94,187"/>
+<area shape="rect" id="Node000008" href="$video_8c.html#ac67621adf87bcebb04fab536c7245315" title="Configures the video card for a given mode." alt="" coords="191,259,259,285"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="70,182,104,209,147,238,177,252,175,257,144,242,101,214,67,186"/>
+<area shape="rect" id="Node000011" href="$mouse_8c.html#a0d598ce293319bc55ef10f0e1ddff146" title="Writes a command byte directly to the mouse." alt="" coords="170,335,280,361"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="63,183,97,235,121,266,147,295,186,324,183,328,144,299,117,270,92,238,58,186"/>
+<area shape="rect" id="Node000007" href="$utils_8c.html#aaae43c6cf9efece01166b2b4d9e355ef" title=" " alt="" coords="503,335,594,361"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="440,208,457,219,481,243,503,270,535,319,530,322,498,273,477,247,454,223,437,212"/>
+<area shape="rect" id="Node000009" href="$video_8c.html#a15d59629b6adbc2c2f71ca6a486baa93" title="Maps the physical video RAM into the process space." alt="" coords="352,233,455,260"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="259,265,336,253,337,259,260,270"/>
+<area shape="rect" id="Node000010" href="$video_8c.html#a3eaed521041b153cd8f9c5d371b393ff" title="Sets the video card mode." alt="" coords="354,284,453,311"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="260,274,339,286,338,291,259,279"/>
+<area shape="poly" id="edge11_Node000011_Node000007" title=" " alt="" coords="280,345,488,345,488,351,280,351"/>
+<area shape="rect" id="Node000012" href="$mouse_8c.html#a5c98fb28d08bbb8e3ee6321393c7bcc5" title="Writes a command byte to the KBC." alt="" coords="358,385,449,412"/>
+<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="276,359,344,379,343,384,274,365"/>
+<area shape="poly" id="edge13_Node000012_Node000007" title=" " alt="" coords="443,382,493,364,495,369,445,387"/>
+</map>

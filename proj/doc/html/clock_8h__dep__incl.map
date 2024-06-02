@@ -1,0 +1,16 @@
+<map id="/home/ricardo/FEUP/LCOM/MINIX&#45;LCOM/shared/g6/proj/src/game/clock.h" name="/home/ricardo/FEUP/LCOM/MINIX&#45;LCOM/shared/g6/proj/src/game/clock.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="112,5,302,64"/>
+<area shape="rect" id="Node000002" href="$clock_8c.html" title=" " alt="" coords="5,120,196,179"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="172,77,130,121,126,118,168,73"/>
+<area shape="rect" id="Node000003" href="$game__state_8h.html" title=" " alt="" coords="220,112,410,187"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="247,73,282,110,278,114,243,77"/>
+<area shape="rect" id="Node000004" href="$driver__handler_8h.html" title=" " alt="" coords="88,235,278,309"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="266,199,225,236,221,232,262,195"/>
+<area shape="rect" id="Node000006" href="$main_8c.html" title=" " alt="" coords="220,365,410,424"/>
+<area shape="poly" id="edge7_Node000003_Node000006" title=" " alt="" coords="318,202,318,365,313,365,313,202"/>
+<area shape="rect" id="Node000007" href="$game__state_8c.html" title=" " alt="" coords="352,235,542,309"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="368,195,409,232,405,236,365,199"/>
+<area shape="rect" id="Node000005" href="$driver__handler_8c.html" title=" " alt="" coords="5,357,196,432"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="151,324,128,358,123,355,147,321"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="237,318,286,363,282,367,233,322"/>
+</map>

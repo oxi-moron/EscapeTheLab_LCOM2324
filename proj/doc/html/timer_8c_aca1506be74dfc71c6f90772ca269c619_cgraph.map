@@ -1,0 +1,13 @@
+<map id="timer_set_frequency" name="timer_set_frequency">
+<area shape="rect" id="Node000001" title="Sets the frequency of a timer." alt="" coords="5,81,145,108"/>
+<area shape="rect" id="Node000002" href="$timer_8c.html#afafc1891c876602d55b894103b1841a7" title=" " alt="" coords="198,5,305,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,78,204,36,206,41,109,83"/>
+<area shape="rect" id="Node000004" href="$timer_8c.html#a164b57d3704e693970c9db7db96d5639" title="Writes a command to the timers command register." alt="" coords="193,56,310,83"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="145,82,177,77,178,83,145,87"/>
+<area shape="rect" id="Node000005" href="$utils_8c.html#a2af5842d08bffa26ea80e3f342af7df4" title=" " alt="" coords="204,107,299,133"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="145,102,189,108,188,114,145,107"/>
+<area shape="rect" id="Node000006" href="$utils_8c.html#af45f782aa7f596c0277dfb07a5a265f6" title=" " alt="" coords="202,157,301,184"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="109,106,206,148,204,153,107,111"/>
+<area shape="rect" id="Node000003" href="$utils_8c.html#aaae43c6cf9efece01166b2b4d9e355ef" title=" " alt="" coords="358,5,448,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="305,16,342,16,342,21,305,21"/>
+</map>

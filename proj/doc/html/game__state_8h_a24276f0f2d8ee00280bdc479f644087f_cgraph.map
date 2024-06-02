@@ -1,0 +1,5 @@
+<map id="state_rtc_event" name="state_rtc_event">
+<area shape="rect" id="Node000001" title="Handles the in&#45;game logic of a RTC alarm." alt="" coords="5,5,117,32"/>
+<area shape="rect" id="Node000002" href="$clock_8c.html#a12cb3d68305ff8efb4b88f0b5cca3f1a" title="Resets the in&#45;game clock timer to 10 minutes." alt="" coords="165,5,289,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,16,149,16,149,21,117,21"/>
+</map>

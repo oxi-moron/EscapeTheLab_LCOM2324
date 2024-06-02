@@ -108,14 +108,12 @@ int state_kbd_event(uint8_t scancode) {
             }
             if (player_crossed_door()) {
                 map_no += 1;
-                map_load(map_no);
-                player_reset_position(map_no);
-                // TODO: change numbers
-                /*if if (map_no == FINAL_MAP)
+                if (map_no == FINAL_MAP)
                     game_state = INTERCOM;
                 else {
-
-                }*/
+                    map_load(map_no);
+                    player_reset_position(map_no);
+                }
             }
             break;
         case INTERCOM:

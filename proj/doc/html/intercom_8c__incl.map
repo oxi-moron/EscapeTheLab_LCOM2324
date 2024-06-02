@@ -1,0 +1,14 @@
+<map id="/home/ricardo/FEUP/LCOM/MINIX&#45;LCOM/shared/g6/proj/src/game/intercom.c" name="/home/ricardo/FEUP/LCOM/MINIX&#45;LCOM/shared/g6/proj/src/game/intercom.c">
+<area shape="rect" id="Node000001" title=" " alt="" coords="93,5,284,64"/>
+<area shape="rect" id="Node000002" href="$intercom_8h.html" title=" " alt="" coords="147,112,230,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="191,64,191,96,186,96,186,64"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,261,84,288"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="147,131,114,136,78,146,44,163,17,188,12,202,13,217,28,248,23,250,8,219,7,201,13,185,41,158,76,141,113,130,147,125"/>
+<area shape="rect" id="Node000004" href="$serial__port_8h.html" title=" " alt="" coords="27,187,174,213"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="175,141,129,179,126,175,171,137"/>
+<area shape="rect" id="Node000005" href="$uart__macros_8h.html" title=" " alt="" coords="198,187,358,213"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="206,137,252,175,249,179,202,141"/>
+<area shape="rect" id="Node000006" href="$game__macros_8h.html" title=" " alt="" coords="382,187,496,213"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="231,136,382,179,380,184,229,141"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="93,216,65,251,61,247,89,212"/>
+</map>
