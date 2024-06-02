@@ -16,7 +16,6 @@ struct point2D {
 #include <math.h>
 
 #include "../images/test_menu.xpm"
-#include "../images/item.xpm"
 #include "../images/wall_texture.xpm"
 #include "../images/cursor.xpm"
 #include "../images/test_pause_menu.xpm"
@@ -103,12 +102,6 @@ int (graphics_draw_player_camera) ();
  * @return 0 if successful, non-zero otherwise.
  */
 int (graphics_draw_map) ();
-
-/**
- * @brief Draws the game screen item bar.
- * @return 0 if successful, non-zero otherwise.
- */
-int (graphics_draw_item_bar) ();
 
 /**
  * @brief Draws the in-game cursor.

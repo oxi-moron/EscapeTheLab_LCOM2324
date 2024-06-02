@@ -3,9 +3,6 @@
 void player_construct() {
     player.position = (struct point2D){75, 550};
     player.angle = 0;
-    for (int i = 0; i < 4; i++) {
-        player.player_items[i] = EMPTY;
-    }
 }
 
 struct point2D player_get_position() {
@@ -27,10 +24,6 @@ int player_set_angle(double angle) {
     player.angle = angle;
 
     return 0;
-}
-
-enum items* player_get_items() {
-    return player.player_items;
 }
 
 int player_move(enum player_moves move) {
@@ -68,12 +61,6 @@ int player_move(enum player_moves move) {
       printf("(%d, %d)\n", player.position.x, player.position.y);
     }
     return 0;
-}
-
-void player_reset_items() {
-    for (int i = 0; i < INVENTORY_SIZE; i++) {
-        player.player_items[i] = EMPTY;
-    }
 }
 
 bool player_crossed_door() {

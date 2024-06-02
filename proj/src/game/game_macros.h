@@ -1,7 +1,6 @@
 #ifndef G6_GAME_MACROS_H
 #define G6_GAME_MACROS_H
 
-#define INVENTORY_SIZE 8
 #define PLAYER_SPEED 10
 
 #define PASSWORD_SIZE 4
@@ -16,7 +15,7 @@
 #define SECOND_LIMIT 0
 
 #define START_MAP 0
-#define FINAL_MAP 2
+#define FINAL_MAP 1
 
 #define W_SCANCODE 0x11
 #define A_SCANCODE 0x1E

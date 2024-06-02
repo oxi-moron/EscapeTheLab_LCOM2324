@@ -1,8 +1,6 @@
 #include "graphics.h"
-#include "cursor.h"
 
 static xpm_image_t password_xpm[PASSWORD_SIZE];
-static xpm_image_t items[INVENTORY_SIZE];
 static xpm_image_t menu_xpm, wall_texture_xpm, cursor_xpm, pause_menu_xpm, door_texture_xpm, defeat_xpm, victory_xpm,
         player_select_xpm;
 
@@ -33,10 +31,6 @@ int (graphics_draw_game) () {
         return 1;
     }
     if (graphics_draw_map() != 0) {
-        printf("ERROR: %s\n", __func__ );
-        return 1;
-    }
-    if (graphics_draw_item_bar() != 0) {
         printf("ERROR: %s\n", __func__ );
         return 1;
     }
@@ -223,18 +217,6 @@ int (graphics_draw_player_camera) () {
     return 0;
 }
 
-int (graphics_draw_item_bar) () {
-    enum items* player_items = player_get_items();
-    for (int i = 0; i < INVENTORY_SIZE; i++) {
-        if (vg_draw_xpm(MINIMAP_WIDTH + (((width - MINIMAP_WIDTH) / INVENTORY_SIZE) * i), height - MINIMAP_HEIGHT / 2,
-                        items[player_items[i]].width, items[player_items[i]].size, items[player_items[i]].bytes) != 0) {
-            printf("ERROR: %s\n", __func__ );
-            return 1;
-        }
-    }
-    return 0;
-}
-
 int (graphics_draw_map) () {
     for (uint32_t y = 0; y < map_height; y++) {
         for (uint32_t x = 0; x < map_width; x++) {
@@ -339,7 +321,6 @@ int (set_background_color) (uint32_t color) {
 
 void (load_xpms) () {
     // TODO: Replace XPMs
-    xpm_load(item, XPM_8_8_8, &items[EMPTY]);
     xpm_load(test_menu, XPM_8_8_8, &menu_xpm);
     xpm_load(brick_wall, XPM_8_8_8, &wall_texture_xpm);
     xpm_load(cursor, XPM_8_8_8, &cursor_xpm);

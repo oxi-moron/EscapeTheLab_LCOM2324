@@ -188,7 +188,6 @@ int state_mouse_event(struct packet pp) {
                         return 1;
                     }
                     player_reset_position();
-                    player_reset_items();
                     intercom_reset();
                     game_state = MENU;
                 }
@@ -210,13 +209,12 @@ int state_mouse_event(struct packet pp) {
                         printf("ERROR: %s\n", __func__ );
                         return -1;
                     }
-                    map_no = 0;
+                    map_no = START_MAP;
                     if (map_load(map_no) != 0) {
                         printf("ERROR: %s\n", __func__);
                         return 1;
                     }
                     player_reset_position();
-                    player_reset_items();
                     intercom_reset();
                     game_state = PLAYER_SELECT;
                 }
@@ -225,13 +223,12 @@ int state_mouse_event(struct packet pp) {
                         printf("ERROR: %s\n", __func__ );
                         return -1;
                     }
-                    map_no = 0;
+                    map_no = START_MAP;
                     if (map_load(map_no) != 0) {
                         printf("ERROR: %s\n", __func__);
                         return 1;
                     }
                     player_reset_position();
-                    player_reset_items();
                     game_state = MENU;
                 }
             }
@@ -255,7 +252,6 @@ int state_mouse_event(struct packet pp) {
                         return 1;
                     }
                     player_reset_position();
-                    player_reset_items();
                     intercom_reset();
                     game_state = PLAYER_SELECT;
                 }
@@ -270,7 +266,6 @@ int state_mouse_event(struct packet pp) {
                         return 1;
                     }
                     player_reset_position();
-                    player_reset_items();
                     game_state = MENU;
                 }
             }
