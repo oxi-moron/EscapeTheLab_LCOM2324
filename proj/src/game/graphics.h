@@ -3,10 +3,6 @@
 
 #include <lcom/lcf.h>
 
-struct point2D {
-    int x; int y;
-};
-
 #include "../drivers/video.h"
 #include "map.h"
 #include "player.h"
@@ -16,11 +12,10 @@ struct point2D {
 #include <math.h>
 
 #include "../images/test_menu.xpm"
-#include "../images/item.xpm"
 #include "../images/wall_texture.xpm"
 #include "../images/cursor.xpm"
 #include "../images/test_pause_menu.xpm"
-#include "../images/brick.xpm"
+#include "../images/whitebrick.xpm"
 #include "../images/player_select.xpm"
 #include "../images/door_texture.xpm"
 #include "../images/letter_L.xpm"
@@ -30,26 +25,112 @@ struct point2D {
 
 static uint32_t width, height, map_width, map_height;
 
+/**
+ * @brief Initializes the graphics (sets up the video and map resolutions)
+ * @return 0 if successful, non-zero otherwise.
+ */
 int (graphics_construct) ();
+
+/**
+ * @brief Draws the current game frame (map, items and player camera).
+ * @return 0 if successful, non-zero otherwise.
+ */
 int (graphics_draw_game) ();
+
+/**
+ * @brief Draws the main menu screen.
+ * @return 0 if successful, non-zero otherwise.
+ */
 int (graphics_draw_menu) ();
+
+/**
+ * @brief Draws the pause menu screen.
+ * @return 0 if successful, non-zero otherwise.
+ */
 int (graphics_draw_pause_menu) ();
+
+/**
+ * @brief Draws the defeat screen.
+ * @return 0 if successful, non-zero otherwise.
+ */
 int (graphics_draw_defeat_screen) ();
+
+/**
+ * @brief Draws the victory screen.
+ * @return 0 if successful, non-zero otherwise.
+ */
 int (graphics_draw_victory_screen) ();
+
+/**
+ * @brief Draws the intercom screen.
+ * @return 0 if successful, non-zero otherwise.
+ */
 int (graphics_draw_intercom) ();
+
+/**
+ * @brief Draws the player selection screen.
+ * @return 0 if successful, non-zero otherwise.
+ */
 int (graphics_draw_player_select) ();
 
+
 // TODO: declare static
+/**
+ * @brief Draws the floor of the game.
+ * @return
+ */
 int (graphics_draw_floor) ();
+
+/**
+ * @brief Draws the ceiling of the game.
+ * @return 0 if successful, non-zero otherwise.
+ */
 int (graphics_draw_ceiling) ();
+
+/**
+ * @brief Draws the players camera angle.
+ * @return 0 if successful, non-zero otherwise.
+ */
 int (graphics_draw_player_camera) ();
+
+/**
+ * @brief Draws the game screen map.
+ * @return 0 if successful, non-zero otherwise.
+ */
 int (graphics_draw_map) ();
-int (graphics_draw_item_bar) ();
+
+/**
+ * @brief Draws the in-game cursor.
+ * @return 0 if successful, non-zero otherwise.
+ */
 int (graphics_draw_cursor) ();
+
+/**
+ * @brief Loads the initial XPMs
+ */
 void (load_xpms) ();
+
+/**
+ * @brief Creates a line using Bresenham's Line Algorithm to draw the player vision.
+ * @param line Address where line will be stored.
+ * @param angle Angle between the player and the collision point of its sight.
+ * @param delimiter Address where the lines delimiter will be stored (1 if it's a wall, 2 if it's a door).
+ * @return Length of the line in number of points.
+ */
 int (create_line) (struct point2D* line, double angle, uint8_t* delimiter);
+
+/**
+ * @brief Sets the screen's background color.
+ * @param color Color to be set.
+ * @return 0 if successful, non-zero otherwise.
+ */
 int (set_background_color) (uint32_t color);
+
+/**
+ * @brief Calculates the angle for the Line Drawing Algorithm.
+ * @param diff The horizontal coordinate of the line to be calculated.
+ * @return
+ */
 double (get_ray_angle) (int diff);
-double (to_radians) (double angle);
 
 #endif //G6_GRAPHICS_H

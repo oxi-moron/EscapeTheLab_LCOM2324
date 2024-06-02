@@ -32,6 +32,15 @@
 
 #define KBD_ENABLE_INT 0x01
 
+#define ENABLE_DATA 0xF4
+#define DISABLE_DATA 0xF5
+
+#define WRITE_TO_MOUSE 0xD4
+
 #define MAX_ATTEMPTS 10
+#define ACK 0xFA
+#define ERROR 0xFC
+
+#define PACKET_SIZE 3
 
 #endif //G6_I8024_KBC_H

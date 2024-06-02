@@ -4,7 +4,7 @@
 #include <lcom/lcf.h>
 
 // Base Timer Frequency
-#define TIMER_FREQ 1193181
+#define TIMER_FREQ 60
 
 // IRQ Macros
 #define TIMER0_IRQ 0

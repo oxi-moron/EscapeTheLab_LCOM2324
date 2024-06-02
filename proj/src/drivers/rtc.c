@@ -97,7 +97,7 @@ void (rtc_ih) () {
 
 int (rtc_subscribe_int) (uint8_t* bit_no) {
     rtc_hook_id = *bit_no;
-    if (sys_irqsetpolicy(RTC_IRQ_LINE, IRQ_REENABLE | IRQ_EXCLUSIVE, &rtc_hook_id) != 0) {
+    if (sys_irqsetpolicy(RTC_IRQ_LINE, IRQ_REENABLE, &rtc_hook_id) != 0) {
         printf("ERROR: %s\n", __func__);
         return 1;
     }
