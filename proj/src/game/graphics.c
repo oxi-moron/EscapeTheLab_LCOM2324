@@ -175,28 +175,29 @@ int (graphics_draw_timer) () {
         return 1;
     }
 
+    printf("%d:%d:%d\n", hours, minutes, seconds);
     if (seconds < 10) {
         vg_draw_xpm(width - 140, height - 90, 60, numbers_xpm[0].size, numbers_xpm[0].bytes);
         vg_draw_xpm(width - 80, height - 90, 60, numbers_xpm[seconds].size, numbers_xpm[seconds].bytes);
     } else {
-        vg_draw_xpm(width - 80, height - 90, 60, numbers_xpm[seconds % 10].size, numbers_xpm[0].bytes);
-        vg_draw_xpm(width - 140, height - 90, 60, numbers_xpm[seconds / 10].size, numbers_xpm[0].bytes);
+        vg_draw_xpm(width - 80, height - 90, 60, numbers_xpm[seconds % 10].size, numbers_xpm[seconds % 10].bytes);
+        vg_draw_xpm(width - 140, height - 90, 60, numbers_xpm[seconds / 10].size, numbers_xpm[seconds / 10].bytes);
     }
     vg_draw_xpm(width - 170, height - 90, two_dots_xpm.width, two_dots_xpm.size, two_dots_xpm.bytes);
     if (minutes < 10) {
         vg_draw_xpm(width - 290, height - 90, 60, numbers_xpm[0].size, numbers_xpm[0].bytes);
-        vg_draw_xpm(width - 230, height - 90, 60, numbers_xpm[minutes].size, numbers_xpm[0].bytes);
+        vg_draw_xpm(width - 230, height - 90, 60, numbers_xpm[minutes].size, numbers_xpm[minutes].bytes);
     } else {
-        vg_draw_xpm(width - 290, height - 90, 60, numbers_xpm[minutes / 10].size, numbers_xpm[0].bytes);
-        vg_draw_xpm(width - 230, height - 90, 60, numbers_xpm[minutes % 10].size, numbers_xpm[0].bytes);
+        vg_draw_xpm(width - 290, height - 90, 60, numbers_xpm[minutes / 10].size, numbers_xpm[minutes / 10].bytes);
+        vg_draw_xpm(width - 230, height - 90, 60, numbers_xpm[minutes % 10].size, numbers_xpm[minutes % 10].bytes);
     }
     vg_draw_xpm(width - 320, height - 90, two_dots_xpm.width, two_dots_xpm.size, two_dots_xpm.bytes);
     if (hours < 10) {
         vg_draw_xpm(width - 440, height - 90, 60, numbers_xpm[0].size, numbers_xpm[0].bytes);
-        vg_draw_xpm(width - 380, height - 90, 60, numbers_xpm[hours].size, numbers_xpm[0].bytes);
+        vg_draw_xpm(width - 380, height - 90, 60, numbers_xpm[hours].size, numbers_xpm[hours].bytes);
     } else {
-        vg_draw_xpm(width - 440, height - 90, 60, numbers_xpm[hours / 10].size, numbers_xpm[0].bytes);
-        vg_draw_xpm(width - 380, height - 90, 60, numbers_xpm[hours % 10].size, numbers_xpm[0].bytes);
+        vg_draw_xpm(width - 440, height - 90, 60, numbers_xpm[hours / 10].size, numbers_xpm[hours / 10].bytes);
+        vg_draw_xpm(width - 380, height - 90, 60, numbers_xpm[hours % 10].size, numbers_xpm[hours % 10].bytes);
     }
 
     return 0;

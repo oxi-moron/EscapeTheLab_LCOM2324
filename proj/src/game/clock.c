@@ -61,7 +61,8 @@ int (clock_get_elapsed_time) (uint8_t* hours, uint8_t* minutes, uint8_t* seconds
         return 1;
     }
 
-    uint32_t elapsed_seconds = (curr_hours * 3600 + curr_minutes * 60 + curr_seconds) - (game_start_hours * 3600 + game_start_minutes * 60 + game_start_seconds);
+    uint32_t elapsed_seconds = (to_binary(curr_hours) * 3600 + to_binary(curr_minutes) * 60 + to_binary(curr_seconds))
+            - (to_binary(game_start_hours) * 3600 + to_binary(game_start_minutes) * 60 + to_binary(game_start_seconds));
 
     *hours = elapsed_seconds / 3600;
     elapsed_seconds -= *hours * 3600;
