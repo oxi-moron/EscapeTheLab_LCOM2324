@@ -28,7 +28,7 @@ int player_set_position(struct point2D position);
 int player_set_angle(double angle);
 enum items* player_get_items();
 void player_reset_items();
-void player_reset_position();
+void player_reset_position(int n);
 bool player_crossed_door();
 
 int player_move(enum player_moves move);
