@@ -45,6 +45,8 @@ int (map_load) (uint8_t map_no);
 
 int (map_get_start_pos) (uint32_t* x, uint32_t*y, uint32_t* angle, uint8_t map_no);
 
-int (map_get_terminal_positions) (struct point2D* terminals, int map_no);
+int (map_get_terminal_positions) (struct point2D terminals[]);
+
+int (map_get_door_position) (struct point2D* door);
 
 #endif //G6_MAP_H
