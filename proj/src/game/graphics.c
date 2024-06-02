@@ -1,7 +1,7 @@
 #include "graphics.h"
 
 static xpm_image_t password_xpm[PASSWORD_SIZE];
-static xpm_image_t menu_xpm, wall_texture_xpm, cursor_xpm, pause_menu_xpm, door_texture_xpm, defeat_xpm, victory_xpm,
+static xpm_image_t menu_xpm, wall_texture_xpm, cursor_xpm, pause_menu_xpm, door_texture_lock_xpm, door_texture_open_xpm, defeat_xpm, victory_xpm,
         player_select_xpm;
 
 int (graphics_construct) () {
@@ -185,31 +185,38 @@ int (graphics_draw_player_camera) () {
             vg_draw_vline(width - i, draw_start, draw_end - draw_start, BLACK);
         } else {
             uint32_t colors[16];
-            if (delimiter == 1 || delimiter == 3) {
+            if (delimiter == 1 || delimiter == 3 || delimiter == 4) {
                 for (int j = 0; j < 16; j++) {
                     uint32_t color = (wall_texture_xpm.bytes[(i % 16 + 16 * j) * 3 + 2] << 16)
                                      | (wall_texture_xpm.bytes[(i % 16 + 16 * j) * 3 + 1] << 8)
                                      | wall_texture_xpm.bytes[(i % 16 + 16 * j) * 3];
                     colors[j] = color;
                 }
-            } else if (delimiter == 2) {
+            } else if (delimiter == 8) {
                 for (int j = 0; j < 16; j++) {
-                    uint32_t color = (door_texture_xpm.bytes[(i % 16 + 16 * j) * 3 + 2] << 16)
-                                     | (door_texture_xpm.bytes[(i % 16 + 16 * j) * 3 + 1] << 8)
-                                     | door_texture_xpm.bytes[(i % 16 + 16 * j) * 3];
+                    uint32_t color = (door_texture_lock_xpm.bytes[(i % 16 + 16 * j) * 3 + 2] << 16)
+                                     | (door_texture_lock_xpm.bytes[(i % 16 + 16 * j) * 3 + 1] << 8)
+                                     | door_texture_lock_xpm.bytes[(i % 16 + 16 * j) * 3];
                     colors[j] = color;
                 }
+            } else if (delimiter == 16) {
+              for (int j = 0; j < 16; j++) {
+                uint32_t color = (door_texture_open_xpm.bytes[(i % 16 + 16 * j) * 3 + 2] << 16)
+                                 | (door_texture_open_xpm.bytes[(i % 16 + 16 * j) * 3 + 1] << 8)
+                                 | door_texture_open_xpm.bytes[(i % 16 + 16 * j) * 3];
+                colors[j] = color;
+              }
             }
             vg_draw_vline_colormap(width - i, draw_start, draw_end - draw_start, colors);
 
-            if (delimiter == 3) {
+            if (delimiter == 3 || delimiter == 4) {
               wall_height = (int) ((height * cellsize / 2) / distance_to_wall);
               draw_start = -wall_height / 2 + height / 2;
               if (draw_start < 0) draw_start = 0;
               draw_end = wall_height / 2 + height / 2;
               if (draw_end >= (int)height) draw_end = height - 1;
-
-              vg_draw_vline(width - i, draw_start, draw_end - draw_start, 0x141c17);
+              uint32_t color = delimiter == 4 ? 0x00FF00 : 0x141c17;
+              vg_draw_vline(width - i, draw_start, draw_end - draw_start, color);
             }
         }
         free(line);
@@ -239,10 +246,12 @@ int (graphics_draw_map) () {
 
             uint32_t color;
 
-            if (pos == 1) {
+            if (pos == 1 || pos == 4) {
               color = 0x000000;
-            } else if (pos == 2) {
+            } else if (pos == 8) {
               color = 0xff0000;
+            } else if (pos == 16) {
+              color = 0x00ff00;
             } else if (pos == 3) {
               color = 0xffff00;
             } else {
@@ -298,7 +307,7 @@ int (create_line) (struct point2D* line, double angle, uint8_t* delimiter) {
             return -1;
         }
 
-        if (pos == 1 || pos == 2 || pos == 3) {
+        if (pos != 0) {
             line[index].x = x1; line[index].y = y1;
             index++;
             *delimiter = pos;
@@ -336,7 +345,8 @@ void (load_xpms) () {
     xpm_load(whitebrick, XPM_8_8_8, &wall_texture_xpm);
     xpm_load(cursor, XPM_8_8_8, &cursor_xpm);
     xpm_load(pause_menu, XPM_8_8_8, &pause_menu_xpm);
-    xpm_load(door_texture, XPM_8_8_8, &door_texture_xpm);
+    xpm_load(doorLazerBad, XPM_8_8_8, &door_texture_lock_xpm);
+    xpm_load(doorLazer, XPM_8_8_8, &door_texture_open_xpm);
     xpm_load(pause_menu, XPM_8_8_8, &defeat_xpm);
     xpm_load(pause_menu, XPM_8_8_8, &victory_xpm);
     xpm_load(player_select, XPM_8_8_8, &player_select_xpm);

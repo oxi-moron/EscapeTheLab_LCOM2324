@@ -8,13 +8,6 @@
 #include "map.h"
 
 /**
- * @brief Struct that defines a point in the 2D plane.
- */
-struct point2D {
-    int x; int y;
-};
-
-/**
  * @brief Struct that defines a player, with his position and his angle.
  */
 struct Player {

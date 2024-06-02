@@ -4,6 +4,13 @@
 #include <lcom/lcf.h>
 
 /**
+ * @brief Struct that defines a point in the 2D plane.
+ */
+struct point2D {
+  int x; int y;
+};
+
+/**
  * @brief Gets the element of a given grid position (wall, door or empty cell).
  * @param x X coordinate of the grid position.
  * @param y Y coordinate of the grid position.
@@ -37,5 +44,7 @@ int (map_get_grid_dimensions) (uint32_t* width, uint32_t* height);
 int (map_load) (uint8_t map_no);
 
 int (map_get_start_pos) (uint32_t* x, uint32_t*y, uint32_t* angle, uint8_t map_no);
+
+int (map_get_terminal_positions) (struct point2D* terminals, int map_no);
 
 #endif //G6_MAP_H

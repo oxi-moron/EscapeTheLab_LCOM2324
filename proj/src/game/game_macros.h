@@ -25,6 +25,7 @@
 #define C_SCANCODE 0x2E
 #define O_SCANCODE 0x18
 #define M_SCANCODE 0x32
+#define E_SCANCODE 0x12
 #define ESC_SCANCODE 0x01
 
 #endif //G6_GAME_MACROS_H

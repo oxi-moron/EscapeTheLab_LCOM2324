@@ -89,6 +89,16 @@ int state_kbd_event(uint8_t scancode) {
                     return -1;
                 }
             }
+            else if (scancode == E_SCANCODE) {
+              switch (map_no) {
+                case 0:
+                  if (sqrt(pow(player_get_position().x - (16 * 25), 2) + pow(player_get_position().y - (6 * 25), 2)) <= 60) {
+                    map_set_grid_pos(16, 6, 4);
+                    map_set_grid_pos(15, 6, 16);
+                  }
+                  break;
+              }
+            }
             else if (scancode == ESC_SCANCODE) {
                 game_state = PAUSE;
                 if (clock_stop_timer() != 0) {
