@@ -218,6 +218,17 @@ int (graphics_draw_player_camera) () {
 }
 
 int (graphics_draw_map) () {
+    if (vg_draw_rectangle(0, height - MINIMAP_HEIGHT - 40,
+                          MINIMAP_WIDTH + 40, MINIMAP_HEIGHT + 40, BLACK) != 0) {
+        printf("ERROR: %s\n", __func__ );
+        return 1;
+    }
+    if (vg_draw_rectangle(5, height - MINIMAP_HEIGHT - 35,
+                          MINIMAP_WIDTH + 30, MINIMAP_HEIGHT + 30, 0xb5b5b3) != 0) {
+        printf("ERROR: %s\n", __func__ );
+        return 1;
+    }
+
     for (uint32_t y = 0; y < map_height; y++) {
         for (uint32_t x = 0; x < map_width; x++) {
             uint8_t pos;
@@ -235,11 +246,11 @@ int (graphics_draw_map) () {
             } else if (pos == 3) {
               color = 0xffff00;
             } else {
-              color = 0x0000ff;
+              color = 0xb5b5b3;
             }
 
-            if (vg_draw_rectangle(x * (width / 5 / map_width), (4 * height / 5) + (y * (height / 5 / map_height))
-                    , (width / 5 / map_width), (height / 5 / map_height), color) != 0) {
+            if (vg_draw_rectangle(x * (MINIMAP_WIDTH / map_width) + 15, (height - MINIMAP_HEIGHT - 30) + (y * (MINIMAP_HEIGHT / map_height) + 15)
+                    , (MINIMAP_WIDTH / map_width), (MINIMAP_HEIGHT / map_height), color) != 0) {
                 printf("ERROR: %s\n", __func__ );
                 return 1;
             }
@@ -247,7 +258,7 @@ int (graphics_draw_map) () {
     }
 
     struct point2D player = player_get_position();
-    if (vg_draw_rectangle(player.x * MINIMAP_WIDTH / width, (height - MINIMAP_HEIGHT) + player.y * MINIMAP_HEIGHT / height,
+    if (vg_draw_rectangle(player.x * MINIMAP_WIDTH / width + 15, (height - MINIMAP_HEIGHT) + player.y * MINIMAP_HEIGHT / height - 15,
                           5, 5, 0xFF0000) != 0) {
         printf("ERROR: %s\n", __func__ );
         return 1;
@@ -322,7 +333,7 @@ int (set_background_color) (uint32_t color) {
 void (load_xpms) () {
     // TODO: Replace XPMs
     xpm_load(test_menu, XPM_8_8_8, &menu_xpm);
-    xpm_load(brick_wall, XPM_8_8_8, &wall_texture_xpm);
+    xpm_load(whitebrick, XPM_8_8_8, &wall_texture_xpm);
     xpm_load(cursor, XPM_8_8_8, &cursor_xpm);
     xpm_load(pause_menu, XPM_8_8_8, &pause_menu_xpm);
     xpm_load(door_texture, XPM_8_8_8, &door_texture_xpm);
@@ -333,10 +344,6 @@ void (load_xpms) () {
     xpm_load(letter_C, XPM_8_8_8, &password_xpm[1]);
     xpm_load(letter_O, XPM_8_8_8, &password_xpm[2]);
     xpm_load(letter_M, XPM_8_8_8, &password_xpm[3]);
-}
-
-double (to_radians) (double angle) {
-    return 2 * M_PI * angle * 1.0 / 360;
 }
 
 double (get_ray_angle) (int diff) {

@@ -2,9 +2,14 @@
 #define G6_PLAYER_H
 
 #include <lcom/lcf.h>
+#include <math.h>
 
-#include "graphics.h"
 #include "game_macros.h"
+#include "map.h"
+
+struct point2D {
+    int x; int y;
+};
 
 struct Player {
     struct point2D position;
@@ -26,5 +31,12 @@ void player_reset_position();
 bool player_crossed_door();
 
 int player_move(enum player_moves move);
+
+/**
+ * @brief Converts an angle in degrees to radians.
+ * @param angle Angle to be converted.
+ * @return Corresponding radians value.
+ */
+double (to_radians) (double angle);
 
 #endif //G6_PLAYER_H

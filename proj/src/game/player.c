@@ -73,3 +73,7 @@ void player_reset_position() {
     player.position.x = 75;
     player.position.y = 550;
 }
+
+double (to_radians) (double angle) {
+    return 2 * M_PI * angle * 1.0 / 360;
+}

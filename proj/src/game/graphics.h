@@ -3,10 +3,6 @@
 
 #include <lcom/lcf.h>
 
-struct point2D {
-    int x; int y;
-};
-
 #include "../drivers/video.h"
 #include "map.h"
 #include "player.h"
@@ -19,7 +15,7 @@ struct point2D {
 #include "../images/wall_texture.xpm"
 #include "../images/cursor.xpm"
 #include "../images/test_pause_menu.xpm"
-#include "../images/brick.xpm"
+#include "../images/whitebrick.xpm"
 #include "../images/player_select.xpm"
 #include "../images/door_texture.xpm"
 #include "../images/letter_L.xpm"
@@ -136,12 +132,5 @@ int (set_background_color) (uint32_t color);
  * @return
  */
 double (get_ray_angle) (int diff);
-
-/**
- * @brief Converts an angle in degrees to radians.
- * @param angle Angle to be converted.
- * @return Corresponding radians value.
- */
-double (to_radians) (double angle);
 
 #endif //G6_GRAPHICS_H
