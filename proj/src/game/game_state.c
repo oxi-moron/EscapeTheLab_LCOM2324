@@ -98,12 +98,14 @@ int state_kbd_event(uint8_t scancode) {
             }
             if (player_crossed_door()) {
                 map_no += 1;
-                if (map_no == FINAL_MAP)
+                map_load(map_no);
+                player_reset_position(map_no);
+                // TODO: change numbers
+                /*if if (map_no == FINAL_MAP)
                     game_state = INTERCOM;
                 else {
-                    map_load(map_no);
-                    player_reset_position();
-                }
+
+                }*/
             }
             break;
         case INTERCOM:
@@ -187,7 +189,7 @@ int state_mouse_event(struct packet pp) {
                         printf("ERROR: %s\n", __func__);
                         return 1;
                     }
-                    player_reset_position();
+                    player_reset_position(map_no);
                     intercom_reset();
                     game_state = MENU;
                 }
@@ -214,7 +216,7 @@ int state_mouse_event(struct packet pp) {
                         printf("ERROR: %s\n", __func__);
                         return 1;
                     }
-                    player_reset_position();
+                    player_reset_position(map_no);
                     intercom_reset();
                     game_state = PLAYER_SELECT;
                 }
@@ -228,7 +230,7 @@ int state_mouse_event(struct packet pp) {
                         printf("ERROR: %s\n", __func__);
                         return 1;
                     }
-                    player_reset_position();
+                    player_reset_position(map_no);
                     game_state = MENU;
                 }
             }
@@ -251,7 +253,7 @@ int state_mouse_event(struct packet pp) {
                         printf("ERROR: %s\n", __func__);
                         return 1;
                     }
-                    player_reset_position();
+                    player_reset_position(map_no);
                     intercom_reset();
                     game_state = PLAYER_SELECT;
                 }
@@ -265,7 +267,7 @@ int state_mouse_event(struct packet pp) {
                         printf("ERROR: %s\n", __func__);
                         return 1;
                     }
-                    player_reset_position();
+                    player_reset_position(map_no);
                     game_state = MENU;
                 }
             }

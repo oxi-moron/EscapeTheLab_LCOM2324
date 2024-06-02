@@ -1,8 +1,8 @@
 #include "player.h"
 
 void player_construct() {
-    player.position = (struct point2D){75, 550};
-    player.angle = 0;
+    player.position = (struct point2D){375, 450};
+    player.angle = 90;
 }
 
 struct point2D player_get_position() {
@@ -69,9 +69,12 @@ bool player_crossed_door() {
     return pos == 2;
 }
 
-void player_reset_position() {
-    player.position.x = 75;
-    player.position.y = 550;
+void player_reset_position(int n) {
+    uint32_t x; uint32_t y; uint32_t angle;
+    map_get_start_pos(&x, &y, &angle, n);
+    player.position.x = x;
+    player.position.y = y;
+    player.angle = angle;
 }
 
 double (to_radians) (double angle) {

@@ -63,12 +63,13 @@ int player_set_angle(double angle);
 /**
  * @brief Resets the players position to its initial position.
  */
-void player_reset_position();
+void player_reset_position(int n);
 
 /**
  * @brief Verifies if a player is walking through a door.
  * @return True if player is crossing the door, false otherwise.
  */
+
 bool player_crossed_door();
 
 /**
