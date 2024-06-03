@@ -14,7 +14,7 @@
 #define MINUTE_LIMIT 10
 #define SECOND_LIMIT 0
 
-#define START_MAP 1
+#define START_MAP 0
 #define FINAL_MAP 5
 
 #define W_SCANCODE 0x11

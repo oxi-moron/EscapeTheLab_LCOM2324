@@ -170,7 +170,7 @@ int (graphics_draw_timer) () {
         return 1;
     }
 
-    if (vg_draw_rectangle(MINIMAP_WIDTH + 80, height - 100, width - MINIMAP_WIDTH - 80, 100, WHITE) != 0) {
+    if (vg_draw_rectangle(width - 300, height - 100, 290, 100, 0x000000) != 0) {
         printf("ERROR: %s\n", __func__ );
         return 1;
     }
@@ -191,15 +191,6 @@ int (graphics_draw_timer) () {
         vg_draw_xpm(width - 290, height - 90, 60, numbers_xpm[minutes / 10].size, numbers_xpm[minutes / 10].bytes);
         vg_draw_xpm(width - 230, height - 90, 60, numbers_xpm[minutes % 10].size, numbers_xpm[minutes % 10].bytes);
     }
-    vg_draw_xpm(width - 320, height - 90, two_dots_xpm.width, two_dots_xpm.size, two_dots_xpm.bytes);
-    if (hours < 10) {
-        vg_draw_xpm(width - 440, height - 90, 60, numbers_xpm[0].size, numbers_xpm[0].bytes);
-        vg_draw_xpm(width - 380, height - 90, 60, numbers_xpm[hours].size, numbers_xpm[hours].bytes);
-    } else {
-        vg_draw_xpm(width - 440, height - 90, 60, numbers_xpm[hours / 10].size, numbers_xpm[hours / 10].bytes);
-        vg_draw_xpm(width - 380, height - 90, 60, numbers_xpm[hours % 10].size, numbers_xpm[hours % 10].bytes);
-    }
-
     return 0;
 }
 
