@@ -100,8 +100,6 @@ int state_kbd_event(uint8_t scancode) {
                     map_set_grid_pos(15, 6, 16);
                   }
                   break;
-                case 4:
-                  break;
                 default:
                   size = map_get_terminal_positions(&t[0]);
                   map_get_door_position(&exit);
