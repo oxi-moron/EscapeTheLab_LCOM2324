@@ -112,6 +112,10 @@ int state_kbd_event(uint8_t scancode) {
                   }
                   if (size == 0) {
                     map_set_grid_pos(exit.x, exit.y, 16);
+                    if (map_no == 4) {
+                      map_get_door_position(&exit);
+                      map_set_grid_pos(exit.x, exit.y, 16);
+                    }
                   }
                   break;
               }
